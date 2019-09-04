@@ -17,7 +17,7 @@
 body {
     color: hsl(0, 0%, 33%);
     background-color: hsl(45, 85%, 46%);
-    font-family: open-sans;
+    font-family: Open Sans;
     font-size: 16px;
     position: relative;
     height: 100vh;
@@ -39,25 +39,57 @@ body {
 
 .budget {
     position: absolute;
-    width: 700px;
+    width: 800px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid black;
 }
 
-.budgetapp__title {
-    font-weight: 700;
-    font-size: 32px;
-    text-align: center;
-    margin-bottom: 120px;
+.budget__income__expenses__quote {
+    color: #fff;
 }
 
+.budget__title {
+    text-transform: uppercase;
+    font-size: 32px;
+    text-align: center;
+    font-weight: 600;
+}
 
+.budget__value {
+    font-size: 50px;
+    text-align: center;
+    font-weight: 700;
+}
 
+.budget__income__expenses {
+    float: left;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 15px;
+    text-transform: uppercase;
+}
 
+.budget__income,
+.budget__expenses {
+    padding: 12px;
+}
 
+.budget__income--text,
+.budget__expenses--text {
+    float: left;
+}
 
+.budget__income--value,
+.budget__expenses--value {
+    float: left;
+}
+
+.budget__income--percentages,
+.budget__expenses--percentages {
+    float: left;
+}
 
 
 
