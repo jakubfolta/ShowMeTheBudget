@@ -86,9 +86,11 @@ body {
     float: left;
 }
 
-.budget__income--percentages,
-.budget__expenses--percentages {
+.budget__income--percentage,
+.budget__expenses--percentage {
     float: left;
+    margin-left: 10px;
+    
 }
 
 
