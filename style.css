@@ -74,6 +74,8 @@ body {
 
 .budget__income,
 .budget__expenses {
+    display: flex;
+    justify-content: space-between;
     padding: 12px;
 }
 
@@ -92,6 +94,10 @@ body {
     float: left;
     margin-left: 10px;
 
+}
+
+.budget__quote {
+    text-align: center;
 }
 
 
