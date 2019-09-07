@@ -145,7 +145,20 @@ input:checked + .slider__round:before {
     transform: translateX(26px);
 }
 
+/*******************************************
+*** BOTTOM
+*******************************************/
 
+.add {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.add__container {
+    display: flex;
+    padding: 10px;
+}
 
 
 
