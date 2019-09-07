@@ -8,15 +8,9 @@
     box-sizing: border-box;
 }
 
-.clearfix::after {
-    content: '';
-    display: table;
-    clear: both;
-}
-
 body {
     color: hsl(0, 0%, 33%);
-    background-color: hsl(45, 85%, 46%);
+    background-color: #c79006;
     font-family: Open Sans;
     font-size: 16px;
     position: relative;
@@ -24,11 +18,6 @@ body {
     font-weight: 500;
 }
 
-.right {
-    display: flex;
-    justify-content: space-around;
-    border: 1px solid black;
-}
 .red { color: hsl(2, 100%, 64%) !important; }
 .red-focus:focus { border: 1px solid hsl(2, 100%, 64%) !important; }
 
@@ -37,6 +26,7 @@ body {
 *******************************************/
 
 .top {
+    margin-top: 20px;
     height: 40vh;
     position: relative;
 }
@@ -47,7 +37,6 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 1px solid black;
 }
 
 .budget__income__expenses__quote {
@@ -62,6 +51,11 @@ body {
     font-size: 32px;
     text-align: center;
     font-weight: 500;
+}
+
+.budget__value,
+.budget__name {
+    text-shadow: 5px 2px 3px #d61406;
 }
 
 .budget__value {
@@ -86,6 +80,7 @@ body {
     flex-direction: column;
     flex: 0 0 25%;
     padding: 12px;
+    letter-spacing: 0.1em;
 }
 
 .budget__quote {
@@ -94,24 +89,12 @@ body {
     text-align: center;
     font-style: oblique;
     flex: 0 0 50%;
+    padding: 10px 0;
 }
 
-.budget__income--text,
-.budget__expenses--text {
-
-}
-
-.budget__income--value,
-.budget__expenses--value {
-
-}
-
-.budget__income--percentage,
-.budget__expenses--percentage {
-    width: 30px;
-    margin-left: 10px;;
-
-}
+/*******************************************
+*** SLIDER
+*******************************************/
 
 
 
