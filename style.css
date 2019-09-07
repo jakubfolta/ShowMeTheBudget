@@ -82,9 +82,14 @@ body {
 .budget__income,
 .budget__expenses {
     display: flex;
-    justify-content: space-between;
-    width: 250px;
+    justify-content: space-around;
+    flex: 0 0 25%;
     padding: 12px;
+}
+
+.budget__quote {
+    text-align: center;
+    flex: 0 0 50%;
 }
 
 .budget__income--text,
@@ -104,9 +109,6 @@ body {
 
 }
 
-.budget__quote {
-    text-align: center;
-}
 
 
 
