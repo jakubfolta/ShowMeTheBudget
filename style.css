@@ -24,7 +24,11 @@ body {
     font-weight: 500;
 }
 
-.right { float: right; }
+.right {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+}
 .red { color: hsl(2, 100%, 64%) !important; }
 .red-focus:focus { border: 1px solid hsl(2, 100%, 64%) !important; }
 
@@ -39,7 +43,7 @@ body {
 
 .budget {
     position: absolute;
-    width: 800px;
+    width: 1200px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -58,9 +62,7 @@ body {
     font-weight: 600;
 }
 
-.budget__title--name {
-    font-size: 38px;
-}
+.budget__title--name { font-size: 40px; }
 
 .budget__value {
     font-size: 50px;
@@ -81,23 +83,24 @@ body {
 .budget__expenses {
     display: flex;
     justify-content: space-between;
+    width: 250px;
     padding: 12px;
 }
 
 .budget__income--text,
 .budget__expenses--text {
-    float: left;
+
 }
 
 .budget__income--value,
 .budget__expenses--value {
-    float: left;
+
 }
 
 .budget__income--percentage,
 .budget__expenses--percentage {
-    float: left;
-    margin-left: 10px;
+    width: 30px;
+    margin-left: 10px;;
 
 }
 
