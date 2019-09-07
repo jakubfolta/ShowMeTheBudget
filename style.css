@@ -103,7 +103,7 @@ body {
 
 .switch {
     position: relative;
-    width: 70px;
+    width: 60px;
     height: 30px;
 }
 
@@ -115,6 +115,7 @@ body {
 
 .slider__round {
     position: absolute;
+    cursor: pointer;
     top: 0;
     left: 0;
     right: 0;
@@ -132,6 +133,14 @@ body {
     height: 26px;
     border-radius: 50%;
     background-color: #fff;
+}
+
+input:checked + .slider__round {
+    background-color: #e00000;
+}
+
+input:checked + .slider__round:before {
+    transform: translateX(26px);
 }
 
 
