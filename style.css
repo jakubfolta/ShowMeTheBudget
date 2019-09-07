@@ -54,20 +54,20 @@ body {
     color: #fff;
 }
 
-.budget__title {
+.budget__date,
+.budget__value,
+.budget__name {
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     font-size: 32px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 500;
 }
-
-.budget__title--name { font-size: 40px; }
 
 .budget__value {
     font-size: 50px;
     text-align: center;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .budget__income__expenses {
@@ -81,14 +81,18 @@ body {
 
 .budget__income,
 .budget__expenses {
+    text-align: center;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     flex: 0 0 25%;
     padding: 12px;
 }
 
 .budget__quote {
+    font-size: 14px;
+    text-transform: none;
     text-align: center;
+    font-style: oblique;
     flex: 0 0 50%;
 }
 
