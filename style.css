@@ -9,9 +9,9 @@
 }
 
 body {
-    color: hsl(0, 0%, 33%);
+    color: #fff;
     background-color: #c79006;
-    font-family: Open Sans;
+    font-family: Lato;
     font-size: 16px;
     position: relative;
     height: 100vh;
@@ -26,7 +26,7 @@ body {
 *******************************************/
 
 .top {
-    margin-top: 20px;
+    margin-top: 50px;
     height: 40vh;
     position: relative;
 }
@@ -39,10 +39,6 @@ body {
     transform: translate(-50%, -50%);
 }
 
-.budget__income__expenses__quote {
-    color: #fff;
-}
-
 .budget__date,
 .budget__value,
 .budget__name {
@@ -50,7 +46,7 @@ body {
     letter-spacing: 0.1em;
     font-size: 32px;
     text-align: center;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .budget__value,
@@ -61,14 +57,15 @@ body {
 .budget__value {
     font-size: 50px;
     text-align: center;
-    font-weight: 600;
+    font-weight: 900;
+    padding: 10px 0;
 }
 
 .budget__income__expenses {
     display: flex;
     justify-content: space-between;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 28px;
+    font-weight: 900;
     padding: 15px;
     text-transform: uppercase;
 }
@@ -80,7 +77,17 @@ body {
     flex-direction: column;
     flex: 0 0 25%;
     padding: 12px;
-    letter-spacing: 0.1em;
+}
+
+.budget__income--text,
+.budget__income--value {
+    color: #03a309;
+}
+
+.budget__expenses--text,
+.budget__expenses--value,
+.budget__expenses--percentage {
+    color: #e00000;
 }
 
 .budget__quote {
@@ -90,6 +97,7 @@ body {
     font-style: oblique;
     flex: 0 0 50%;
     padding: 10px 0;
+    letter-spacing: 0.1em;
 }
 
 /*******************************************
@@ -157,10 +165,51 @@ input:checked + .slider__round:before {
 
 .add__container {
     display: flex;
-    padding: 10px;
+    align-items: center;
 }
 
+.add__description,
+.add__value {
+    margin-right: 15px;
+    border: none;
+    border-bottom: 2px solid #03a309;
+    background-color: inherit;
+    color: inherit;
+    font-size: 18px;
+    padding: 5px;
+}
 
+.add__description { width: 400px;}
+.add__value { width: 100px;}
+
+.add__btn {
+    font-size: 38px;
+    border: none;
+    background: none;
+    color: #03a309;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.add__description:focus,
+.add__value:focus,
+.add__btn:focus {
+    outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.add__btn:active {
+    transform:translateY(2px);
+}
+
+::placeholder {
+    color: inherit;
+}
 
 
 
