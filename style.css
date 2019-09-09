@@ -211,7 +211,16 @@ input[type=number]::-webkit-outer-spin-button {
     color: inherit;
 }
 
-.
+/*******************************************
+*** LIST ITEMS
+*******************************************/
+
+.container {
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+}
 
 
 
