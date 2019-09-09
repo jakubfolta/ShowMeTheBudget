@@ -220,7 +220,14 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
     margin: 50px auto;
+    border: 1px solid black;
 }
+
+.item {
+    border: 1px solid black;
+    display: flex;
+}
+
 
 
 
