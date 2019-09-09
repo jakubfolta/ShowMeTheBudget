@@ -231,20 +231,30 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0 20px;
 }
 
-.right {
+.right__income,
+.right__expense--items {
     display: flex;
+    align-items: center;
+    text-align: right;
+}
+
+.right__expense{
+    display: flex;
+    flex-flow: column;
+    text-align: right;
 }
 
 .item__description,
 .item__value {
     padding: 5px 0;
-    margin: 0 10px;
+    margin: 0;
     border-bottom: 2px solid #03a309;
+    text-align: left;
 }
 
-.item__percentage
-
-.
+.item__delete {
+    margin-left: 10px;
+}
 
 
 
