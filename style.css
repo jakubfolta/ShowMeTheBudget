@@ -224,10 +224,19 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .item {
-    border: 1px solid black;
+    width: 1000px;;
     display: flex;
+    justify-content: space-around;
+    margin: 0 20px;
+    padding: 5px;
 }
 
+.right {
+    display: flex;
+    margin: 0 5px;
+}
+
+border-bottom: 2px solid #03a309;
 
 
 
