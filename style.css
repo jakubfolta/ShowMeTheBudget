@@ -218,6 +218,7 @@ input[type=number]::-webkit-outer-spin-button {
 .container {
     width: 1000px;
     display: flex;
+    flex-flow: row wrap;
     justify-content: center;
     margin: 50px auto;
     border: 1px solid black;
@@ -228,17 +229,22 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     justify-content: space-around;
     margin: 0 20px;
-    padding: 5px;
 }
 
 .right {
     display: flex;
-    margin: 0 5px;
 }
 
-border-bottom: 2px solid #03a309;
+.item__description,
+.item__value {
+    padding: 5px 0;
+    margin: 0 10px;
+    border-bottom: 2px solid #03a309;
+}
 
+.item__percentage
 
+.
 
 
 
