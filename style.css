@@ -56,7 +56,7 @@ body {
 .budget__name {
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: 32px;
+    font-size: 3.2rem;
     text-align: center;
     font-weight: 700;
 }
@@ -123,8 +123,8 @@ body {
 
 .switch {
     position: relative;
-    width: 60px;
-    height: 30px;
+    width: 6rem;
+    height: 3rem;
 }
 
 .switch input {
@@ -150,8 +150,8 @@ body {
     content: "";
     top: 2px;
     left: 4px;
-    width: 26px;
-    height: 26px;
+    width: 2.6rem;
+    height: 2.6rem;
     border-radius: 50%;
     background-color: #fff;
     transition: .4s;
@@ -162,7 +162,7 @@ input:checked + .slider__round {
 }
 
 input:checked + .slider__round:before {
-    transform: translateX(26px);
+    transform: translateX(2.6rem);
 }
 
 /*******************************************
@@ -170,7 +170,7 @@ input:checked + .slider__round:before {
 *******************************************/
 
 .add {
-    margin-top: 20px;
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
 }
@@ -182,20 +182,20 @@ input:checked + .slider__round:before {
 
 .add__description,
 .add__value {
-    margin-right: 15px;
+    margin-right: 1.5rem;
     border: none;
     border-bottom: 2px solid #03a309;
     background-color: inherit;
     color: inherit;
-    font-size: 18px;
+    font-size: 1.8rem;
     padding: 5px;
 }
 
-.add__description { width: 400px;}
-.add__value { width: 100px;}
+.add__description { width: 40rem;}
+.add__value { width: 10rem;}
 
 .add__btn {
-    font-size: 38px;
+    font-size: 3.8rem;
     border: none;
     background: none;
     color: #03a309;
