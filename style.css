@@ -38,7 +38,7 @@ body {
 }
 
 .top {
-    margin-top: 5rem;
+    margin-top: 2rem;
     height: 40vh;
     position: relative;
 }
@@ -102,13 +102,17 @@ body {
     color: #e00000;
 }
 
+.budget__quote__slider {
+    flex: 0 0 50%;
+}
+
 .budget__quote {
-    font-size: 1rem;
+    font-size: 1.4rem;
     text-transform: none;
     text-align: center;
     font-style: oblique;
-    flex: 0 0 50%;
     padding: 10px 0;
+    margin-bottom: 4rem;
     letter-spacing: 0.1em;
 }
 
@@ -200,7 +204,7 @@ input:checked + .slider__round:before {
     background: none;
     color: #03a309;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 1rem;
 }
 
 .add__description:focus,
@@ -216,7 +220,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .add__btn:active {
-    transform:translateY(2px);
+    transform:translateY(0.2rem);
 }
 
 ::placeholder {
@@ -228,7 +232,7 @@ input[type=number]::-webkit-outer-spin-button {
 *******************************************/
 
 .container {
-    margin: 50px auto;
+    margin: 4rem auto;
     border: 1px solid black;
 }
 
