@@ -62,9 +62,7 @@ body {
 }
 
 .budget__value,
-.budget__name {
-    text-shadow: 5px 2px 3px #000;
-}
+.budget__name { text-shadow: 5px 2px 3px #000; }
 
 .budget__value {
     font-size: 5rem;
@@ -76,7 +74,7 @@ body {
 .budget__income__expenses {
     display: flex;
     justify-content: center;
-    font-size: 28px;
+    font-size: 2.8rem;
     font-weight: 900;
     padding: 15px;
     text-transform: uppercase;
@@ -92,19 +90,15 @@ body {
 }
 
 .budget__income--text,
-.budget__income--value {
-    color: #03a309;
-}
+.budget__income--value { color: #03a309; }
 
 .budget__expenses--text,
 .budget__expenses--value,
-.budget__expenses--percentage {
-    color: #e00000;
-}
+.budget__expenses--percentage { color: #e00000; }
 
-.budget__quote__slider {
-    flex: 0 0 50%;
-}
+.budget__expenses--percentage { font-size: 2.4rem; }
+
+.budget__quote__slider { flex: 0 0 50%; }
 
 .budget__quote {
     font-size: 1.4rem;
@@ -161,13 +155,9 @@ body {
     transition: .4s;
 }
 
-input:checked + .slider__round {
-    background-color: #e00000;
-}
+input:checked + .slider__round { background-color: #e00000; }
 
-input:checked + .slider__round:before {
-    transform: translateX(2.6rem);
-}
+input:checked + .slider__round:before { transform: translateX(2.6rem); }
 
 /*******************************************
 *** BOTTOM
@@ -209,9 +199,7 @@ input:checked + .slider__round:before {
 
 .add__description:focus,
 .add__value:focus,
-.add__btn:focus {
-    outline: none;
-}
+.add__btn:focus { outline: none; }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -219,13 +207,9 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-.add__btn:active {
-    transform:translateY(0.2rem);
-}
+.add__btn:active { transform:translateY(0.2rem); }
 
-::placeholder {
-    color: inherit;
-}
+::placeholder { color: inherit; }
 
 /*******************************************
 *** LIST ITEMS
@@ -233,33 +217,33 @@ input[type=number]::-webkit-outer-spin-button {
 
 .container {
     margin: 4rem auto;
-    border: 1px solid black;
 }
 
 .item {
     display: flex;
-    margin: 10px auto;
+    align-items: center;
+    padding: .5rem 0;
+    font-size: 1.8rem;
+    font-weight: 900;
+    border-bottom: 2px solid #595959;
 }
 
-.item__description {
-    flex: 1;
-}
+.item__description { flex: 1; }
 
-.item__right {
-    display: flex;
-    flex-flow: column;
-}
-
-.item__right--group {
-    display: flex;
+.item__percentage {
     text-align: right;
+    font-size: 1.6rem;
 }
 
-.item__value {
-    border: 1px solid black;
+.item__value--income { color: #e00000; }
 
+.item__value--expense { color: #03a309; }
+
+.item__delete--btn {
+    font-size: 2rem;
+    color: #03a309;  <----- finish
+    border: none;
 }
-
 
 
 
