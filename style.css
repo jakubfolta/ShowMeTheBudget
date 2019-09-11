@@ -225,30 +225,42 @@ input[type=number]::-webkit-outer-spin-button {
     padding: .5rem 0;
     font-size: 1.8rem;
     font-weight: 900;
-    border-bottom: 2px solid #595959;
+    border-bottom: 1px solid #f5bb4e;
 }
 
 .item__description { flex: 1; }
+
+.item:hover .item__delete--btn { display: block; }
+.item:hover div[class^="item__value--"] { transform: translateX(-1rem); }
 
 .item__percentage {
     text-align: right;
     font-size: 1.6rem;
 }
 
-.item__value--income { color: #e00000; }
+.item__value--income {
+    color: #03a309;
+    transition: transform .3s;
+}
 
-.item__value--expense { color: #03a309; }
+.item__value--expense {
+    color: #e00000;
+    transition: transform .3s;
+}
 
 .item__delete--btn {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: #e00000;
     border: none;
     background: none;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
     cursor: pointer;
+    display: none;
 }
 
 .item__delete--btn:active { transform: translateY(0.2rem); }
+.item__delete--btn:focus { outline: none; }
+
 
 
 
