@@ -15,11 +15,10 @@ body {
   align-items: center;
   color: white;
   background-color: #11ff00;
-  font-family: Lato;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   position: relative;
-  height: 100vh;
-  font-weight: 500; }
+  height: 100vh; }
 
 .red {
   color: #ff4e47 !important; }
@@ -54,7 +53,7 @@ body {
   letter-spacing: 0.1em;
   font-size: 3.2rem;
   text-align: center;
-  font-weight: 700; }
+  font-weight: 600; }
 
 .budget__value,
 .budget__name {
@@ -63,7 +62,7 @@ body {
 .budget__value {
   font-size: 5rem;
   text-align: center;
-  font-weight: 900;
+  font-weight: 600;
   padding: 10px 0; }
 
 .budget__income__expenses {
