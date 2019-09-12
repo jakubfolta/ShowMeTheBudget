@@ -1,3 +1,6 @@
+body {
+  font-family: 'Open Sans', sans-serif; }
+
 * {
   margin: 0;
   padding: 0;
@@ -6,34 +9,25 @@
 html {
   font-size: 62.5%; }
 
-/*******************************************
-*** GENERAL
-*******************************************/
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   background-color: #11ff00;
-  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
-  position: relative;
-  height: 100vh; }
+  position: relative; }
+  body .main {
+    width: 100%;
+    max-width: 90rem;
+    min-height: 100vh; }
 
-.red {
-  color: #ff4e47 !important; }
-
-.red-focus:focus {
-  border: 1px solid #ff4e47 !important; }
-
+/*******************************************
+*** GENERAL
+*******************************************/
 /*******************************************
 *** TOP PART
 *******************************************/
-.main {
-  width: 100%;
-  max-width: 90rem;
-  min-height: 100vh; }
-
 .top {
   margin-top: 2rem;
   height: 40vh;
@@ -153,6 +147,9 @@ input:checked + .slider__round:before {
 /*******************************************
 *** BOTTOM
 *******************************************/
+.bottom {
+  height: 60vh; }
+
 .add {
   margin-top: 2rem;
   display: flex;
@@ -251,3 +248,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .item__delete--btn:focus {
   outline: none; }
+
+.red {
+  color: red !important; }
+
+.red-focus:focus {
+  border: 1px solid red !important; }

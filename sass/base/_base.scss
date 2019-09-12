@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-font-main;
+    background-color: $color-background;
+    font-size: 1rem;
+    position: relative;
+
+    .main {
+        width: 100%;
+        max-width: 90rem;
+        min-height: 100vh;
+    }
+}
+

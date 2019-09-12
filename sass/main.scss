@@ -3,6 +3,7 @@
 
 @import 'base/typography';
 @import 'base/reset';
+@import 'base/base';
 
 @import 'layout/header';
 @import 'layout/footer';
@@ -17,34 +18,14 @@
 *******************************************/
 
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $color-font-main;
-    background-color: $color-background;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
-    position: relative;
-    height: 100vh;
-}
-
-.red { color: hsl(2, 100%, 64%) !important; }
-.red-focus:focus { border: 1px solid hsl(2, 100%, 64%) !important; }
-
 /*******************************************
 *** TOP PART
 *******************************************/
 
-.main {
-    width: 100%;
-    max-width: 90rem;
-    min-height: 100vh;
-}
 
 .top {
     margin-top: 2rem;
-    height: 40vh;
+    height: $height-top;
     position: relative;
 }
 
@@ -167,6 +148,9 @@ input:checked + .slider__round:before { transform: translateX(2.6rem); }
 /*******************************************
 *** BOTTOM
 *******************************************/
+.bottom {
+    height: $height-bottom;
+}
 
 .add {
     margin-top: 2rem;
@@ -266,6 +250,8 @@ input[type=number]::-webkit-outer-spin-button {
 .item__delete--btn:active { transform: translateY(0.2rem); }
 .item__delete--btn:focus { outline: none; }
 
+.red { color: $color-expense !important; }
+.red-focus:focus { border: 1px solid $color-expense !important; }
 
 
 
