@@ -2,6 +2,7 @@
 @import 'abstracts/mixins';
 
 @import 'base/typography';
+@import 'base/reset';
 
 @import 'layout/header';
 @import 'layout/footer';
@@ -14,17 +15,14 @@
 /*******************************************
 *** GENERAL
 *******************************************/
-html {
-    font-size: $root-size;
-}
 
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    background-color: #c79006;
+    color: $color-font-main;
+    background-color: $color-background;
     font-family: Lato;
     font-size: 1rem;
     position: relative;
@@ -98,11 +96,11 @@ body {
 }
 
 .budget__income--text,
-.budget__income--value { color: #03a309; }
+.budget__income--value { color: $color-income; }
 
 .budget__expenses--text,
 .budget__expenses--value,
-.budget__expenses--percentage { color: #e00000; }
+.budget__expenses--percentage { color: $color-expense; }
 
 .budget__expenses--percentage { font-size: 2.4rem; }
 
@@ -146,7 +144,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #03a309;
+    background-color: $color-income;
     border-radius: 34px;
     transition: .4s;
 }
@@ -163,7 +161,7 @@ body {
     transition: .4s;
 }
 
-input:checked + .slider__round { background-color: #e00000; }
+input:checked + .slider__round { background-color: $color-expense; }
 
 input:checked + .slider__round:before { transform: translateX(2.6rem); }
 
@@ -186,7 +184,7 @@ input:checked + .slider__round:before { transform: translateX(2.6rem); }
 .add__value {
     margin-right: 1.5rem;
     border: none;
-    border-bottom: 2px solid #03a309;
+    border-bottom: 2px solid $color-income;
     background-color: inherit;
     color: inherit;
     font-size: 1.8rem;
@@ -200,7 +198,7 @@ input:checked + .slider__round:before { transform: translateX(2.6rem); }
     font-size: 3.8rem;
     border: none;
     background: none;
-    color: #03a309;
+    color: $color-income;
     cursor: pointer;
     margin-left: 1rem;
 }
@@ -233,7 +231,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding: .5rem 0;
     font-size: 1.8rem;
     font-weight: 900;
-    border-bottom: 1px solid #f5bb4e;
+    border-bottom: 1px solid $color-underline;
 }
 
 .item__description { flex: 1; }
@@ -247,18 +245,18 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .item__value--income {
-    color: #03a309;
+    color: $color-income;
     transition: transform .3s;
 }
 
 .item__value--expense {
-    color: #e00000;
+    color: $color-expense;
     transition: transform .3s;
 }
 
 .item__delete--btn {
     font-size: 1.8rem;
-    color: #e00000;
+    color: $color-expense;
     border: none;
     background: none;
     margin-left: 1.5rem;

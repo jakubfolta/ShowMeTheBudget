@@ -1,8 +1,8 @@
 {
-  "name": "show me the budget",
+  "name": "learning-git-2",
   "version": "1.0.0",
   "description": "* HTML5, CSS3, Sass",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "npm-run-all test:*",
     "test:html": "globstar nu-html-checker *.html",
@@ -15,10 +15,10 @@
     "build:sass": "node-sass --output-style compact -o vendor sass",
     "build:autoprefixer": "autoprefixer-cli vendor/style.css",
     "build-dev:sass": "node-sass --output-style expanded --source-map true -o vendor sass",
-    "watch": "npm-run-all build -p watch:*",
+    "watch": "npm-run-all -p watch:*",
     "watch:sassprefixer": "npm-run-all watch:sass -s watch:autoprefixer",
     "watch:sass": "node-sass --watch sass -o css",
-    "watch:autoprefixer": "autoprefixer-cli vendor/style.css",
+    "watch:autoprefixer": "autoprefixer-cli css/main.css",
     "watch:browsersync": "node_modules/.bin/browser-sync start --server --files css/*.css *.html *.js"
   },
   "repository": {
