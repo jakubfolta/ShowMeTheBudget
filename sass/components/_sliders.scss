@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
 
-
     .switch {
         position: relative;
         width: 6rem;
@@ -13,9 +12,6 @@
             width: 0;
             height: 0;
         }
-
-
-
     }
 }
 
@@ -31,7 +27,7 @@ input:checked + .slider__round:before { transform: translateX(2.6rem); }
     bottom: 0;
     background-color: $color-income;
     border-radius: 34px;
-    transition: .3s;
+    transition: transform .3s;
 }
 
 .slider__round:before {

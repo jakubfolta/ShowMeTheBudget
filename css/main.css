@@ -119,13 +119,18 @@ body {
   .add__container .add__description:focus,
   .add__container .add__value:focus {
     outline: none; }
-  .add__container input[type=number]::-webkit-inner-spin-button,
-  .add__container input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0; }
-  .add__container ::placeholder {
-    color: inherit; }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; }
+
+::placeholder {
+  color: inherit; }
+
+/*******************************************
+*** LIST ITEMS
+*******************************************/
 .container {
   margin: 4rem auto; }
   .container .item {
@@ -151,6 +156,12 @@ body {
 .item__value--expense {
   color: #cf1717;
   transition: transform 0s; }
+
+.red {
+  color: #cf1717 !important; }
+
+.red-focus:focus {
+  border-bottom: 2px solid #cf1717 !important; }
 
 .add__btn {
   font-size: 3.8rem;
@@ -195,20 +206,23 @@ body {
       opacity: 0;
       width: 0;
       height: 0; }
-    .slider .switch input:checked + .slider__round {
-      background-color: #cf1717; }
-    .slider .switch input:checked + .slider__round:before {
-      transform: translateX(2.6rem); }
-    .slider .switch .slider__round {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: #4dcc33;
-      border-radius: 34px;
-      transition: .4s; }
+
+input:checked + .slider__round {
+  background-color: #cf1717; }
+
+input:checked + .slider__round:before {
+  transform: translateX(2.6rem); }
+
+.slider__round {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #4dcc33;
+  border-radius: 34px;
+  transition: transform .3s; }
 
 .slider__round:before {
   position: absolute;
@@ -219,13 +233,4 @@ body {
   height: 2.6rem;
   border-radius: 50%;
   background-color: #fff;
-  transition: transform 2s; }
-
-/*******************************************
-*** LIST ITEMS
-*******************************************/
-.red {
-  color: #cf1717 !important; }
-
-.red-focus:focus {
-  border: 1px solid #cf1717 !important; }
+  transition: transform .3s; }

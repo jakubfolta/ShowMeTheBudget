@@ -36,14 +36,19 @@
         outline: none;
     }
 
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
-
-    ::placeholder { color: inherit; }
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+::placeholder { color: inherit; }
+
+/*******************************************
+*** LIST ITEMS
+*******************************************/
 
 .container {
     margin: 4rem auto;
@@ -76,3 +81,6 @@
     color: $color-expense;
     transition: transform 0s;
 }
+
+.red { color: $color-expense !important; }
+.red-focus:focus { border-bottom: 2px solid $color-expense !important; }
