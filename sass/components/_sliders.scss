@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
 
+
     .switch {
         position: relative;
         width: 6rem;
@@ -13,33 +14,36 @@
             height: 0;
         }
 
-        input:checked + .slider__round { background-color: $color-expense; }
-        input:checked + .slider__round:before { transform: translateX(2.6rem); }
 
-        .slider__round {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: $color-income;
-            border-radius: 34px;
-            transition: .4s;
-        }
 
-        .slider__round:before {
-            position: absolute;
-            content: "";
-            top: 2px;
-            left: 4px;
-            width: 2.6rem;
-            height: 2.6rem;
-            border-radius: 50%;
-            background-color: #fff;
-            transition: .4s;
-        }
     }
+}
+
+input:checked + .slider__round { background-color: $color-expense; }
+input:checked + .slider__round:before { transform: translateX(2.6rem); }
+
+.slider__round {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $color-income;
+    border-radius: 34px;
+    transition: .3s;
+}
+
+.slider__round:before {
+    position: absolute;
+    content: "";
+    top: 2px;
+    left: 4px;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: transform .3s;
 }
 
 

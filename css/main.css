@@ -133,23 +133,24 @@ body {
     align-items: center;
     padding: .5rem 0;
     font-size: 1.8rem;
-    font-weight: 900;
+    font-weight: 600;
     border-bottom: 1px solid #6670ff; }
     .container .item .item__description {
       flex: 1; }
-    .container .item .item:hover .item__delete--btn {
-      display: block; }
-    .container .item .item:hover div[class^="item__value--"] {
-      transform: translateX(-1rem); }
     .container .item .item__percentage {
       text-align: right;
       font-size: 1.6rem; }
-    .container .item .item__value--income {
-      color: #4dcc33;
-      transition: transform .3s; }
-    .container .item .item__value--expense {
-      color: #cf1717;
-      transition: transform .3s; }
+
+.item:hover div[class^="item__value--"] {
+  transform: translateX(-1rem); }
+
+.item__value--income {
+  color: #4dcc33;
+  transition: transform 0s; }
+
+.item__value--expense {
+  color: #cf1717;
+  transition: transform 0s; }
 
 .add__btn {
   font-size: 3.8rem;
@@ -173,6 +174,9 @@ body {
   margin-left: 1.5rem;
   cursor: pointer;
   display: none; }
+
+.item:hover .item__delete--btn {
+  display: block; }
 
 .item__delete--btn:active {
   transform: translateY(0.2rem); }
@@ -205,16 +209,17 @@ body {
       background-color: #4dcc33;
       border-radius: 34px;
       transition: .4s; }
-    .slider .switch .slider__round:before {
-      position: absolute;
-      content: "";
-      top: 2px;
-      left: 4px;
-      width: 2.6rem;
-      height: 2.6rem;
-      border-radius: 50%;
-      background-color: #fff;
-      transition: .4s; }
+
+.slider__round:before {
+  position: absolute;
+  content: "";
+  top: 2px;
+  left: 4px;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: transform 2s; }
 
 /*******************************************
 *** LIST ITEMS

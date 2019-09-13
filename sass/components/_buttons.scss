@@ -21,5 +21,6 @@
     display: none;
 }
 
+.item:hover .item__delete--btn { display: block; }
 .item__delete--btn:active { transform: translateY(0.2rem); }
 .item__delete--btn:focus { outline: none; }
