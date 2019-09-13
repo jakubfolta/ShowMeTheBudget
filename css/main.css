@@ -24,41 +24,34 @@ body {
     min-height: 100vh; }
 
 /*******************************************
-*** GENERAL
-*******************************************/
-/*******************************************
 *** TOP PART
 *******************************************/
 .top {
   height: 40vh;
   position: relative;
   top: 2rem; }
-
-.budget {
-  width: 100%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); }
-
-.budget__date,
-.budget__value,
-.budget__name {
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 3.2rem;
-  text-align: center;
-  font-weight: 600; }
-
-.budget__value,
-.budget__name {
-  text-shadow: 5px 2px 3px #000; }
-
-.budget__value {
-  font-size: 5rem;
-  text-align: center;
-  font-weight: 600;
-  padding: 10px 0; }
+  .top .budget {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .top .budget .budget__date,
+    .top .budget .budget__value,
+    .top .budget .budget__name {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 3.2rem;
+      text-align: center;
+      font-weight: 600; }
+    .top .budget .budget__value,
+    .top .budget .budget__name {
+      text-shadow: 5px 2px 3px #000; }
+    .top .budget .budget__value {
+      font-size: 5rem;
+      text-align: center;
+      font-weight: 600;
+      padding: 10px 0; }
 
 .budget__income__expenses {
   display: flex;
@@ -67,117 +60,96 @@ body {
   font-weight: 900;
   padding: 15px;
   text-transform: uppercase; }
-
-.budget__income,
-.budget__expenses {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 25%;
-  padding: 12px; }
-
-.budget__income--text,
-.budget__income--value {
-  color: #4dcc33; }
-
-.budget__expenses--text,
-.budget__expenses--value,
-.budget__expenses--percentage {
-  color: #cf1717; }
-
-.budget__expenses--percentage {
-  font-size: 2.4rem; }
-
-.budget__quote {
-  display: flex;
-  flex-direction: column;
-  flex: 0 0 50%;
-  align-self: center; }
-
-.quote {
-  text-align: center;
-  font-size: 1.4rem;
-  text-transform: none;
-  font-style: oblique;
-  padding: 10px 0;
-  margin-bottom: 4rem;
-  letter-spacing: 0.1em; }
-
-/*******************************************
-*** SLIDER
-*******************************************/
-.slider {
-  display: flex;
-  justify-content: center; }
-
-.switch {
-  position: relative;
-  width: 6rem;
-  height: 3rem; }
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0; }
-
-.slider__round {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #4dcc33;
-  border-radius: 34px;
-  transition: .4s; }
-
-.slider__round:before {
-  position: absolute;
-  content: "";
-  top: 2px;
-  left: 4px;
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: 50%;
-  background-color: #fff;
-  transition: .4s; }
-
-input:checked + .slider__round {
-  background-color: #cf1717; }
-
-input:checked + .slider__round:before {
-  transform: translateX(2.6rem); }
+  .budget__income__expenses .budget__income,
+  .budget__income__expenses .budget__expenses {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 25%;
+    padding: 12px; }
+  .budget__income__expenses .budget__income--text,
+  .budget__income__expenses .budget__income--value {
+    color: #4dcc33; }
+  .budget__income__expenses .budget__expenses--text,
+  .budget__income__expenses .budget__expenses--value,
+  .budget__income__expenses .budget__expenses--percentage {
+    color: #cf1717; }
+  .budget__income__expenses .budget__expenses--percentage {
+    font-size: 2.4rem; }
+  .budget__income__expenses .budget__quote {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 50%;
+    align-self: center; }
+    .budget__income__expenses .budget__quote .quote {
+      text-align: center;
+      font-size: 1.4rem;
+      text-transform: none;
+      font-style: oblique;
+      padding: 10px 0;
+      margin-bottom: 4rem;
+      letter-spacing: 0.1em; }
 
 /*******************************************
 *** BOTTOM
 *******************************************/
 .bottom {
   height: 60vh; }
-
-.add {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center; }
+  .bottom .add {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center; }
 
 .add__container {
   display: flex;
   align-items: center; }
+  .add__container .add__description,
+  .add__container .add__value {
+    margin-right: 1.5rem;
+    border: none;
+    border-bottom: 2px solid #4dcc33;
+    background-color: inherit;
+    color: inherit;
+    font-size: 1.8rem;
+    padding: 5px; }
+  .add__container .add__description {
+    width: 40rem; }
+  .add__container .add__value {
+    width: 10rem; }
+  .add__container .add__description:focus,
+  .add__container .add__value:focus {
+    outline: none; }
+  .add__container input[type=number]::-webkit-inner-spin-button,
+  .add__container input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0; }
+  .add__container ::placeholder {
+    color: inherit; }
 
-.add__description,
-.add__value {
-  margin-right: 1.5rem;
-  border: none;
-  border-bottom: 2px solid #4dcc33;
-  background-color: inherit;
-  color: inherit;
-  font-size: 1.8rem;
-  padding: 5px; }
-
-.add__description {
-  width: 40rem; }
-
-.add__value {
-  width: 10rem; }
+.container {
+  margin: 4rem auto; }
+  .container .item {
+    display: flex;
+    align-items: center;
+    padding: .5rem 0;
+    font-size: 1.8rem;
+    font-weight: 900;
+    border-bottom: 1px solid #6670ff; }
+    .container .item .item__description {
+      flex: 1; }
+    .container .item .item:hover .item__delete--btn {
+      display: block; }
+    .container .item .item:hover div[class^="item__value--"] {
+      transform: translateX(-1rem); }
+    .container .item .item__percentage {
+      text-align: right;
+      font-size: 1.6rem; }
+    .container .item .item__value--income {
+      color: #4dcc33;
+      transition: transform .3s; }
+    .container .item .item__value--expense {
+      color: #cf1717;
+      transition: transform .3s; }
 
 .add__btn {
   font-size: 3.8rem;
@@ -187,56 +159,11 @@ input:checked + .slider__round:before {
   cursor: pointer;
   margin-left: 1rem; }
 
-.add__description:focus,
-.add__value:focus,
 .add__btn:focus {
   outline: none; }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0; }
-
 .add__btn:active {
   transform: translateY(0.2rem); }
-
-::placeholder {
-  color: inherit; }
-
-/*******************************************
-*** LIST ITEMS
-*******************************************/
-.container {
-  margin: 4rem auto; }
-
-.item {
-  display: flex;
-  align-items: center;
-  padding: .5rem 0;
-  font-size: 1.8rem;
-  font-weight: 900;
-  border-bottom: 1px solid #6670ff; }
-
-.item__description {
-  flex: 1; }
-
-.item:hover .item__delete--btn {
-  display: block; }
-
-.item:hover div[class^="item__value--"] {
-  transform: translateX(-1rem); }
-
-.item__percentage {
-  text-align: right;
-  font-size: 1.6rem; }
-
-.item__value--income {
-  color: #4dcc33;
-  transition: transform .3s; }
-
-.item__value--expense {
-  color: #cf1717;
-  transition: transform .3s; }
 
 .item__delete--btn {
   font-size: 1.8rem;
@@ -253,6 +180,45 @@ input[type=number]::-webkit-outer-spin-button {
 .item__delete--btn:focus {
   outline: none; }
 
+.slider {
+  display: flex;
+  justify-content: center; }
+  .slider .switch {
+    position: relative;
+    width: 6rem;
+    height: 3rem; }
+    .slider .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0; }
+    .slider .switch input:checked + .slider__round {
+      background-color: #cf1717; }
+    .slider .switch input:checked + .slider__round:before {
+      transform: translateX(2.6rem); }
+    .slider .switch .slider__round {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #4dcc33;
+      border-radius: 34px;
+      transition: .4s; }
+    .slider .switch .slider__round:before {
+      position: absolute;
+      content: "";
+      top: 2px;
+      left: 4px;
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      background-color: #fff;
+      transition: .4s; }
+
+/*******************************************
+*** LIST ITEMS
+*******************************************/
 .red {
   color: #cf1717 !important; }
 
