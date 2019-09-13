@@ -14,9 +14,10 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
-  background-color: deepskyblue;
+  background-color: blue;
   font-size: 1rem;
-  position: relative; }
+  position: relative;
+  height: 100vh; }
   body .main {
     width: 100%;
     max-width: 90rem;
@@ -29,9 +30,9 @@ body {
 *** TOP PART
 *******************************************/
 .top {
-  margin-top: 2rem;
   height: 40vh;
-  position: relative; }
+  position: relative;
+  top: 2rem; }
 
 .budget {
   width: 100%;
@@ -77,23 +78,26 @@ body {
 
 .budget__income--text,
 .budget__income--value {
-  color: #00b300; }
+  color: #4dcc33; }
 
 .budget__expenses--text,
 .budget__expenses--value,
 .budget__expenses--percentage {
-  color: red; }
+  color: #cf1717; }
 
 .budget__expenses--percentage {
   font-size: 2.4rem; }
 
-.budget__quote__slider {
-  flex: 0 0 50%; }
-
 .budget__quote {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 50%;
+  align-self: center; }
+
+.quote {
+  text-align: center;
   font-size: 1.4rem;
   text-transform: none;
-  text-align: center;
   font-style: oblique;
   padding: 10px 0;
   margin-bottom: 4rem;
@@ -123,7 +127,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #00b300;
+  background-color: #4dcc33;
   border-radius: 34px;
   transition: .4s; }
 
@@ -139,7 +143,7 @@ body {
   transition: .4s; }
 
 input:checked + .slider__round {
-  background-color: red; }
+  background-color: #cf1717; }
 
 input:checked + .slider__round:before {
   transform: translateX(2.6rem); }
@@ -163,7 +167,7 @@ input:checked + .slider__round:before {
 .add__value {
   margin-right: 1.5rem;
   border: none;
-  border-bottom: 2px solid #00b300;
+  border-bottom: 2px solid #4dcc33;
   background-color: inherit;
   color: inherit;
   font-size: 1.8rem;
@@ -179,7 +183,7 @@ input:checked + .slider__round:before {
   font-size: 3.8rem;
   border: none;
   background: none;
-  color: #00b300;
+  color: #4dcc33;
   cursor: pointer;
   margin-left: 1rem; }
 
@@ -227,16 +231,16 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 1.6rem; }
 
 .item__value--income {
-  color: #00b300;
+  color: #4dcc33;
   transition: transform .3s; }
 
 .item__value--expense {
-  color: red;
+  color: #cf1717;
   transition: transform .3s; }
 
 .item__delete--btn {
   font-size: 1.8rem;
-  color: red;
+  color: #cf1717;
   border: none;
   background: none;
   margin-left: 1.5rem;
@@ -250,7 +254,7 @@ input[type=number]::-webkit-outer-spin-button {
   outline: none; }
 
 .red {
-  color: red !important; }
+  color: #cf1717 !important; }
 
 .red-focus:focus {
-  border: 1px solid red !important; }
+  border: 1px solid #cf1717 !important; }

@@ -24,9 +24,9 @@
 
 
 .top {
-    margin-top: 2rem;
     height: $height-top;
     position: relative;
+    top: 2rem;
 }
 
 .budget {
@@ -84,12 +84,17 @@
 
 .budget__expenses--percentage { font-size: 2.4rem; }
 
-.budget__quote__slider { flex: 0 0 50%; }
-
 .budget__quote {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 50%;
+    align-self: center;
+}
+
+.quote {
+    text-align: center;
     font-size: 1.4rem;
     text-transform: none;
-    text-align: center;
     font-style: oblique;
     padding: 10px 0;
     margin-bottom: 4rem;
