@@ -1,9 +1,9 @@
 # Show Me The Budget
 
-## Check Here ==> 
+## Check Here ==> https://jakubfolta.github.io/ShowMeTheBudget/
 
 ## Technologies
-* HTML5, CSS3, JavaScript
+* HTML5, CSS3, Sass, JavaScript
 
 ## Contact
 Created by Jakub Folta [@betterlifewisdom](https://www.betterlifewisdom.com/) - feel free to contact me!<br/>
