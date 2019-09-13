@@ -1,0 +1,86 @@
+/*******************************************
+*** BOTTOM
+*******************************************/
+
+.bottom {
+    height: $height-bottom;
+
+    .add {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.add__container {
+    display: flex;
+    align-items: center;
+
+    .add__description,
+    .add__value {
+        margin-right: 1.5rem;
+        border: none;
+        border-bottom: 2px solid $color-income;
+        background-color: inherit;
+        color: inherit;
+        font-size: 1.8rem;
+        padding: 5px;
+    }
+
+    .add__description { width: 40rem;}
+    .add__value { width: 10rem;}
+
+
+    .add__description:focus,
+    .add__value:focus {
+        outline: none;
+    }
+
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+::placeholder { color: inherit; }
+
+/*******************************************
+*** LIST ITEMS
+*******************************************/
+
+.container {
+    margin: 4rem auto;
+
+    .item {
+        display: flex;
+        align-items: center;
+        padding: .5rem 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+        border-bottom: 1px solid $color-underline;
+
+        .item__description { flex: 1; }
+
+        .item__percentage {
+            text-align: right;
+            font-size: 1.6rem;
+        }
+    }
+}
+
+.item:hover div[class^="item__value--"] { transform: translateX(-1rem); }
+
+.item__value--income {
+    color: $color-income;
+    transition: transform 0s;
+}
+
+.item__value--expense {
+    color: $color-expense;
+    transition: transform 0s;
+}
+
+.red { color: $color-expense !important; }
+.red-focus:focus { border-bottom: 2px solid $color-expense !important; }

@@ -7,7 +7,7 @@
     "test": "npm-run-all test:*",
     "test:html": "globstar nu-html-checker *.html",
     "init-project": "npm install && npm-run-all init:*",
-    "init:dirs": "mkdirp sass css vendor images js",
+    "init:dirs": "",
     "init:files": "touch README.md index.html sass/style.scss js/script.js",
     "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore && echo .sass-cache >> .gitignore",
     "build": "npm-run-all build:*",
@@ -15,11 +15,11 @@
     "build:sass": "node-sass --output-style compact -o vendor sass",
     "build:autoprefixer": "autoprefixer-cli vendor/style.css",
     "build-dev:sass": "node-sass --output-style expanded --source-map true -o vendor sass",
-    "watch": "npm-run-all build -p watch:*",
+    "watch": "npm-run-all -p watch:*",
     "watch:sassprefixer": "npm-run-all watch:sass -s watch:autoprefixer",
-    "watch:sass": "onchange sass/*/*.scss -- node-sass --output-style expanded --source-map true -o vendor sass",
-    "watch:autoprefixer": "autoprefixer-cli vendor/style.css",
-    "watch:browsersync": "node_modules/.bin/browser-sync start --server --files *.css *.html *.js"
+    "watch:sass": "node-sass --watch sass -o css",
+    "watch:autoprefixer": "autoprefixer-cli css/main.css",
+    "watch:browsersync": "node_modules/.bin/browser-sync start --server --files css/*.css *.html *.js"
   },
   "repository": {
     "type": "git",

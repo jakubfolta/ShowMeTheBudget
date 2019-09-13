@@ -1,0 +1,26 @@
+.add__btn {
+    font-size: 3.8rem;
+    border: none;
+    background: none;
+    color: $color-income;
+    cursor: pointer;
+    margin-left: 1rem;
+
+}
+
+.add__btn:focus { outline: none; }
+.add__btn:active { transform:translateY(0.2rem); }
+
+.item__delete--btn {
+    font-size: 1.8rem;
+    color: $color-expense;
+    border: none;
+    background: none;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.item:hover .item__delete--btn { display: block; }
+.item__delete--btn:active { transform: translateY(0.2rem); }
+.item__delete--btn:focus { outline: none; }
