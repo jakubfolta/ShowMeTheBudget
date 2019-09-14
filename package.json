@@ -2,7 +2,7 @@
   "name": "learning-git-2",
   "version": "1.0.0",
   "description": "* HTML5, CSS3, Sass",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "npm-run-all test:*",
     "test:html": "globstar nu-html-checker *.html",
