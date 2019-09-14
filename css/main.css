@@ -8,6 +8,9 @@ body {
 
 html {
   font-size: 62.5%; }
+  @media only screen and (max-width: 768px) {
+    html {
+      font-size: 120%; } }
 
 body {
   display: flex;
@@ -222,7 +225,7 @@ input:checked + .slider__round:before {
   bottom: 0;
   background-color: #4dcc33;
   border-radius: 34px;
-  transition: transform .3s; }
+  transition: .3s; }
 
 .slider__round:before {
   position: absolute;
@@ -233,4 +236,4 @@ input:checked + .slider__round:before {
   height: 2.6rem;
   border-radius: 50%;
   background-color: #fff;
-  transition: transform .3s; }
+  transition: .3s; }
