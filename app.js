@@ -33,6 +33,7 @@ var UIController = (function() {
             description: document.querySelector(DOMstrings.inputDescription).value;
             value: document.querySelector(DOMstrings.inputValue).value;
             //////////////////////////////////////////////////////////////////    Add Type of item
+            type:
     }
 
     getDOMstrings: function() {
