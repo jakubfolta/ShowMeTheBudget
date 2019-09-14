@@ -5,5 +5,10 @@
 }
 
 html {
+    @include breakpoint(small) {
+        font-size: 120%;
+    }
+
     font-size: $root-size;
+
 }

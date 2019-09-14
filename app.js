@@ -9,13 +9,6 @@ var budgetController = (function() {
     };
 }());
 
-
-
-
-
-
-
-
 ////////////////////////////////////
 //////// UI CONTROLLER
 ////////////////////////////////////
@@ -28,20 +21,19 @@ var UIController = (function() {
     };
 
     return {
-    getInput = function() {
-        return {
-            description: document.querySelector(DOMstrings.inputDescription).value;
-            value: document.querySelector(DOMstrings.inputValue).value;
-            //////////////////////////////////////////////////////////////////    Add Type of item
-            type:
-    }
+        getInput: function() {
+            return {
+                description: document.querySelector(DOMstrings.inputDescription).value,
+                value: parseFloat(document.querySelector(DOMstrings.inputValue).value),
+                //////////////////////////////////////////////////////////////////    Add Type of item
+            };
+        },
 
-    getDOMstrings: function() {
-        return DOMstrings;
+        getDOMstrings: function() {
+            return DOMstrings;
+        }
     };
-
-};
-}());
+})();
 
 
 ////////////////////////////////////
@@ -80,8 +72,9 @@ var appController = (function(budgetCtrl, UICtrl) {
         init: function() {
             setupEventListeners();
             console.log('App has started');
+
+        }
     };
-};
 }(budgetController, UIController));
 
 appController.init()
