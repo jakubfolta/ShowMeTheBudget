@@ -3,6 +3,28 @@
 ////////////////////////////////////
 var budgetController = (function() {
 
+    var Expense = function(description, value, id) {
+        this.description = description;
+        this.value = value;
+        this.id = id;
+    };
+
+    var Income = function(description, value, id) {
+        this.description = description;
+        this.value = value;
+        this.id = id;
+    };
+
+    data = {
+        allItems: {
+            inc: [],
+            exp: []
+        },
+        totals: {
+            inc: 0,
+            exp: 0
+        }
+    };
 
     return {
 
@@ -68,7 +90,7 @@ var appController = (function(budgetCtrl, UICtrl) {
 
         document.addEventListener('keypress', function(e) {
             if (e.keyCode === 13 || e.which === 13) {
-                console.log('Enter')
+                addItem();
             };
         });
 
