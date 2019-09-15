@@ -103,11 +103,11 @@ var UIController = (function() {
 
             // Replace placeholder text with data
             newhtml = html.replace('%description%', obj.description);
-            newhtml = html.replace('%value%', obj.value);
-            newhtml = html.replace('%id%', obj.id);
+            newhtml = newhtml.replace('%value%', obj.value);
+            newhtml = newhtml.replace('%id%', obj.id);
 
             // Insert updated html into DOM
-            position..insertAdjacentHTML(location, newhtml);
+            position.insertAdjacentHTML(location, newhtml);
         },
 
         changeType: function() {

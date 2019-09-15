@@ -56,7 +56,7 @@ input[type=number]::-webkit-outer-spin-button {
     .item {
         display: flex;
         align-items: center;
-        padding: .5rem 0;
+        padding: .5rem .7rem;
         font-size: 1.8rem;
         font-weight: 600;
         border-bottom: 1px solid $color-underline;
@@ -65,7 +65,7 @@ input[type=number]::-webkit-outer-spin-button {
 
         .item__percentage {
             text-align: right;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
         }
     }
 }
