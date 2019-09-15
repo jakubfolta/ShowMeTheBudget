@@ -110,6 +110,21 @@ var UIController = (function() {
             position.insertAdjacentHTML(location, newhtml);
         },
 
+        clearFields: function() {
+            var fields, fieldsArray;
+
+            // Select elements to clear
+            fields = document.querySelectorAll(DOMstrings.inputDescription + ',' + DOMstrings.inputValue);
+            fieldsArray = Array.prototype.slice.call(fields);
+
+            // Loop over an array and focus on item description
+            fieldsArray.forEach(function(cur, index, array) {
+                cur.value = '';
+            })
+
+            fieldsArray[0].focus();
+        },
+
         changeType: function() {
             var inputs;
 
@@ -162,7 +177,12 @@ var appController = (function(budgetCtrl, UICtrl) {
         UICtrl.addListItem(newItem, input.type);
         // Calculate the budget
 
+
         // Display the budget on the UI
+
+
+        // Clear fields and focus
+        UICtrl.clearFields();
     }
 
 
