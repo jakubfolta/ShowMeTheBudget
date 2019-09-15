@@ -99,7 +99,7 @@ var UIController = (function() {
                 location = 'beforeend';
             }
 
-            position = document.querySelector(DOMstrings.position).insertAdjacentHTML('afterbegin');
+            position = document.querySelector(DOMstrings.position);
 
             // Replace placeholder text with data
             newhtml = html.replace('%description%', obj.description);
