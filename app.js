@@ -107,7 +107,7 @@ var UIController = (function() {
             newhtml = html.replace('%id%', obj.id);
 
             // Insert updated html into DOM
-            position.insertAdjacentHTML()
+            position..insertAdjacentHTML(location, newhtml);
         },
 
         changeType: function() {
