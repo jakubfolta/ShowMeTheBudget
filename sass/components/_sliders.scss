@@ -42,5 +42,8 @@ input:checked + .slider__round:before { transform: translateX(2.6rem); }
     transition: .3s;
 }
 
+.red { color: $color-expense !important; }
+.red-focus:focus { border-bottom: 2px solid $color-expense !important; }
+
 
 
