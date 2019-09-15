@@ -3,12 +3,12 @@
 *******************************************/
 
 .bottom {
-    height: $height-bottom;
-
+    position: relative;
     .add {
         margin-top: 2rem;
         display: flex;
         justify-content: center;
+        padding: 1rem;
     }
 }
 
@@ -82,5 +82,38 @@ input[type=number]::-webkit-outer-spin-button {
     transition: transform 0s;
 }
 
+.red-focus { border-bottom: 2px solid $color-expense !important; }
 .red { color: $color-expense !important; }
-.red-focus:focus { border-bottom: 2px solid $color-expense !important; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

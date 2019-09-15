@@ -97,11 +97,12 @@ body {
 *** BOTTOM
 *******************************************/
 .bottom {
-  height: 60vh; }
+  position: relative; }
   .bottom .add {
     margin-top: 2rem;
     display: flex;
-    justify-content: center; }
+    justify-content: center;
+    padding: 1rem; }
 
 .add__container {
   display: flex;
@@ -160,11 +161,11 @@ input[type=number]::-webkit-outer-spin-button {
   color: #cf1717;
   transition: transform 0s; }
 
+.red-focus {
+  border-bottom: 2px solid #cf1717 !important; }
+
 .red {
   color: #cf1717 !important; }
-
-.red-focus:focus {
-  border-bottom: 2px solid #cf1717 !important; }
 
 .add__btn {
   font-size: 3.8rem;
@@ -172,7 +173,8 @@ input[type=number]::-webkit-outer-spin-button {
   background: none;
   color: #4dcc33;
   cursor: pointer;
-  margin-left: 1rem; }
+  margin-left: 1rem;
+  display: inline-block; }
 
 .add__btn:focus {
   outline: none; }
@@ -237,3 +239,9 @@ input:checked + .slider__round:before {
   border-radius: 50%;
   background-color: #fff;
   transition: .3s; }
+
+.red {
+  color: #cf1717 !important; }
+
+.red-focus:focus {
+  border-bottom: 2px solid #cf1717 !important; }
