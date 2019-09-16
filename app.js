@@ -305,7 +305,6 @@ var appController = (function(budgetCtrl, UICtrl) {
 
         // Update percentages in the UI
         UICtrl.displayPercentages(percentages);
-
     };
 
     var addItem = function() {
