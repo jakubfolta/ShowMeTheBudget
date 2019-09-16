@@ -149,7 +149,8 @@ var UIController = (function() {
         percentage: '.budget__expenses--percentage',
         budget: '.budget__value',
         container: '.container',
-        expensesPercentage: '.item__percentage'
+        expensesPercentage: '.item__percentage',
+        date: '.budget__date'
     };
 
     var nodeListForEach = function(list, callback) {
@@ -177,7 +178,7 @@ var UIController = (function() {
             intNum = intNum.substr(0, intNum.length - 3) + ',' + intNum.substr(intNum.length - 3, 3);
         }
 
-        return (type === 'inc' ? '+' : '-') + ' ' + intNum + decimalNum;
+        return (type === 'inc' ? '+' : '-') + ' ' + intNum + '.' + decimalNum;
     };
 
     return {
@@ -197,7 +198,7 @@ var UIController = (function() {
                 html = '<div class="item" id="inc-%id%"><div class="item__description">%description%</div><div class="item__value--income"><div class="item__value">%value%</div></div><div class="item__delete"><button class="item__delete--btn"><i class="ion-android-close"></i></button></div></div>';
 
                 location = 'afterbegin';
-            } else {
+            } else if (type === 'exp') {
                 html = '<div class="item" id="exp-%id%"><div class="item__description">%description%</div><div class="item__value--expense"><div class="item__value">%value%</div><div class="item__percentage">28%</div></div><div class="item__delete"><button class="item__delete--btn"><i class="ion-android-close"></i></button></div></div>';
 
                 location = 'beforeend';
@@ -207,7 +208,7 @@ var UIController = (function() {
 
             // Replace placeholder text with data
             newhtml = html.replace('%description%', obj.description);
-            newhtml = newhtml.replace('%value%', obj.value);
+            newhtml = newhtml.replace('%value%', formatNumber(obj.value, type));
             newhtml = newhtml.replace('%id%', obj.id);
 
             // Insert updated html into DOM
@@ -236,10 +237,13 @@ var UIController = (function() {
         },
 
         displayBudget: function(object) {
+            var type;
 
-            document.querySelector(DOMstrings.income).textContent = object.totalInc;
-            document.querySelector(DOMstrings.expenses).textContent = object.totalExp;
-            document.querySelector(DOMstrings.budget).textContent = object.budget;
+            (object.budget > 0) ? type = 'inc' : type = 'exp';
+
+            document.querySelector(DOMstrings.income).textContent = formatNumber(object.totalInc, 'inc');
+            document.querySelector(DOMstrings.expenses).textContent = formatNumber(object.totalExp, 'exp');
+            document.querySelector(DOMstrings.budget).textContent = formatNumber(object.budget, type);
 
             if (object.percentage > 0) {
                 document.querySelector(DOMstrings.percentage).textContent = object.percentage + '%';
@@ -274,6 +278,31 @@ var UIController = (function() {
             });
 
             document.querySelector(DOMstrings.addButton).classList.toggle('red')
+        },
+
+        displayMonthYear: function() {
+            var now, month, year;
+
+            months = [
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December'
+            ]
+
+            now = new Date();
+            month = now.getMonth();
+            year = now.getFullYear();
+
+            document.querySelector(DOMstrings.date).textContent = months[month] + ' ' + year;
         },
 
         getDOMstrings: function() {
@@ -389,6 +418,7 @@ var appController = (function(budgetCtrl, UICtrl) {
                 budget: 0
             });
 
+            UICtrl.displayMonthYear();
             setupEventListeners();
         }
     };
