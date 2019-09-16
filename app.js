@@ -62,6 +62,11 @@ var budgetController = (function() {
             return newItem;
         },
 
+        deleteItem: function(type, id) {
+
+                            /////////////////////////////////////////////////////////////// Here continue
+        },
+
         calculateBudget: function() {
             // Calculate totals
             calcTotals('inc');
@@ -71,7 +76,7 @@ var budgetController = (function() {
             data.budget = data.totals.inc - data.totals.exp;
 
             // Calculate percentages
-            if (data.totals.exp > 0) {
+            if (data.totals.inc > 0) {
                 data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
             } else {
                 data.percentage = -1;
@@ -107,7 +112,8 @@ var UIController = (function() {
         income: '.budget__income--value',
         expenses: '.budget__expenses--value',
         percentage: '.budget__expenses--percentage',
-        budget: '.budget__value'
+        budget: '.budget__value',
+        container: '.container'
     };
 
     var nodeListForEach = function(list, callback) {
@@ -167,8 +173,15 @@ var UIController = (function() {
 
         displayBudget: function(object) {
 
-            document.querySelector
+            document.querySelector(DOMstrings.income).textContent = object.totalInc;
+            document.querySelector(DOMstrings.expenses).textContent = object.totalExp;
+            document.querySelector(DOMstrings.budget).textContent = object.budget;
 
+            if (object.percentage > 0) {
+                document.querySelector(DOMstrings.percentage).textContent = object.percentage + '%';
+            } else {
+                document.querySelector(DOMstrings.percentage).textContent = '---';
+            }
         },
 
         changeType: function() {
@@ -206,7 +219,8 @@ var appController = (function(budgetCtrl, UICtrl) {
             };
         });
 
-        document.querySelector('.checkbox').addEventListener('change', UICtrl.changeType);
+        document.querySelector(DOM.container).addEventListener('click', deleteItem);
+        document.querySelector(DOM.checkbox).addEventListener('change', UICtrl.changeType);
     };
 
     var updateBudget = function() {
@@ -244,12 +258,39 @@ var appController = (function(budgetCtrl, UICtrl) {
         }
     };
 
+    var deleteItem = function(event) {
+        var id, splitID;
+
+        id = event.target.parentNode.parentNode.parentNode.id;
+
+        if (id) {
+            splitID = id.split('-');
+            type = splitID[0];
+            ID = parseInt(splitID[1]);
+
+            // Delete the item from the budget
+            budgetCtrl.deleteItem(type, ID);
+            // Delete the item from the UI
+
+            // Update the budget
+
+            // Display the budget
+        }
+    };
+
 
 
     return {
         init: function() {
-            setupEventListeners();
             console.log('App has started');
+            UICtrl.displayBudget({
+                totalInc: 0,
+                totalExp: 0,
+                percentage: '---',
+                budget: 0
+            });
+
+            setupEventListeners();
         }
     };
 }(budgetController, UIController));
