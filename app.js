@@ -158,6 +158,26 @@ var UIController = (function() {
         }
     };
 
+    var formatNumber = function(number, type) {
+        var numSplit, decimalNum, intNum;
+
+        // Set absolute number
+        number = Math.abs(number);
+
+        // Get number with two decimal numbers
+        number = number.toFixed(2);
+
+        // Create comma separating numbers
+        numSplit = number.split('.');
+
+        decimalNum = numSplit[1];
+        intNum = numSplit[0];
+
+        if (intNum.length > 3) {
+
+        }
+    };
+
     return {
         getInput: function() {
             return {
@@ -252,10 +272,6 @@ var UIController = (function() {
             });
 
             document.querySelector(DOMstrings.addButton).classList.toggle('red')
-        },
-
-        formatNumber: function() {
-
         },
 
         getDOMstrings: function() {
