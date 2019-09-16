@@ -230,12 +230,12 @@ var UIController = (function() {
             var fields;
 
             // Select all percentages fields
-            fields = document.querySelectorAll(DOMstrings.item__percentage);
+            fields = document.querySelectorAll(DOMstrings.expensesPercentage);
 
             // Loop through all fields and add percentage value
             nodeListForEach(fields, function(cur, index) {
                 if (percentages[index] > 0) {
-                    cur.textContent = percentages[index];
+                    cur.textContent = percentages[index] + '%';
                 } else {
                     cur.textContent = '---'
                 }
@@ -252,6 +252,10 @@ var UIController = (function() {
             });
 
             document.querySelector(DOMstrings.addButton).classList.toggle('red')
+        },
+
+        formatNumber: function() {
+
         },
 
         getDOMstrings: function() {
@@ -349,6 +353,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update and show the budget
             updateBudget();
+
+            // Update percentages
+            updatePercentages();
         }
     };
 
