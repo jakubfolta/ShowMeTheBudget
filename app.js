@@ -63,8 +63,23 @@ var budgetController = (function() {
         },
 
         deleteItem: function(type, id) {
+            var ids, index;
 
-                            /////////////////////////////////////////////////////////////// Here continue
+            // Create new array with all ids of items
+            ids = data.allItems[type].map(function(current) {
+                return current.id
+            });
+
+            // Get index of item with searched id
+            index = ids.indexOf(id);
+
+            // Delete item from data structure which has given id
+            data.allItems[type][index];
+
+            // Check if id is in the array
+            if (index !== -1) {
+                data.allItems[type][index].splice(index, 1);
+            }
         },
 
         calculateBudget: function() {
@@ -254,7 +269,6 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update budget
             updateBudget();
-
         }
     };
 
@@ -270,6 +284,7 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Delete the item from the budget
             budgetCtrl.deleteItem(type, ID);
+
             // Delete the item from the UI
 
             // Update the budget
