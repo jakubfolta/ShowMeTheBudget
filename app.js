@@ -174,8 +174,10 @@ var UIController = (function() {
         intNum = numSplit[0];
 
         if (intNum.length > 3) {
-
+            intNum = intNum.substr(0, intNum.length - 3) + ',' + intNum.substr(intNum.length - 3, 3);
         }
+
+        return (type === 'inc' ? '+' : '-') + ' ' + intNum + decimalNum;
     };
 
     return {
