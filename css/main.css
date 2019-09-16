@@ -115,7 +115,7 @@ body {
     background-color: inherit;
     color: inherit;
     font-size: 1.8rem;
-    padding: 5px; }
+    padding: .5rem .7rem; }
   .add__container .add__description {
     width: 40rem; }
   .add__container .add__value {
@@ -136,7 +136,8 @@ input[type=number]::-webkit-outer-spin-button {
 *** LIST ITEMS
 *******************************************/
 .container {
-  margin: 4rem auto; }
+  margin: 4rem auto;
+  width: 60rem; }
   .container .item {
     display: flex;
     align-items: center;

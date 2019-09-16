@@ -24,7 +24,7 @@
         background-color: inherit;
         color: inherit;
         font-size: 1.8rem;
-        padding: 5px;
+        padding: .5rem .7rem;
     }
 
     .add__description { width: 40rem;}
@@ -52,6 +52,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .container {
     margin: 4rem auto;
+    width: 60rem;
 
     .item {
         display: flex;
