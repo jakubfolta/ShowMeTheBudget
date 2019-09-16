@@ -127,6 +127,8 @@ var budgetController = (function() {
             return percentages;
         },
 
+        saveToLS: function()
+
         testing: function() {
             return data;
         }
@@ -358,6 +360,12 @@ var appController = (function(budgetCtrl, UICtrl) {
         UICtrl.displayPercentages(percentages);
     };
 
+    var updateLocalStorage = function() {
+
+        // Save data structure to local storage
+        budgetCtrl.saveToLS();
+    }
+
     var addItem = function() {
         var input, newItem;
 
@@ -379,6 +387,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update percentages
             updatePercentages();
+
+            // Update local storage
+            updateLocalStorage();
         }
     };
 
@@ -403,6 +414,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update percentages
             updatePercentages();
+
+            // Update local storage
+            updateLocalStorage();
         }
     };
 
