@@ -163,27 +163,40 @@ var appController = (function(budgetCtrl, UICtrl) {
         document.querySelector('.checkbox').addEventListener('change', UICtrl.changeType);
     };
 
-    var addItem = function() {
-        var input, newItem;
+    var updateBudget = function() {
 
-        console.log('Button pressed!');
-        // Get the filled input data.
-        input = UICtrl.getInput();
-
-        // Add item to the budget controller
-        newItem = budgetCtrl.addItem(input.type, input.description, input.value);
-
-        // Add the item to the UI
-        UICtrl.addListItem(newItem, input.type);
         // Calculate the budget
+        budgetCtrl.calculateBudget();
+
+        // Return the budget
 
 
         // Display the budget on the UI
 
 
-        // Clear fields and focus
-        UICtrl.clearFields();
-    }
+    };
+
+    var addItem = function() {
+        var input, newItem;
+
+        // Get the filled input data.
+        input = UICtrl.getInput();
+
+        if (input.description && !isNaN(input.value) && input.value > 0) {
+            // Add item to the budget controller
+            newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+
+            // Add the item to the UI
+            UICtrl.addListItem(newItem, input.type);
+
+            // Clear fields and focus
+            UICtrl.clearFields();
+
+            // Update budget
+            updateBudget();
+
+        }
+    };
 
 
 
