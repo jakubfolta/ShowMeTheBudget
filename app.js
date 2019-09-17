@@ -32,7 +32,9 @@ var budgetController = (function() {
     };
 
 
-    (localStorage.length > 0) ? data = updateData() : data
+     if (localStorage.length > 0) {
+        data = updateData();
+    } else {
         data = {
             allItems: {
                 inc: [],
@@ -47,7 +49,7 @@ var budgetController = (function() {
         };
     }
 
-    var calcTotals = function(type) {
+    calcTotals = function(type) {
         var sum = 0;
 
         data.allItems[type].forEach(function(cur) {
