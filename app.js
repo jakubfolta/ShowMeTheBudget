@@ -24,20 +24,31 @@ var budgetController = (function() {
         this.id = id;
     };
 
-    data = {
-        allItems: {
-            inc: [],
-            exp: []
-        },
-        totals: {
-            inc: 0,
-            exp: 0
-        },
-        budget: 0,
-        percentage: -1
+    var updateData = function() {
+        var lsData;
+
+        lsData = JSON.parse(localStorage.getItem('data'));
+        return lsData;
     };
 
-    calcTotals = function(type) {
+    if (localStorage) {
+        data = updateData();
+    } else {
+        data = {
+            allItems: {
+                inc: [],
+                exp: []
+            },
+            totals: {
+                inc: 0,
+                exp: 0
+            },
+            budget: 0,
+            percentage: -1
+        };
+    }
+
+    var calcTotals = function(type) {
         var sum = 0;
 
         data.allItems[type].forEach(function(cur) {
@@ -45,6 +56,7 @@ var budgetController = (function() {
         })
         data.totals[type] = sum;
     };
+
 
     return {
         addItem: function(type, des, val) {
