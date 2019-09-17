@@ -31,7 +31,7 @@ var budgetController = (function() {
         return lsData;
     };
 
-    if (localStorage) {
+    if (localStorage.length > 0) {
         data = updateData();
     } else {
         data = {
@@ -439,12 +439,16 @@ var appController = (function(budgetCtrl, UICtrl) {
     return {
         init: function() {
             console.log('App has started');
-            UICtrl.displayBudget({
-                totalInc: 0,
-                totalExp: 0,
-                percentage: '---',
-                budget: 0
-            });
+            if (localStorage.length > 0) {
+                UICtrl.displayBudget(budgetCtrl.getBudget());
+            } else {
+                UICtrl.displayBudget({
+                    totalInc: 0,
+                    totalExp: 0,
+                    budget: 0,
+                    percentage: -1
+                });
+            }
 
             UICtrl.displayMonthYear();
             setupEventListeners();
