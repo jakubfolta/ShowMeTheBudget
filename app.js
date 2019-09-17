@@ -127,7 +127,9 @@ var budgetController = (function() {
             return percentages;
         },
 
-        saveToLS: function()
+        saveToLS: function() {
+            localStorage.setItem('data', JSON.stringify(data));
+        },
 
         testing: function() {
             return data;
