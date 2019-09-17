@@ -24,20 +24,31 @@ var budgetController = (function() {
         this.id = id;
     };
 
-    data = {
-        allItems: {
-            inc: [],
-            exp: []
-        },
-        totals: {
-            inc: 0,
-            exp: 0
-        },
-        budget: 0,
-        percentage: -1
+    var updateData = function() {
+        var lsData;
+
+        lsData = JSON.parse(localStorage.getItem('data'));
+        return lsData;
     };
 
-    calcTotals = function(type) {
+    if (localStorage.length > 0) {
+        data = updateData();
+    } else {
+        data = {
+            allItems: {
+                inc: [],
+                exp: []
+            },
+            totals: {
+                inc: 0,
+                exp: 0
+            },
+            budget: 0,
+            percentage: -1
+        };
+    }
+
+    var calcTotals = function(type) {
         var sum = 0;
 
         data.allItems[type].forEach(function(cur) {
@@ -45,6 +56,7 @@ var budgetController = (function() {
         })
         data.totals[type] = sum;
     };
+
 
     return {
         addItem: function(type, des, val) {
@@ -125,6 +137,10 @@ var budgetController = (function() {
                 return cur.percentage
             })
             return percentages;
+        },
+
+        saveToLS: function() {
+            localStorage.setItem('data', JSON.stringify(data));
         },
 
         testing: function() {
@@ -358,6 +374,12 @@ var appController = (function(budgetCtrl, UICtrl) {
         UICtrl.displayPercentages(percentages);
     };
 
+    var updateLocalStorage = function() {
+
+        // Save data structure to local storage
+        budgetCtrl.saveToLS();
+    }
+
     var addItem = function() {
         var input, newItem;
 
@@ -379,6 +401,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update percentages
             updatePercentages();
+
+            // Update local storage
+            updateLocalStorage();
         }
     };
 
@@ -403,6 +428,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update percentages
             updatePercentages();
+
+            // Update local storage
+            updateLocalStorage();
         }
     };
 
@@ -411,12 +439,16 @@ var appController = (function(budgetCtrl, UICtrl) {
     return {
         init: function() {
             console.log('App has started');
-            UICtrl.displayBudget({
-                totalInc: 0,
-                totalExp: 0,
-                percentage: '---',
-                budget: 0
-            });
+            if (localStorage.length > 0) {
+                UICtrl.displayBudget(budgetCtrl.getBudget());
+            } else {
+                UICtrl.displayBudget({
+                    totalInc: 0,
+                    totalExp: 0,
+                    budget: 0,
+                    percentage: -1
+                });
+            }
 
             UICtrl.displayMonthYear();
             setupEventListeners();
