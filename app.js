@@ -32,7 +32,7 @@ var budgetController = (function() {
     };
 
 
-     if (localStorage.length > 0) {
+    if (localStorage.length > 0) {
         data = updateData();
     } else {
         data = {
@@ -49,7 +49,7 @@ var budgetController = (function() {
         };
     }
 
-    calcTotals = function(type) {
+    var calcTotals = function(type) {
         var sum = 0;
 
         data.allItems[type].forEach(function(cur) {
@@ -129,7 +129,9 @@ var budgetController = (function() {
                 totalInc: data.totals.inc,
                 totalExp: data.totals.exp,
                 budget: data.budget,
-                percentage: data.percentage
+                percentage: data.percentage,
+                incItems: data.allItems.inc,
+                expItems: data.allItems.exp
             }
         },
 
@@ -215,6 +217,7 @@ var UIController = (function() {
                 html = '<div class="item" id="inc-%id%"><div class="item__description">%description%</div><div class="item__value--income"><div class="item__value">%value%</div></div><div class="item__delete"><button class="item__delete--btn"><i class="ion-android-close"></i></button></div></div>';
 
                 location = 'afterbegin';
+
             } else if (type === 'exp') {
                 html = '<div class="item" id="exp-%id%"><div class="item__description">%description%</div><div class="item__value--expense"><div class="item__value">%value%</div><div class="item__percentage">28%</div></div><div class="item__delete"><button class="item__delete--btn"><i class="ion-android-close"></i></button></div></div>';
 
@@ -441,7 +444,13 @@ var appController = (function(budgetCtrl, UICtrl) {
         init: function() {
             console.log('App has started');
             if (localStorage.length > 0) {
+
+                // Display budget if saved in local storage
                 UICtrl.displayBudget(budgetCtrl.getBudget());
+
+
+                for (var i = 0; budgetCtrl.da)
+                //UICtrl.addListItem()
             } else {
                 UICtrl.displayBudget({
                     totalInc: 0,
