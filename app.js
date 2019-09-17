@@ -31,9 +31,8 @@ var budgetController = (function() {
         return lsData;
     };
 
-    if (localStorage.length > 0) {
-        data = updateData();
-    } else {
+
+    (localStorage.length > 0) ? data = updateData() : data
         data = {
             allItems: {
                 inc: [],
