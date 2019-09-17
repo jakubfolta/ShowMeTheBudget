@@ -443,11 +443,15 @@ var appController = (function(budgetCtrl, UICtrl) {
     return {
         init: function() {
             console.log('App has started');
+
+            // Check if data are saved in local storage
             if (localStorage.length > 0) {
 
-                // Display budget if saved in local storage
+                // Display budget saved in local storage
                 UICtrl.displayBudget(budgetCtrl.getBudget());
+                lsdata = budgetCtrl.getBudget();
 
+                // Display list items saved in local storage
 
                 for (var i = 0; budgetCtrl.da)
                 //UICtrl.addListItem()
