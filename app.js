@@ -24,32 +24,27 @@ var budgetController = (function() {
         this.id = id;
     };
 
-    var updateData = function() {
+    updateData = function() {
         var lsData;
 
         lsData = JSON.parse(localStorage.getItem('data'));
         return lsData;
     };
 
+    data = {
+        allItems: {
+            inc: [],
+            exp: []
+        },
+        totals: {
+            inc: 0,
+            exp: 0
+        },
+        budget: 0,
+        percentage: -1
+    };
 
-    if (localStorage.length > 0) {
-        data = updateData();
-    } else {
-        data = {
-            allItems: {
-                inc: [],
-                exp: []
-            },
-            totals: {
-                inc: 0,
-                exp: 0
-            },
-            budget: 0,
-            percentage: -1
-        };
-    }
-
-    var calcTotals = function(type) {
+    calcTotals = function(type) {
         var sum = 0;
 
         data.allItems[type].forEach(function(cur) {
@@ -130,8 +125,7 @@ var budgetController = (function() {
                 totalExp: data.totals.exp,
                 budget: data.budget,
                 percentage: data.percentage,
-                incItems: data.allItems.inc,
-                expItems: data.allItems.exp
+
             }
         },
 
@@ -448,12 +442,20 @@ var appController = (function(budgetCtrl, UICtrl) {
             if (localStorage.length > 0) {
 
                 // Display budget saved in local storage
-                UICtrl.displayBudget(budgetCtrl.getBudget());
-                lsdata = budgetCtrl.getBudget();
+                lsdata = JSON.parse(localStorage.getItem('data'));
+                incItems = lsdata.incItems;
+                expItems = lsdata.expItems;
+
+                UICtrl.displayBudget({
+                    totalInc: lsdata.totals.inc,
+                    totalExp: lsdata.totals.exp,
+                    budget: lsdata.budget,
+                    percentage: lsdata.percentage
+                });
 
                 // Display list items saved in local storage
 
-                for (var i = 0; budgetCtrl.da)
+                //for (var i = 0; budgetCtrl.da)
                 //UICtrl.addListItem()
             } else {
                 UICtrl.displayBudget({
