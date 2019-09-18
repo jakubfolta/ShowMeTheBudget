@@ -24,13 +24,6 @@ var budgetController = (function() {
         this.id = id;
     };
 
-    updateData = function() {
-        var lsData;
-
-        lsData = JSON.parse(localStorage.getItem('data'));
-        return lsData;
-    };
-
     data = {
         allItems: {
             inc: [],
@@ -52,7 +45,6 @@ var budgetController = (function() {
         })
         data.totals[type] = sum;
     };
-
 
     return {
         addItem: function(type, des, val) {
@@ -443,8 +435,8 @@ var appController = (function(budgetCtrl, UICtrl) {
 
                 // Display budget saved in local storage
                 lsdata = JSON.parse(localStorage.getItem('data'));
-                incItems = lsdata.incItems;
-                expItems = lsdata.expItems;
+                incItems = lsdata.allItems.inc;
+                expItems = lsdata.allItems.exp;
 
                 UICtrl.displayBudget({
                     totalInc: lsdata.totals.inc,
@@ -454,8 +446,14 @@ var appController = (function(budgetCtrl, UICtrl) {
                 });
 
                 // Display list items saved in local storage
+                incItems.forEach(function(cur) {
+                    UICtrl.addListItem(cur, 'inc')
+                });
 
-                //for (var i = 0; budgetCtrl.da)
+                expItems.forEach(function(cur) {
+                    UICtrl.addListItem(cur, 'exp')
+                });
+
                 //UICtrl.addListItem()
             } else {
                 UICtrl.displayBudget({
