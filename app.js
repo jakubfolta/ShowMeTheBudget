@@ -24,7 +24,7 @@ var budgetController = (function() {
         this.id = id;
     };
 
-    lsdata = JSON.parse(localStorage.getItem('data'));
+    var lsdata = JSON.parse(localStorage.getItem('data'));
 
     if (localStorage.getItem('data')) {
         data = lsdata;
@@ -66,7 +66,7 @@ var budgetController = (function() {
             // Create new item based on its type
             if (type === 'inc') {
                 newItem = new Income(des, val, id)
-            } else {
+            } else if (type === 'exp') {
                 newItem = new Expense(des, val, id)
             }
 
@@ -82,7 +82,7 @@ var budgetController = (function() {
 
             // Create new array with all ids of items
             ids = data.allItems[type].map(function(current) {
-                return current.id
+                return current.id;
             });
 
             // Get index of item with searched id
@@ -123,7 +123,6 @@ var budgetController = (function() {
                 totalExp: data.totals.exp,
                 budget: data.budget,
                 percentage: data.percentage,
-
             }
         },
 
@@ -430,8 +429,6 @@ var appController = (function(budgetCtrl, UICtrl) {
         }
     };
 
-
-
     return {
         init: function() {
             console.log('App has started');
@@ -461,7 +458,7 @@ var appController = (function(budgetCtrl, UICtrl) {
                 });
 
 
-                //UICtrl.addListItem()
+            //.........................
             } else {
                 UICtrl.displayBudget({
                     totalInc: 0,
