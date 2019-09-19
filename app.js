@@ -467,11 +467,10 @@ var appController = (function(budgetCtrl, UICtrl) {
                     percentage: -1
                 });
             }
-
             UICtrl.displayMonthYear();
             setupEventListeners();
         }
-    };
+    }
 }(budgetController, UIController));
 
 appController.init()
