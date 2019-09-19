@@ -128,8 +128,14 @@ var budgetController = (function() {
             return percentages;
         },
 
-        saveDataToLS: function() {
+
+        // Local Storage
+        saveDataStructureToLS: function() {
             localStorage.setItem('data', JSON.stringify(data));
+        },
+
+        updateDataStructure: function() {
+            data = JSON.parse;
         },
 
         testing: function() {
@@ -367,7 +373,18 @@ var appController = (function(budgetCtrl, UICtrl) {
     var updateLocalStorage = function() {
 
         // Save data structure to local storage
-        budgetCtrl.saveDataToLS();
+        budgetCtrl.saveDataStructureToLS();
+    };
+
+    var updateLocalData = function() {
+
+        // Update data structure from ls
+        budgetCtrl.updateDataStructure();
+
+        // Display budget
+
+
+
     };
 
     var addItem = function() {
@@ -428,15 +445,18 @@ var appController = (function(budgetCtrl, UICtrl) {
         init: function() {
             console.log('App has started');
             UICtrl.displayMonthYear();
-            UICtrl.displayBudget({
-                totalInc: 0,
-                totalExp: 0,
-                budget: 0,
-                percentage: -1
-            });
+
+            if (localStorage.getItem('data')) {
+                updateLocalData();
+            } else {
+                UICtrl.displayBudget({
+                    totalInc: 0,
+                    totalExp: 0,
+                    budget: 0,
+                    percentage: -1
+                });
+            }
             setupEventListeners();
-                
-            updateLocalData();
         }
     }
 }(budgetController, UIController));
