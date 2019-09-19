@@ -24,24 +24,19 @@ var budgetController = (function() {
         this.id = id;
     };
 
-    var lsdata = JSON.parse(localStorage.getItem('data'));
+    data = {
+        allItems: {
+            inc: [],
+            exp: []
+        },
+        totals: {
+            inc: 0,
+            exp: 0
+        },
+        budget: 0,
+        percentage: -1
+    };
 
-    if (localStorage.getItem('data')) {
-        data = lsdata;
-    } else {
-        data = {
-            allItems: {
-                inc: [],
-                exp: []
-            },
-            totals: {
-                inc: 0,
-                exp: 0
-            },
-            budget: 0,
-            percentage: -1
-        };
-    }
 
     calcTotals = function(type) {
         var sum = 0;
@@ -128,12 +123,12 @@ var budgetController = (function() {
 
         getPercentages: function() {
             var percentages = data.allItems.exp.map(function(cur) {
-                return cur.percentage
+                return cur.percentage;
             })
             return percentages;
         },
 
-        saveToLS: function() {
+        saveDataToLS: function() {
             localStorage.setItem('data', JSON.stringify(data));
         },
 
@@ -372,8 +367,8 @@ var appController = (function(budgetCtrl, UICtrl) {
     var updateLocalStorage = function() {
 
         // Save data structure to local storage
-        budgetCtrl.saveToLS();
-    }
+        budgetCtrl.saveDataToLS();
+    };
 
     var addItem = function() {
         var input, newItem;
@@ -432,43 +427,16 @@ var appController = (function(budgetCtrl, UICtrl) {
     return {
         init: function() {
             console.log('App has started');
-
-            // Check if data are saved in local storage
-            if (localStorage.length > 0) {
-
-                // Display budget saved in local storage
-                lsdata = JSON.parse(localStorage.getItem('data'));
-                incItems = lsdata.allItems.inc;
-                expItems = lsdata.allItems.exp;
-
-                UICtrl.displayBudget({
-                    totalInc: lsdata.totals.inc,
-                    totalExp: lsdata.totals.exp,
-                    budget: lsdata.budget,
-                    percentage: lsdata.percentage
-                });
-
-                // Display list items saved in local storage
-                incItems.forEach(function(cur) {
-                    UICtrl.addListItem(cur, 'inc')
-                });
-
-                expItems.forEach(function(cur) {
-                    UICtrl.addListItem(cur, 'exp')
-                });
-
-
-            //.........................
-            } else {
-                UICtrl.displayBudget({
-                    totalInc: 0,
-                    totalExp: 0,
-                    budget: 0,
-                    percentage: -1
-                });
-            }
             UICtrl.displayMonthYear();
+            UICtrl.displayBudget({
+                totalInc: 0,
+                totalExp: 0,
+                budget: 0,
+                percentage: -1
+            });
             setupEventListeners();
+                
+            updateLocalData();
         }
     }
 }(budgetController, UIController));
