@@ -135,8 +135,12 @@ var budgetController = (function() {
         },
 
         updateDataStructure: function() {
-            data = JSON.parse;
+            lsdata = JSON.parse(localStorage.getItem('data'));
+            lsinc = lsdata.allItems.inc;
+            lsexp = lsdata.allItems.exp;
         },
+
+
 
         testing: function() {
             return data;
