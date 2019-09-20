@@ -142,14 +142,16 @@ var budgetController = (function() {
             inc = data.allItems.inc;
             exp = data.allItems.exp;
 
-            data.allItems.inc = [];
-            data.allItems.exp = [];
             return {
                 inc,
                 exp
             }
         },
 
+        resetIncExpArrays: function() {
+            data.allItems.inc = [];
+            data.allItems.exp = [];
+        },
 
 
 
@@ -401,9 +403,20 @@ var appController = (function(budgetCtrl, UICtrl) {
         budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
         obj = budgetCtrl.getIncExpCopies();
+        console.log(obj);
 
+        // Create new Function constructor objects based on objects from local storage
+        budgetCtrl.resetIncExpArrays();
 
+        obj.inc.forEach(function(cur) {
+            budgetCtrl.addItem('inc', cur.description, cur.value);
+        });
 
+        obj.exp.forEach(function(cur) {
+            budgetCtrl.addItem('exp', cur.description, cur.value);
+        });
+
+        //
     };
 
     var addItem = function() {
