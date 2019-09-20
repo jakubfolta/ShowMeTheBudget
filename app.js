@@ -403,7 +403,6 @@ var appController = (function(budgetCtrl, UICtrl) {
         budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
         obj = budgetCtrl.getIncExpCopies();
-        console.log(obj);
 
         // Create new Function constructor objects based on objects from local storage
         budgetCtrl.resetIncExpArrays();
