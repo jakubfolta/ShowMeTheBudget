@@ -134,11 +134,23 @@ var budgetController = (function() {
             localStorage.setItem('data', JSON.stringify(data));
         },
 
-        updateDataStructure: function() {
-            lsdata = JSON.parse(localStorage.getItem('data'));
-            lsInc = lsdata.allItems.inc;
-            lsExp = lsdata.allItems.exp;
+        loadDataStructure: function() {
+            data = JSON.parse(localStorage.getItem('data'));
         },
+
+        getIncExpCopies: function() {
+            inc = data.allItems.inc;
+            exp = data.allItems.exp;
+
+            data.allItems.inc = [];
+            data.allItems.exp = [];
+            return {
+                inc,
+                exp
+            }
+        },
+
+
 
 
 
@@ -383,9 +395,12 @@ var appController = (function(budgetCtrl, UICtrl) {
     var updateLocalData = function() {
 
         // Update data structure from ls
-        budgetCtrl.updateDataStructure();
+        budgetCtrl.loadDataStructure();
 
         // Display budget
+        budget = budgetCtrl.getBudget();
+        UICtrl.displayBudget(budget);
+        obj = budgetCtrl.getIncExpCopies();
 
 
 
