@@ -416,7 +416,17 @@ var appController = (function(budgetCtrl, UICtrl) {
             budgetCtrl.addItem('exp', cur.description, cur.value);
         });
 
-        //
+        // Display list items
+        obj.inc.forEach(function(cur) {
+            UICtrl.addListItem(cur, 'inc');
+        });
+
+        obj.exp.forEach(function(cur) {
+            UICtrl.addListItem(cur, 'exp');
+        });
+
+        // Display percentages
+        updatePercentages();
     };
 
     var addItem = function() {
