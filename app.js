@@ -154,7 +154,7 @@ var budgetController = (function() {
 
 
 
-        testing: function() {djhgffdsdfr
+        testing: function() {
             return data;
         }
     };
