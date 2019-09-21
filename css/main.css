@@ -31,14 +31,11 @@ body {
 *******************************************/
 .top {
   height: 40vh;
-  position: relative;
-  top: 2rem; }
+  top: 2rem;
+  display: flex;
+  flex-direction: column; }
   .top .budget {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
+    width: 100%; }
     .top .budget .budget__date,
     .top .budget .budget__value,
     .top .budget .budget__name {
