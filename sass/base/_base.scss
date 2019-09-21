@@ -5,13 +5,13 @@ body {
     color: $color-font-main;
     background-color: $color-background;
     font-size: 1rem;
-    position: relative;
     height: 100vh;
 
     .main {
         width: 100%;
         max-width: 90rem;
         min-height: 100vh;
+        padding: 2rem;
     }
 }
 

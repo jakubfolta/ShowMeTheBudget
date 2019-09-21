@@ -10,7 +10,7 @@ html {
   font-size: 62.5%; }
   @media only screen and (max-width: 768px) {
     html {
-      font-size: 120%; } }
+      font-size: 130%; } }
 
 body {
   display: flex;
@@ -19,12 +19,12 @@ body {
   color: white;
   background-color: blue;
   font-size: 1rem;
-  position: relative;
   height: 100vh; }
   body .main {
     width: 100%;
     max-width: 90rem;
-    min-height: 100vh; }
+    min-height: 100vh;
+    padding: 2rem; }
 
 /*******************************************
 *** TOP PART
@@ -191,6 +191,9 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: 1.5rem;
   cursor: pointer;
   display: none; }
+  @media only screen and (max-width: 768px) {
+    .item__delete--btn {
+      display: flex !important; } }
 
 .item:hover .item__delete--btn {
   display: block; }

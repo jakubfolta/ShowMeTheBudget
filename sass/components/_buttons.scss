@@ -12,6 +12,9 @@
 .add__btn:active { transform:translateY(0.2rem); }
 
 .item__delete--btn {
+    @include breakpoint(small) {
+        display: flex !important;
+    }
     font-size: 1.8rem;
     color: $color-expense;
     border: none;
