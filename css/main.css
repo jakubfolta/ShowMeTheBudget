@@ -8,9 +8,9 @@ body {
 
 html {
   font-size: 62.5%; }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 68.75em) {
     html {
-      font-size: 130%; } }
+      font-size: 120%; } }
 
 body {
   display: flex;
@@ -188,7 +188,7 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: 1.5rem;
   cursor: pointer;
   display: none; }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 68.75em) {
     .item__delete--btn {
       display: flex !important; } }
 
