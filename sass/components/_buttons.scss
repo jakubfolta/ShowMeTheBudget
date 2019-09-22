@@ -1,15 +1,36 @@
-.add__btn {
+.add__btn,
+.clear__btn {
     font-size: 3.8rem;
     border: none;
     background: none;
-    color: $color-income;
     cursor: pointer;
     margin-left: 1rem;
+}
+
+.add__btn {
+    color: $color-income;
     display: inline-block;
 }
 
-.add__btn:focus { outline: none; }
-.add__btn:active { transform:translateY(0.2rem); }
+.clear__btn {
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 0.5rem;
+    color: $color-expense;
+    border: 0.2rem solid $color-expense;
+    border-radius: 2.5rem;
+    display: non.................
+}
+
+.add__btn:focus,
+.clear__btn:focus {
+    outline: none;
+}
+.add__btn:active,
+.clear__btn:active {
+    transform: translateY(0.2rem);
+}
 
 .item__delete--btn {
     @include breakpoint(small) {
