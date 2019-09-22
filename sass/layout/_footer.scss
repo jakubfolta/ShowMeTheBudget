@@ -3,7 +3,6 @@
 *******************************************/
 
 .bottom {
-    position: relative;
     .add {
         margin-top: 2rem;
         display: flex;
@@ -27,8 +26,15 @@
         padding: .5rem .7rem;
     }
 
-    .add__description { width: 40rem;}
-    .add__value { width: 10rem;}
+    .add__description {
+        width: 40rem;
+        flex: 3;
+    }
+
+    .add__value {
+    width: 10rem;
+    flex: 1;
+    }
 
 
     .add__description:focus,

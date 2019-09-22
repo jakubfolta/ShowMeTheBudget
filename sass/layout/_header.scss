@@ -1,10 +1,7 @@
 /*******************************************
 *** TOP PART
 *******************************************/
-
 .top {
-    height: $height-top;
-    top: 2rem;
     display: flex;
     flex-direction: column;
 
@@ -61,7 +58,7 @@
 
     .budget__quote {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
         flex: 0 0 50%;
         align-self: center;
 

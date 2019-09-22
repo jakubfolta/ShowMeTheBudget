@@ -15,23 +15,19 @@ html {
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
   color: white;
   background-color: blue;
   font-size: 1rem;
-  height: 100vh; }
+  min-height: 100vh; }
   body .main {
     width: 100%;
     max-width: 90rem;
-    min-height: 100vh;
     padding: 2rem; }
 
 /*******************************************
 *** TOP PART
 *******************************************/
 .top {
-  height: 40vh;
-  top: 2rem;
   display: flex;
   flex-direction: column; }
   .top .budget {
@@ -78,7 +74,7 @@ body {
     font-size: 2.4rem; }
   .budget__income__expenses .budget__quote {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     flex: 0 0 50%;
     align-self: center; }
     .budget__income__expenses .budget__quote .quote {
@@ -93,13 +89,11 @@ body {
 /*******************************************
 *** BOTTOM
 *******************************************/
-.bottom {
-  position: relative; }
-  .bottom .add {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    padding: 1rem; }
+.bottom .add {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem; }
 
 .add__container {
   display: flex;
@@ -114,9 +108,11 @@ body {
     font-size: 1.8rem;
     padding: .5rem .7rem; }
   .add__container .add__description {
-    width: 40rem; }
+    width: 40rem;
+    flex: 3; }
   .add__container .add__value {
-    width: 10rem; }
+    width: 10rem;
+    flex: 1; }
   .add__container .add__description:focus,
   .add__container .add__value:focus {
     outline: none; }
