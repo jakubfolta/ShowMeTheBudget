@@ -8,50 +8,43 @@ body {
 
 html {
   font-size: 62.5%; }
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 68.75em) {
     html {
       font-size: 120%; } }
 
 body {
   display: flex;
   justify-content: center;
-  align-items: center;
   color: white;
   background-color: blue;
   font-size: 1rem;
-  position: relative;
-  height: 100vh; }
+  min-height: 100vh; }
   body .main {
     width: 100%;
     max-width: 90rem;
-    min-height: 100vh; }
+    padding: 4rem; }
 
 /*******************************************
 *** TOP PART
 *******************************************/
 .top {
-  height: 40vh;
-  position: relative;
-  top: 2rem; }
+  display: flex;
+  flex-direction: column; }
   .top .budget {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); }
+    width: 100%; }
     .top .budget .budget__date,
     .top .budget .budget__value,
     .top .budget .budget__name {
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      font-size: 3.2rem;
+      font-size: 2.0rem;
       text-align: center;
       font-weight: 600; }
     .top .budget .budget__value,
     .top .budget .budget__name {
       text-shadow: 5px 2px 3px #000; }
     .top .budget .budget__value {
-      font-size: 5rem;
+      font-size: 6rem;
       text-align: center;
       font-weight: 600;
       padding: 10px 0; }
@@ -59,7 +52,7 @@ body {
 .budget__income__expenses {
   display: flex;
   justify-content: center;
-  font-size: 2.8rem;
+  font-size: 2.0rem;
   font-weight: 900;
   padding: 15px;
   text-transform: uppercase; }
@@ -81,7 +74,7 @@ body {
     font-size: 2.4rem; }
   .budget__income__expenses .budget__quote {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     flex: 0 0 50%;
     align-self: center; }
     .budget__income__expenses .budget__quote .quote {
@@ -96,33 +89,37 @@ body {
 /*******************************************
 *** BOTTOM
 *******************************************/
-.bottom {
-  position: relative; }
-  .bottom .add {
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    padding: 1rem; }
+.add {
+  width: 80%;
+  margin: 0 auto 1rem; }
 
 .add__container {
+  margin-top: 2rem;
+  padding: 1rem 0;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  justify-content: center; }
+  .add__container .add__container--text {
+    flex: 3; }
+  .add__container .add__container--value {
+    flex: 1; }
   .add__container .add__description,
   .add__container .add__value {
-    margin-right: 1.5rem;
     border: none;
     border-bottom: 2px solid #4dcc33;
     background-color: inherit;
     color: inherit;
     font-size: 1.8rem;
-    padding: .5rem .7rem; }
-  .add__container .add__description {
-    width: 40rem; }
-  .add__container .add__value {
-    width: 10rem; }
+    font-weight: 600;
+    text-shadow: .4rem .2rem .5rem #000;
+    padding: .5rem .7rem;
+    width: 100%; }
   .add__container .add__description:focus,
   .add__container .add__value:focus {
     outline: none; }
+
+.add__container > div:not(:nth-child(n + 3)) {
+  margin-right: 2rem; }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
@@ -136,8 +133,8 @@ input[type=number]::-webkit-outer-spin-button {
 *** LIST ITEMS
 *******************************************/
 .container {
-  margin: 4rem auto;
-  width: 60rem; }
+  margin: 0 auto;
+  width: 80%; }
   .container .item {
     display: flex;
     align-items: center;
@@ -153,6 +150,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .item:hover div[class^="item__value--"] {
   transform: translateX(-1rem); }
+  @media only screen and (max-width: 68.75em) {
+    .item:hover div[class^="item__value--"] {
+      transform: translateX(0); } }
 
 .item__value--income {
   color: #4dcc33;
@@ -168,19 +168,37 @@ input[type=number]::-webkit-outer-spin-button {
 .red {
   color: #cf1717 !important; }
 
-.add__btn {
+.add__btn,
+.clear__btn {
   font-size: 3.8rem;
   border: none;
   background: none;
+  cursor: pointer; }
+
+.add__btn {
   color: #4dcc33;
-  cursor: pointer;
-  margin-left: 1rem;
   display: inline-block; }
 
-.add__btn:focus {
+.add__container--clear__btn {
+  display: flex;
+  justify-content: center; }
+
+.clear__btn {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  padding: 0.3rem;
+  color: #cf1717;
+  border: 0.2rem solid #cf1717;
+  border-radius: 2.5rem;
+  display: block; }
+
+.add__btn:focus,
+.clear__btn:focus {
   outline: none; }
 
-.add__btn:active {
+.add__btn:active,
+.clear__btn:active {
   transform: translateY(0.2rem); }
 
 .item__delete--btn {
@@ -191,6 +209,9 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: 1.5rem;
   cursor: pointer;
   display: none; }
+  @media only screen and (max-width: 68.75em) {
+    .item__delete--btn {
+      display: flex !important; } }
 
 .item:hover .item__delete--btn {
   display: block; }
