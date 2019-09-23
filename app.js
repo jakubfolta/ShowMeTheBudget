@@ -128,7 +128,6 @@ var budgetController = (function() {
             return percentages;
         },
 
-
         // Local Storage
         saveDataStructureToLS: function() {
             localStorage.setItem('data', JSON.stringify(data));
@@ -152,9 +151,6 @@ var budgetController = (function() {
             data.allItems.inc = [];
             data.allItems.exp = [];
         },
-
-
-
 
         testing: function() {
             return data;
@@ -336,12 +332,12 @@ var UIController = (function() {
             document.querySelector(DOMstrings.date).textContent = months[month] + ' ' + year;
         },
 
-        displayClearButton: function() {
-            var clearBtn = document.querySelector(DOMstrings.clear);
-            var itemsContainer = document.querySelector(DOMstrings.container);
-
-            clearBtn.style.display = (itemsContainer.children.length > 0) ?  "block" : "none";
-        },
+        // displayClearButton: function() {
+        //     var clearBtn = document.querySelector(DOMstrings.clear);
+        //     var itemsContainer = document.querySelector(DOMstrings.container);
+        //
+        //     clearBtn.style.display = (itemsContainer.children.length > 0) ? "block" : "none";
+        // },
 
         getDOMstrings: function() {
             return DOMstrings;
@@ -434,6 +430,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
         // Display percentages
         updatePercentages();
+
+        // Display clear button
+        //UICtrl.displayClearButton();
     };
 
     var addItem = function() {
@@ -461,8 +460,8 @@ var appController = (function(budgetCtrl, UICtrl) {
             // Update local storage
             updateLocalStorage();
 
-            // Display clear button
-            UICtrl.displayClearButton();
+            // // Display clear button
+            // UICtrl.displayClearButton();
         }
     };
 
@@ -491,18 +490,18 @@ var appController = (function(budgetCtrl, UICtrl) {
             // Update local storage
             updateLocalStorage();
 
-            // Display clear button
-            UICtrl.displayClearButton();
+            // // Display clear button
+            // UICtrl.displayClearButton();
         }
     };
 
-    var deleteAll = function() {
-
-
-
-        // Display clear button
-        UICtrl.displayClearButton();
-    }
+    // var deleteAll = function() {
+    //
+    //
+    //
+    //     // Display clear button
+    //     UICtrl.displayClearButton();
+    // };
 
     return {
         init: function() {
