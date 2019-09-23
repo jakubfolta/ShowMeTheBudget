@@ -22,7 +22,7 @@ body {
   body .main {
     width: 100%;
     max-width: 90rem;
-    padding: 2rem; }
+    padding: 4rem; }
 
 /*******************************************
 *** TOP PART
@@ -37,14 +37,14 @@ body {
     .top .budget .budget__name {
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      font-size: 3.2rem;
+      font-size: 2.0rem;
       text-align: center;
       font-weight: 600; }
     .top .budget .budget__value,
     .top .budget .budget__name {
       text-shadow: 5px 2px 3px #000; }
     .top .budget .budget__value {
-      font-size: 5rem;
+      font-size: 6rem;
       text-align: center;
       font-weight: 600;
       padding: 10px 0; }
@@ -52,7 +52,7 @@ body {
 .budget__income__expenses {
   display: flex;
   justify-content: center;
-  font-size: 2.8rem;
+  font-size: 2.0rem;
   font-weight: 900;
   padding: 15px;
   text-transform: uppercase; }
@@ -79,7 +79,7 @@ body {
     align-self: center; }
     .budget__income__expenses .budget__quote .quote {
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.0rem;
       text-transform: none;
       font-style: oblique;
       padding: 10px 0;
@@ -89,15 +89,13 @@ body {
 /*******************************************
 *** BOTTOM
 *******************************************/
-.bottom .add {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  padding: 1rem; }
-
 .add__container {
+  margin-top: 2rem;
+  padding: 1rem;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  justify-content: center;
+  width: 100%; }
   .add__container .add__description,
   .add__container .add__value {
     margin-right: 1.5rem;
@@ -107,11 +105,9 @@ body {
     color: inherit;
     font-size: 1.8rem;
     padding: .5rem .7rem; }
-  .add__container .add__description {
-    width: 40rem;
+  .add__container .add__container--text {
     flex: 3; }
-  .add__container .add__value {
-    width: 10rem;
+  .add__container .add__container--value {
     flex: 1; }
   .add__container .add__description:focus,
   .add__container .add__value:focus {
@@ -181,7 +177,7 @@ input[type=number]::-webkit-outer-spin-button {
   color: #cf1717;
   border: 0.2rem solid #cf1717;
   border-radius: 2.5rem;
-  display: non; }
+  display: none; }
 
 .add__btn:focus,
 .clear__btn:focus {

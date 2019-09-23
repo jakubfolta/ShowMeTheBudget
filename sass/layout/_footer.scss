@@ -1,19 +1,23 @@
 /*******************************************
 *** BOTTOM
 *******************************************/
-
-.bottom {
-    .add {
-        margin-top: 2rem;
-        display: flex;
-        justify-content: center;
-        padding: 1rem;
-    }
-}
+//
+// .bottom {
+//     .add {
+//         margin-top: 2rem;
+//         display: flex;
+//         justify-content: center;
+//         padding: 1rem;
+//     }
+// }
 
 .add__container {
+    margin-top: 2rem;
+    padding: 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
+    width: 100%;
 
     .add__description,
     .add__value {
@@ -26,13 +30,11 @@
         padding: .5rem .7rem;
     }
 
-    .add__description {
-        width: 40rem;
+    .add__container--text {
         flex: 3;
     }
 
-    .add__value {
-    width: 10rem;
+    .add__container--value {
     flex: 1;
     }
 

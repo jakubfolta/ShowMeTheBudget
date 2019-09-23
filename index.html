@@ -51,10 +51,21 @@
 
                 <div class="add">
                     <div class="add__container">
-                        <input type="text" class="add__description" placeholder="Add description">
-                        <input type="number" class="add__value" placeholder="Value">
-                        <button class="add__btn"><i class="ion-android-checkmark-circle"></i></button>
-                        <button class="clear__btn">Clear all</button>
+                        <div class="add__container--text">
+                            <label for="description" class="input__label"></label>
+                            <input type="text" id="description" class="add__description" placeholder="Add description">
+                        </div>
+                        <div class="add__container--value">
+                            <label for="value" class="input__label"></label>
+                            <input type="number" id="value" class="add__value" placeholder="Value">
+                        </div>
+                        <div class="add__container--add__btn">
+                            <button class="add__btn"><i class="ion-android-checkmark-circle"></i></button>
+                        </div>
+                        <div class="add__container--clear__btn">
+                            <button class="clear__btn">Clear all</button>
+                        </div>
+
                     </div>
                 </div>
 
