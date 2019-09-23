@@ -179,7 +179,8 @@ var UIController = (function() {
         budget: '.budget__value',
         container: '.container',
         expensesPercentage: '.item__percentage',
-        date: '.budget__date'
+        date: '.budget__date',
+        clear: '.clear__btn'
     };
 
     var nodeListForEach = function(list, callback) {
@@ -335,6 +336,13 @@ var UIController = (function() {
             document.querySelector(DOMstrings.date).textContent = months[month] + ' ' + year;
         },
 
+        displayClearButton: function() {
+            var clearBtn = document.querySelector(DOMstrings.clear);
+            var itemsContainer = document.querySelector(DOMstrings.container);
+
+            clearBtn.style.display = (itemsContainer.children.length > 0) ?  "block" : "none";
+        },
+
         getDOMstrings: function() {
             return DOMstrings;
         }
@@ -452,6 +460,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update local storage
             updateLocalStorage();
+
+            // Display clear button
+            UICtrl.displayClearButton();
         }
     };
 
@@ -479,8 +490,19 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update local storage
             updateLocalStorage();
+
+            // Display clear button
+            UICtrl.displayClearButton();
         }
     };
+
+    var deleteAll = function() {
+
+
+
+        // Display clear button
+        UICtrl.displayClearButton();
+    }
 
     return {
         init: function() {
