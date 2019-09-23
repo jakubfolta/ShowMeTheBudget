@@ -118,7 +118,7 @@ body {
   .add__container .add__value:focus {
     outline: none; }
 
-.add__container > div:not(:nth-child(n + 2)) {
+.add__container > div:not(:nth-child(n + 3)) {
   margin-right: 2rem; }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -173,8 +173,7 @@ input[type=number]::-webkit-outer-spin-button {
   font-size: 3.8rem;
   border: none;
   background: none;
-  cursor: pointer;
-  margin-left: 1rem; }
+  cursor: pointer; }
 
 .add__btn {
   color: #4dcc33;
