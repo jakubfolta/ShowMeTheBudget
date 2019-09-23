@@ -79,7 +79,7 @@ body {
     align-self: center; }
     .budget__income__expenses .budget__quote .quote {
       text-align: center;
-      font-size: 1.0rem;
+      font-size: 1.4rem;
       text-transform: none;
       font-style: oblique;
       padding: 10px 0;
@@ -89,14 +89,18 @@ body {
 /*******************************************
 *** BOTTOM
 *******************************************/
+.add {
+  width: 80%;
+  margin: 0 auto 1rem; }
+
 .add__container {
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center; }
   .add__container .add__container--text {
-    flex: 4; }
+    flex: 3; }
   .add__container .add__container--value {
     flex: 1; }
   .add__container .add__description,
@@ -129,8 +133,8 @@ input[type=number]::-webkit-outer-spin-button {
 *** LIST ITEMS
 *******************************************/
 .container {
-  margin: 4rem auto;
-  width: 60rem; }
+  margin: 0 auto;
+  width: 80%; }
   .container .item {
     display: flex;
     align-items: center;
@@ -146,6 +150,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .item:hover div[class^="item__value--"] {
   transform: translateX(-1rem); }
+  @media only screen and (max-width: 68.75em) {
+    .item:hover div[class^="item__value--"] {
+      transform: translateX(0); } }
 
 .item__value--income {
   color: #4dcc33;
@@ -173,15 +180,19 @@ input[type=number]::-webkit-outer-spin-button {
   color: #4dcc33;
   display: inline-block; }
 
+.add__container--clear__btn {
+  display: flex;
+  justify-content: center; }
+
 .clear__btn {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   text-transform: capitalize;
-  padding: 0.5rem;
+  padding: 0.3rem;
   color: #cf1717;
   border: 0.2rem solid #cf1717;
   border-radius: 2.5rem;
-  display: none; }
+  display: block; }
 
 .add__btn:focus,
 .clear__btn:focus {
