@@ -459,9 +459,6 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update local storage
             updateLocalStorage();
-
-            // // Display clear button
-            // UICtrl.displayClearButton();
         }
     };
 
@@ -489,19 +486,8 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update local storage
             updateLocalStorage();
-
-            // // Display clear button
-            // UICtrl.displayClearButton();
         }
     };
-
-    // var deleteAll = function() {
-    //
-    //
-    //
-    //     // Display clear button
-    //     UICtrl.displayClearButton();
-    // };
 
     return {
         init: function() {
