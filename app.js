@@ -379,7 +379,7 @@ var appController = (function(budgetCtrl, UICtrl) {
         UIController.displayBudget(budget);
     };
 
-    var updatePercentages = function () {
+    var updatePercentages = function() {
         var percentages;
 
         // Calculate percentages
