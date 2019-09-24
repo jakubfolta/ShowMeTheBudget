@@ -365,6 +365,7 @@ var appController = (function(budgetCtrl, UICtrl) {
         });
 
         document.querySelector(DOM.container).addEventListener('click', deleteItem);
+        document.querySelector(DOM.clear).addEventListener('click', deleteAll);
         document.querySelector(DOM.checkbox).addEventListener('change', UICtrl.changeType);
     };
 
