@@ -179,6 +179,7 @@ var UIController = (function() {
         clear: '.clear__btn'
     };
 
+    // Function to loop over a node list
     var nodeListForEach = function(list, callback) {
         for (var i = 0; i < list.length; i++) {
             callback(list[i], i)
@@ -332,13 +333,6 @@ var UIController = (function() {
             document.querySelector(DOMstrings.date).textContent = months[month] + ' ' + year;
         },
 
-        // displayClearButton: function() {
-        //     var clearBtn = document.querySelector(DOMstrings.clear);
-        //     var itemsContainer = document.querySelector(DOMstrings.container);
-        //
-        //     clearBtn.style.display = (itemsContainer.children.length > 0) ? "block" : "none";
-        // },
-
         getDOMstrings: function() {
             return DOMstrings;
         }
@@ -430,9 +424,6 @@ var appController = (function(budgetCtrl, UICtrl) {
 
         // Display percentages
         updatePercentages();
-
-        // Display clear button
-        //UICtrl.displayClearButton();
     };
 
     var addItem = function() {
