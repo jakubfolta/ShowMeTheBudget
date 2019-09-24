@@ -499,6 +499,25 @@ var appController = (function(budgetCtrl, UICtrl) {
         }
     };
 
+    var deleteAll = function() {
+        console.log('works');
+        // Delete items from data structure
+        budgetCtrl.resetIncExpArrays();
+        // Delete items from UI
+
+        // Update and show the budget
+
+        // Update percentages
+
+        // Update local storage
+        //updateLocalStorage();
+
+        // Display clear all button
+        //UICtrl.displayClearButton();
+
+
+    }
+
     return {
         init: function() {
             console.log('App has started');
