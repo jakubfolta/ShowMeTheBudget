@@ -1,6 +1,7 @@
 ////////////////////////////////////
 //////// BUDGET CONTROLLER
 ////////////////////////////////////
+"use strict";
 var budgetController = (function() {
 
     var Expense = function(description, value, id) {
@@ -24,7 +25,7 @@ var budgetController = (function() {
         this.id = id;
     };
 
-    data = {
+    var data = {
         allItems: {
             inc: [],
             exp: []
@@ -38,7 +39,7 @@ var budgetController = (function() {
     };
 
 
-    calcTotals = function(type) {
+    var calcTotals = function(type) {
         var sum = 0;
 
         data.allItems[type].forEach(function(cur) {
@@ -138,8 +139,8 @@ var budgetController = (function() {
         },
 
         getIncExpCopies: function() {
-            inc = data.allItems.inc;
-            exp = data.allItems.exp;
+            var inc = data.allItems.inc;
+            var exp = data.allItems.exp;
 
             return {
                 inc,
@@ -309,7 +310,7 @@ var UIController = (function() {
         },
 
         displayMonthYear: function() {
-            var now, month, year;
+            var months, now, month, year;
 
             months = [
                 'January',
@@ -331,6 +332,13 @@ var UIController = (function() {
             year = now.getFullYear();
 
             document.querySelector(DOMstrings.date).textContent = months[month] + ' ' + year;
+        },
+
+        displayClearButton: function() {
+            var listContainer = document.querySelector(DOMstrings.container);
+            var clearButton = document.querySelector(DOMstrings.clear);
+
+            clearButton.style.display = (listContainer.children.length > 0) ? 'block' : 'none';
         },
 
         getDOMstrings: function() {
@@ -393,6 +401,7 @@ var appController = (function(budgetCtrl, UICtrl) {
     };
 
     var updateLocalData = function() {
+        var budget, obj;
 
         // Update data structure from ls
         budgetCtrl.loadDataStructure();
@@ -424,6 +433,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
         // Display percentages
         updatePercentages();
+
+        // Display clear all button
+        UICtrl.displayClearButton();
     };
 
     var addItem = function() {
@@ -450,11 +462,14 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update local storage
             updateLocalStorage();
+
+            // Display clear all button
+            UICtrl.displayClearButton();
         }
     };
 
     var deleteItem = function(event) {
-        var id, splitID;
+        var id, splitID, type, ID;
 
         id = event.target.parentNode.parentNode.parentNode.id;
 
@@ -477,6 +492,9 @@ var appController = (function(budgetCtrl, UICtrl) {
 
             // Update local storage
             updateLocalStorage();
+
+            // Display clear all button
+            UICtrl.displayClearButton();
         }
     };
 

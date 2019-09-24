@@ -192,7 +192,7 @@ input[type=number]::-webkit-outer-spin-button {
   color: #cf1717;
   border: 0.2rem solid #cf1717;
   border-radius: 2.5rem;
-  display: non; }
+  display: none; }
 
 .add__btn:focus,
 .clear__btn:focus {
