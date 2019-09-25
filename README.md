@@ -2,9 +2,10 @@
 Simple app where you can add your incomes, expenses for given month and your available budget will be displayed on the screen. You can also delete items from the list.
 
 - Local storage implemented
+- Delete All button implemented 
 
 ## Next features IN PROGRESS...
-Button to delete all items from the list and local storage, and connection with outer API to change the quote in center of the screen every day...
+Connection with outer API to change the quote in center of the screen every day...
 
 ## Check Here ==> https://jakubfolta.github.io/ShowMeTheBudget/
 
