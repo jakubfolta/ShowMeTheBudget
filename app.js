@@ -125,7 +125,7 @@ var budgetController = (function() {
         getPercentages: function() {
             var percentages = data.allItems.exp.map(function(cur) {
                 return cur.percentage;
-            })
+            });
             return percentages;
         },
 
@@ -250,6 +250,14 @@ var UIController = (function() {
             item.parentNode.removeChild(item);
         },
 
+        deleteAllItems: function() {
+            var container = document.querySelector(DOMstrings.container);
+
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
+            }
+        },
+
         clearFields: function() {
             var fields, fieldsArray;
 
@@ -365,6 +373,7 @@ var appController = (function(budgetCtrl, UICtrl) {
         });
 
         document.querySelector(DOM.container).addEventListener('click', deleteItem);
+        document.querySelector(DOM.clear).addEventListener('click', deleteAll);
         document.querySelector(DOM.checkbox).addEventListener('change', UICtrl.changeType);
     };
 
@@ -496,6 +505,23 @@ var appController = (function(budgetCtrl, UICtrl) {
             // Display clear all button
             UICtrl.displayClearButton();
         }
+    };
+
+    var deleteAll = function() {
+        // Delete items from data structure
+        budgetCtrl.resetIncExpArrays();
+
+        // Delete items from UI
+        UICtrl.deleteAllItems();
+
+        // Update and show the budget
+        updateBudget();
+
+        // Update local storage
+        updateLocalStorage();
+
+        // Display clear all button
+        UICtrl.displayClearButton();
     };
 
     return {
