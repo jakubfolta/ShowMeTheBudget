@@ -129,20 +129,6 @@ var budgetController = (function() {
             return percentages;
         },
 
-        getIDS: function() {
-            var ids;
-
-            ids = data.allItems.inc.map(function(cur) {
-                return cur.id;
-            });
-
-            data.allItems.exp.forEach(function(cur) {
-                ids.push(cur.id);
-            });
-
-            return ids;
-        },
-
         // Local Storage
         saveDataStructureToLS: function() {
             localStorage.setItem('data', JSON.stringify(data));
@@ -522,29 +508,20 @@ var appController = (function(budgetCtrl, UICtrl) {
     };
 
     var deleteAll = function() {
-        var ids;
-        console.log('works');
         // Delete items from data structure
-
-        ids = budgetCtrl.getIDS();
-        console.log(ids);
         budgetCtrl.resetIncExpArrays();
 
         // Delete items from UI
         UICtrl.deleteAllItems();
 
         // Update and show the budget
-
-
-        // Update percentages
-
+        updateBudget();
 
         // Update local storage
-        //updateLocalStorage();
-
+        updateLocalStorage();
 
         // Display clear all button
-        //UICtrl.displayClearButton();
+        UICtrl.displayClearButton();
     };
 
     return {
