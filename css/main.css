@@ -16,7 +16,7 @@ body {
   display: flex;
   justify-content: center;
   color: white;
-  background-color: blue;
+  background-color: #1a1a1a;
   font-size: 1rem;
   min-height: 100vh; }
   body .main {
@@ -65,13 +65,13 @@ body {
     padding: 12px; }
   .budget__income__expenses .budget__income--text,
   .budget__income__expenses .budget__income--value {
-    color: #4dcc33; }
+    color: #30b814; }
   .budget__income__expenses .budget__expenses--text,
   .budget__income__expenses .budget__expenses--value,
   .budget__income__expenses .budget__expenses--percentage {
     color: #cf1717; }
   .budget__income__expenses .budget__expenses--percentage {
-    font-size: 2.4rem; }
+    font-size: 1.6rem; }
   .budget__income__expenses .budget__quote {
     display: flex;
     justify-content: center;
@@ -106,7 +106,7 @@ body {
   .add__container .add__description,
   .add__container .add__value {
     border: none;
-    border-bottom: 2px solid #4dcc33;
+    border-bottom: 2px solid #30b814;
     background-color: inherit;
     color: inherit;
     font-size: 1.8rem;
@@ -141,7 +141,7 @@ input[type=number]::-webkit-outer-spin-button {
     padding: .5rem .7rem;
     font-size: 1.8rem;
     font-weight: 600;
-    border-bottom: 1px solid #6670ff; }
+    border-bottom: 1px solid #464554; }
     .container .item .item__description {
       flex: 1; }
     .container .item .item__percentage {
@@ -155,7 +155,7 @@ input[type=number]::-webkit-outer-spin-button {
       transform: translateX(0); } }
 
 .item__value--income {
-  color: #4dcc33;
+  color: #30b814;
   transition: transform 0s; }
 
 .item__value--expense {
@@ -176,7 +176,7 @@ input[type=number]::-webkit-outer-spin-button {
   cursor: pointer; }
 
 .add__btn {
-  color: #4dcc33;
+  color: #30b814;
   display: inline-block; }
 
 .add__container--clear__btn {
@@ -248,7 +248,7 @@ input:checked + .slider__round:before {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #4dcc33;
+  background-color: #30b814;
   border-radius: 34px;
   transition: .3s; }
 
