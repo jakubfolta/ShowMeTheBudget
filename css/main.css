@@ -13,8 +13,10 @@ html {
       font-size: 120%; } }
 
 body {
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   color: white;
   background-color: #1a1a1a;
   font-size: 1rem;
@@ -28,8 +30,10 @@ body {
 *** TOP PART
 *******************************************/
 .top {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column; }
+  -ms-flex-direction: column;
+      flex-direction: column; }
   .top .budget {
     width: 100%; }
     .top .budget .budget__date,
@@ -50,8 +54,10 @@ body {
       padding: 10px 0; }
 
 .budget__income__expenses {
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   font-size: 2.0rem;
   font-weight: 900;
   padding: 15px;
@@ -59,9 +65,12 @@ body {
   .budget__income__expenses .budget__income,
   .budget__income__expenses .budget__expenses {
     text-align: center;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    flex: 0 0 25%;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex: 0 0 25%;
+        flex: 0 0 25%;
     padding: 12px; }
   .budget__income__expenses .budget__income--text,
   .budget__income__expenses .budget__income--value {
@@ -73,10 +82,14 @@ body {
   .budget__income__expenses .budget__expenses--percentage {
     font-size: 1.6rem; }
   .budget__income__expenses .budget__quote {
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    flex: 0 0 50%;
-    align-self: center; }
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+    -ms-flex-item-align: center;
+        align-self: center; }
     .budget__income__expenses .budget__quote .quote {
       text-align: center;
       font-size: 1.4rem;
@@ -96,13 +109,18 @@ body {
 .add__container {
   margin-top: 2rem;
   padding: 1rem 0;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center; }
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center; }
   .add__container .add__container--text {
-    flex: 3; }
+    -ms-flex: 3;
+        flex: 3; }
   .add__container .add__container--value {
-    flex: 1; }
+    -ms-flex: 1;
+        flex: 1; }
   .add__container .add__description,
   .add__container .add__value {
     border: none;
@@ -126,6 +144,9 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0; }
 
+:-ms-input-placeholder {
+  color: inherit; }
+
 ::placeholder {
   color: inherit; }
 
@@ -136,14 +157,17 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0 auto;
   width: 80%; }
   .container .item {
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -ms-flex-align: center;
+        align-items: center;
     padding: .5rem .7rem;
     font-size: 1.8rem;
     font-weight: 600;
     border-bottom: 1px solid #464554; }
     .container .item .item__description {
-      flex: 1; }
+      -ms-flex: 1;
+          flex: 1; }
     .container .item .item__percentage {
       text-align: right;
       font-size: 1.4rem; }
@@ -180,8 +204,10 @@ input[type=number]::-webkit-outer-spin-button {
   display: inline-block; }
 
 .add__container--clear__btn {
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center; }
+  -ms-flex-pack: center;
+      justify-content: center; }
 
 .clear__btn {
   width: 11rem;
@@ -212,6 +238,7 @@ input[type=number]::-webkit-outer-spin-button {
   display: none; }
   @media only screen and (max-width: 68.75em) {
     .item__delete--btn {
+      display: -ms-flexbox !important;
       display: flex !important; } }
 
 .item:hover .item__delete--btn {
@@ -224,8 +251,10 @@ input[type=number]::-webkit-outer-spin-button {
   outline: none; }
 
 .slider {
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center; }
+  -ms-flex-pack: center;
+      justify-content: center; }
   .slider .switch {
     position: relative;
     width: 6rem;
