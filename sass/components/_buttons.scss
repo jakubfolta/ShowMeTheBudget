@@ -25,13 +25,14 @@
     color: $color-expense;
     border: 0.2rem solid $color-expense;
     border-radius: 2.5rem;
-    display: n;
+    display: none;
 }
 
 .add__btn:focus,
 .clear__btn:focus {
     outline: none;
 }
+
 .add__btn:active,
 .clear__btn:active {
     transform: translateY(0.2rem);

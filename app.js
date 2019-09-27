@@ -44,7 +44,8 @@ var budgetController = (function() {
 
         data.allItems[type].forEach(function(cur) {
             sum += cur.value;
-        })
+        });
+        
         data.totals[type] = sum;
     };
 
@@ -61,9 +62,9 @@ var budgetController = (function() {
 
             // Create new item based on its type
             if (type === 'inc') {
-                newItem = new Income(des, val, id)
+                newItem = new Income(des, val, id);
             } else if (type === 'exp') {
-                newItem = new Expense(des, val, id)
+                newItem = new Expense(des, val, id);
             }
 
             // Push new item to data structure
@@ -118,7 +119,7 @@ var budgetController = (function() {
                 totalInc: data.totals.inc,
                 totalExp: data.totals.exp,
                 budget: data.budget,
-                percentage: data.percentage,
+                percentage: data.percentage
             }
         },
 
@@ -143,8 +144,7 @@ var budgetController = (function() {
             var exp = data.allItems.exp;
 
             return {
-                inc,
-                exp
+                inc, exp
             }
         },
 
@@ -186,7 +186,7 @@ var UIController = (function() {
             callback(list[i], i)
         }
     };
-
+	
     var formatNumber = function(number, type) {
         var numSplit, decimalNum, intNum;
 
@@ -523,6 +523,10 @@ var appController = (function(budgetCtrl, UICtrl) {
         // Display clear all button
         UICtrl.displayClearButton();
     };
+	
+	var changeQuote = function() {
+			
+	};
 
     return {
         init: function() {
