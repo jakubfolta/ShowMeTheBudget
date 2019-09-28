@@ -142,6 +142,7 @@ var budgetController = (function() {
         getIncExpCopies: function() {
             return {
                 inc: data.allItems.inc,
+				
 				exp: data.allItems.exp
             }
         },
