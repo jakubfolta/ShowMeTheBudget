@@ -531,7 +531,8 @@ var appController = (function(budgetCtrl, UICtrl) {
         init: function() {
             console.log('App has started');
             UICtrl.displayMonthYear();
-
+			changeQuote();
+			
             if (localStorage.getItem('data')) {
                 updateLocalData();
             } else {
