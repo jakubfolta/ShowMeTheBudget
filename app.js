@@ -376,6 +376,10 @@ var appController = (function(budgetCtrl, UICtrl) {
         document.querySelector(DOM.checkbox).addEventListener('change', UICtrl.changeType);
     };
 
+	var changeQuote = function() {
+			
+	};
+	
     var updateBudget = function() {
         var budget;
 
@@ -523,10 +527,6 @@ var appController = (function(budgetCtrl, UICtrl) {
         UICtrl.displayClearButton();
     };
 	
-	var changeQuote = function() {
-			
-	};
-
     return {
         init: function() {
             console.log('App has started');
