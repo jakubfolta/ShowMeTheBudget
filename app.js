@@ -377,7 +377,14 @@ var appController = (function(budgetCtrl, UICtrl) {
     };
 
 	var changeQuote = function() {
-			
+		var request = new XMLHttpRequest();
+		
+		request.addEventListener("load", function(e) {
+			console.log(e);
+		}, false);
+		
+		request.open('GET', 'https://www.brainyquote.com/quote_of_the_day', true);
+		request.send();
 	};
 	
     var updateBudget = function() {
