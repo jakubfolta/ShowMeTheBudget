@@ -44,7 +44,8 @@ var budgetController = (function() {
 
         data.allItems[type].forEach(function(cur) {
             sum += cur.value;
-        })
+        });
+        
         data.totals[type] = sum;
     };
 
@@ -61,9 +62,9 @@ var budgetController = (function() {
 
             // Create new item based on its type
             if (type === 'inc') {
-                newItem = new Income(des, val, id)
+                newItem = new Income(des, val, id);
             } else if (type === 'exp') {
-                newItem = new Expense(des, val, id)
+                newItem = new Expense(des, val, id);
             }
 
             // Push new item to data structure
@@ -118,7 +119,7 @@ var budgetController = (function() {
                 totalInc: data.totals.inc,
                 totalExp: data.totals.exp,
                 budget: data.budget,
-                percentage: data.percentage,
+                percentage: data.percentage
             }
         },
 
@@ -139,12 +140,10 @@ var budgetController = (function() {
         },
 
         getIncExpCopies: function() {
-            var inc = data.allItems.inc;
-            var exp = data.allItems.exp;
-
             return {
-                inc,
-                exp
+                inc: data.allItems.inc,
+				
+				exp: data.allItems.exp
             }
         },
 
@@ -186,7 +185,7 @@ var UIController = (function() {
             callback(list[i], i)
         }
     };
-
+	
     var formatNumber = function(number, type) {
         var numSplit, decimalNum, intNum;
 
@@ -376,7 +375,7 @@ var appController = (function(budgetCtrl, UICtrl) {
         document.querySelector(DOM.clear).addEventListener('click', deleteAll);
         document.querySelector(DOM.checkbox).addEventListener('change', UICtrl.changeType);
     };
-
+	
     var updateBudget = function() {
         var budget;
 
@@ -523,12 +522,12 @@ var appController = (function(budgetCtrl, UICtrl) {
         // Display clear all button
         UICtrl.displayClearButton();
     };
-
+	
     return {
         init: function() {
             console.log('App has started');
             UICtrl.displayMonthYear();
-
+			
             if (localStorage.getItem('data')) {
                 updateLocalData();
             } else {
