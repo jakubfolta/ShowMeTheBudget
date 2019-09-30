@@ -375,17 +375,6 @@ var appController = (function(budgetCtrl, UICtrl) {
         document.querySelector(DOM.clear).addEventListener('click', deleteAll);
         document.querySelector(DOM.checkbox).addEventListener('change', UICtrl.changeType);
     };
-
-	var changeQuote = function() {
-		var request = new XMLHttpRequest();
-		
-		request.addEventListener("load", function(e) {
-			console.log(e);
-		}, false);
-		
-		request.open('GET', 'https://www.brainyquote.com/quote_of_the_day', true);
-		request.send();
-	};
 	
     var updateBudget = function() {
         var budget;
@@ -538,7 +527,6 @@ var appController = (function(budgetCtrl, UICtrl) {
         init: function() {
             console.log('App has started');
             UICtrl.displayMonthYear();
-			changeQuote();
 			
             if (localStorage.getItem('data')) {
                 updateLocalData();
