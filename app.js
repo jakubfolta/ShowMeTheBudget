@@ -4,32 +4,40 @@
 "use strict";
 const budgetController = (function() {
 
-    class Expense {
+    const Expense = class {
 		constructor (description, value, id) {
-			
-        this.description = description;
-        this.value = value;
-        this.id = id;
-        this.percentage = -1;
+
+        	this.description = description;
+        	this.value = value;
+        	this.id = id;
+        	this.percentage = -1;
 		}
-    
+
 		calcPercentage = (totalIncome) => {
         	if (totalIncome > 0) {
             	this.percentage = Math.round((this.value / totalIncome) * 100);
         	} else {
-            	this.percentage = -1;
-        	}
+				this.percentage = -1;
+			}
     	}
 	}
-	
 
-    var Income = function(description, value, id) {
-        this.description = description;
-        this.value = value;
-        this.id = id;
-    };
 
-    var data = {
+	const Income = class {
+						  constructor (description, value, id) {
+
+        	this.description = description;
+        	this.value = value;
+        	this.id = id;
+		}
+
+
+
+
+						  
+
+
+    let data = {
         allItems: {
             inc: [],
             exp: []
@@ -43,13 +51,17 @@ const budgetController = (function() {
     };
 
 
+
+
+
+
     var calcTotals = function(type) {
         var sum = 0;
 
         data.allItems[type].forEach(function(cur) {
             sum += cur.value;
         });
-        
+
         data.totals[type] = sum;
     };
 
@@ -146,7 +158,7 @@ const budgetController = (function() {
         getIncExpCopies: function() {
             return {
                 inc: data.allItems.inc,
-				
+
 				exp: data.allItems.exp
             }
         },
@@ -189,7 +201,7 @@ var UIController = (function() {
             callback(list[i], i)
         }
     };
-	
+
     var formatNumber = function(number, type) {
         var numSplit, decimalNum, intNum;
 
@@ -379,7 +391,7 @@ var appController = (function(budgetCtrl, UICtrl) {
         document.querySelector(DOM.clear).addEventListener('click', deleteAll);
         document.querySelector(DOM.checkbox).addEventListener('change', UICtrl.changeType);
     };
-	
+
     var updateBudget = function() {
         var budget;
 
@@ -526,12 +538,12 @@ var appController = (function(budgetCtrl, UICtrl) {
         // Display clear all button
         UICtrl.displayClearButton();
     };
-	
+
     return {
         init: function() {
             console.log('App has started');
             UICtrl.displayMonthYear();
-			
+
             if (localStorage.getItem('data')) {
                 updateLocalData();
             } else {
