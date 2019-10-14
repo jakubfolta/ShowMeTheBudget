@@ -2,9 +2,9 @@
 //////// BUDGET CONTROLLER
 ////////////////////////////////////
 "use strict";
-var budgetController = (function() {
+const budgetController = (() => {
 
-    var Expense = function(description, value, id) {
+    const Expense = (description, value, id) => {
         this.description = description;
         this.value = value;
         this.id = id;
