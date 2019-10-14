@@ -22,20 +22,14 @@ const budgetController = (function() {
     	}
 	}
 
-
 	const Income = class {
-						  constructor (description, value, id) {
+		constructor (description, value, id) {
 
-        	this.description = description;
+            this.description = description;
         	this.value = value;
         	this.id = id;
 		}
-
-
-
-
-						  
-
+    }
 
     let data = {
         allItems: {
@@ -50,20 +44,25 @@ const budgetController = (function() {
         percentage: -1
     };
 
+    const calcTotals = type => {
+        let sum = 0;
 
-
-
-
-
-    var calcTotals = function(type) {
-        var sum = 0;
-
-        data.allItems[type].forEach(function(cur) {
+        data.allItems[type].forEach(cur => {
             sum += cur.value;
         });
 
         data.totals[type] = sum;
     };
+
+
+
+
+
+
+
+
+
+
 
     return {
         addItem: function(type, des, val) {
