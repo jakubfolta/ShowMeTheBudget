@@ -2,22 +2,26 @@
 //////// BUDGET CONTROLLER
 ////////////////////////////////////
 "use strict";
-const budgetController = (() => {
+const budgetController = (function() {
 
-    const Expense = (description, value, id) => {
+    class Expense {
+		constructor (description, value, id) {
+			
         this.description = description;
         this.value = value;
         this.id = id;
         this.percentage = -1;
-    };
-
-    Expense.prototype.calcPercentage = function(totalIncome) {
-        if (totalIncome > 0) {
-            this.percentage = Math.round((this.value / totalIncome) * 100);
-        } else {
-            this.percentage = -1;
-        }
-    };
+		}
+    
+		calcPercentage = (totalIncome) => {
+        	if (totalIncome > 0) {
+            	this.percentage = Math.round((this.value / totalIncome) * 100);
+        	} else {
+            	this.percentage = -1;
+        	}
+    	}
+	}
+	
 
     var Income = function(description, value, id) {
         this.description = description;
