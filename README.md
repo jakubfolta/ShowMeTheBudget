@@ -3,6 +3,7 @@ Simple app where you can add your incomes, expenses for given month and your ava
 
 - Local storage implemented
 - Delete All button implemented 
+- Code changed to ES6
 
 ## Next features IN PROGRESS...
 Connection with outer API to change the quote in center of the screen every day...
