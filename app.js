@@ -124,10 +124,10 @@ const budgetController = (function() {
         loadDataStructure: () => data = JSON.parse(localStorage.getItem('data')),
 
         getIncExpCopies: () => {
-                return {
-                    inc: data.allItems.inc,
-                    exp: data.allItems.exp
-                }
+            return {
+                inc: data.allItems.inc,
+                exp: data.allItems.exp
+            }
         },
 
         resetIncExpArrays: () => {
@@ -135,18 +135,16 @@ const budgetController = (function() {
             data.allItems.exp = [];
         },
 
-        testing: function() {
-            return data;
-        }
+        testing: () => data
     };
 }());
 
 ////////////////////////////////////
 //////// UI CONTROLLER
 ////////////////////////////////////
-var UIController = (function() {
+const UIController = (function() {
 
-    var DOMstrings = {
+    const DOMstrings = {
         inputDescription: '.add__description',
         inputValue: '.add__value',
         addButton: '.add__btn',
@@ -162,15 +160,15 @@ var UIController = (function() {
         clear: '.clear__btn'
     };
 
-    // Function to loop over a node list
-    var nodeListForEach = function(list, callback) {
-        for (var i = 0; i < list.length; i++) {
-            callback(list[i], i)
-        }
-    };
+    // Function to loop over a node list ES5
+    // const nodeListForEach = (list, callback) => {
+    //     for (let i = 0; i < list.length; i++) {
+    //         callback(list[i], i)
+    //     }
+    // };
 
-    var formatNumber = function(number, type) {
-        var numSplit, decimalNum, intNum;
+    const formatNumber = (number, type) => {
+        let numSplit, decimalNum, intNum;
 
         // Set absolute number
         number = Math.abs(number);
@@ -192,7 +190,7 @@ var UIController = (function() {
     };
 
     return {
-        getInput: function() {
+        getInput: () => {
             return {
                 description: document.querySelector(DOMstrings.inputDescription).value,
                 value: parseFloat(document.querySelector(DOMstrings.inputValue).value),
@@ -272,23 +270,30 @@ var UIController = (function() {
             }
         },
 
-        displayPercentages: function(percentages) {
-            var fields;
-
+        displayPercentages: percentages => {
             // Select all percentages fields
-            fields = document.querySelectorAll(DOMstrings.expensesPercentage);
+            const fields = Array.from(document.querySelectorAll(DOMstrings.expensesPercentage));
 
-            // Loop through all fields and add percentage value
-            nodeListForEach(fields, function(cur, index) {
+            // Loop through all fields and add percentage value ES6
+            fields.forEach((cur, index) => {
                 if (percentages[index] > 0) {
                     cur.textContent = percentages[index] + '%';
                 } else {
                     cur.textContent = '---'
                 }
             })
+
+            // Loop through all fields and add percentage value ES5
+            // nodeListForEach(fields, function(cur, index) {
+            //     if (percentages[index] > 0) {
+            //         cur.textContent = percentages[index] + '%';
+            //     } else {
+            //         cur.textContent = '---'
+            //     }
+            // })
         },
 
-        changeType: function() {
+        changeType: () => {
             var inputs;
 
             inputs = document.querySelectorAll(DOMstrings.inputDescription + ',' + DOMstrings.inputValue);
@@ -434,14 +439,14 @@ var appController = (function(budgetCtrl, UICtrl) {
         var input, newItem;
 
         // Get the filled input data.
-        input = UICtrl.getInput();
+        const {description, value, type} = UICtrl.getInput();
 
-        if (input.description && !isNaN(input.value) && input.value > 0) {
+        if (description && !isNaN(value) && value > 0) {
             // Add item to the budget controller
-            newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+            newItem = budgetCtrl.addItem(type, description, value);
 
             // Add the item to the UI
-            UICtrl.addListItem(newItem, input.type);
+            UICtrl.addListItem(newItem, type);
 
             // Clear fields and focus
             UICtrl.clearFields();
