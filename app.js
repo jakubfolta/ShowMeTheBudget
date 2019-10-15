@@ -2,30 +2,36 @@
 //////// BUDGET CONTROLLER
 ////////////////////////////////////
 "use strict";
-var budgetController = (function() {
+const budgetController = (function() {
 
-    var Expense = function(description, value, id) {
-        this.description = description;
-        this.value = value;
-        this.id = id;
-        this.percentage = -1;
-    };
+    const Expense = class {
+		constructor (description, value, id) {
 
-    Expense.prototype.calcPercentage = function(totalIncome) {
-        if (totalIncome > 0) {
-            this.percentage = Math.round((this.value / totalIncome) * 100);
-        } else {
-            this.percentage = -1;
-        }
-    };
+        	this.description = description;
+        	this.value = value;
+        	this.id = id;
+        	this.percentage = -1;
+		}
 
-    var Income = function(description, value, id) {
-        this.description = description;
-        this.value = value;
-        this.id = id;
-    };
+		calcPercentage = (totalIncome) => {
+        	if (totalIncome > 0) {
+            	this.percentage = Math.round((this.value / totalIncome) * 100);
+        	} else {
+				this.percentage = -1;
+			}
+    	}
+	}
 
-    var data = {
+	const Income = class {
+		constructor (description, value, id) {
+
+            this.description = description;
+        	this.value = value;
+        	this.id = id;
+		}
+    }
+
+    let data = {
         allItems: {
             inc: [],
             exp: []
@@ -38,20 +44,19 @@ var budgetController = (function() {
         percentage: -1
     };
 
+    const calcTotals = type => {
+        let sum = 0;
 
-    var calcTotals = function(type) {
-        var sum = 0;
-
-        data.allItems[type].forEach(function(cur) {
+        data.allItems[type].forEach(cur => {
             sum += cur.value;
         });
-        
+
         data.totals[type] = sum;
     };
 
     return {
-        addItem: function(type, des, val) {
-            var newItem, id;
+        addItem: (type, des, val) => {
+            let newItem, id;
 
             // Create new id
             if (data.allItems[type].length > 0) {
@@ -74,16 +79,9 @@ var budgetController = (function() {
             return newItem;
         },
 
-        deleteItem: function(type, id) {
-            var ids, index;
-
-            // Create new array with all ids of items
-            ids = data.allItems[type].map(function(current) {
-                return current.id;
-            });
-
+        deleteItem: (type, id) => {
             // Get index of item with searched id
-            index = ids.indexOf(id);
+            let index = data.allItems[type].findIndex(current => current.id === id);
 
             // Check if id is in the array and delete the item
             if (index !== -1) {
@@ -91,7 +89,7 @@ var budgetController = (function() {
             }
         },
 
-        calculateBudget: function() {
+        calculateBudget: () => {
             // Calculate totals
             calcTotals('inc');
             calcTotals('exp');
@@ -107,14 +105,9 @@ var budgetController = (function() {
             }
         },
 
-        calculatePercentages: function() {
-            data.allItems['exp'].forEach(function(cur) {
-                cur.calcPercentage(data.totals.inc);
-            })
+        calculatePercentages: () => data.allItems['exp'].forEach(cur => cur.calcPercentage(data.totals.inc)),
 
-        },
-
-        getBudget: function() {
+        getBudget: () => {
             return {
                 totalInc: data.totals.inc,
                 totalExp: data.totals.exp,
@@ -123,47 +116,35 @@ var budgetController = (function() {
             }
         },
 
-        getPercentages: function() {
-            var percentages = data.allItems.exp.map(function(cur) {
-                return cur.percentage;
-            });
-            return percentages;
-        },
+        getPercentages: () => data.allItems.exp.map(cur => cur.percentage),
 
         // Local Storage
-        saveDataStructureToLS: function() {
-            localStorage.setItem('data', JSON.stringify(data));
-        },
+        saveDataStructureToLS: () => localStorage.setItem('data', JSON.stringify(data)),
 
-        loadDataStructure: function() {
-            data = JSON.parse(localStorage.getItem('data'));
-        },
+        loadDataStructure: () => data = JSON.parse(localStorage.getItem('data')),
 
-        getIncExpCopies: function() {
+        getIncExpCopies: () => {
             return {
                 inc: data.allItems.inc,
-				
-				exp: data.allItems.exp
+                exp: data.allItems.exp
             }
         },
 
-        resetIncExpArrays: function() {
+        resetIncExpArrays: () => {
             data.allItems.inc = [];
             data.allItems.exp = [];
         },
 
-        testing: function() {
-            return data;
-        }
+        testing: () => data
     };
 }());
 
 ////////////////////////////////////
 //////// UI CONTROLLER
 ////////////////////////////////////
-var UIController = (function() {
+const UIController = (function() {
 
-    var DOMstrings = {
+    const DOMstrings = {
         inputDescription: '.add__description',
         inputValue: '.add__value',
         addButton: '.add__btn',
@@ -179,15 +160,15 @@ var UIController = (function() {
         clear: '.clear__btn'
     };
 
-    // Function to loop over a node list
-    var nodeListForEach = function(list, callback) {
-        for (var i = 0; i < list.length; i++) {
-            callback(list[i], i)
-        }
-    };
-	
-    var formatNumber = function(number, type) {
-        var numSplit, decimalNum, intNum;
+    // Function to loop over a node list ES5
+    // const nodeListForEach = (list, callback) => {
+    //     for (let i = 0; i < list.length; i++) {
+    //         callback(list[i], i)
+    //     }
+    // };
+
+    const formatNumber = (number, type) => {
+        let numSplit, decimalNum, intNum;
 
         // Set absolute number
         number = Math.abs(number);
@@ -202,14 +183,14 @@ var UIController = (function() {
         intNum = numSplit[0];
 
         if (intNum.length > 3) {
-            intNum = intNum.substr(0, intNum.length - 3) + ',' + intNum.substr(intNum.length - 3, 3);
+            intNum = `${intNum.substr(0, intNum.length - 3)},${intNum.substr(intNum.length - 3, 3)}`;
         }
 
-        return (type === 'inc' ? '+' : '-') + ' ' + intNum + '.' + decimalNum;
+        return `${(type === 'inc' ? '+' : '-')} ${intNum}.${decimalNum}`;
     };
 
     return {
-        getInput: function() {
+        getInput: () => {
             return {
                 description: document.querySelector(DOMstrings.inputDescription).value,
                 value: parseFloat(document.querySelector(DOMstrings.inputValue).value),
@@ -217,8 +198,8 @@ var UIController = (function() {
             };
         },
 
-        addListItem: function(obj, type) {
-            var html, position, newhtml, location;
+        addListItem: (obj, type) => {
+            let html, newhtml, location;
 
             // Create html string with placeholder text
             if (type === 'inc') {
@@ -232,7 +213,7 @@ var UIController = (function() {
                 location = 'beforeend';
             }
 
-            position = document.querySelector(DOMstrings.position);
+            const position = document.querySelector(DOMstrings.position);
 
             // Replace placeholder text with data
             newhtml = html.replace('%description%', obj.description);
@@ -243,83 +224,89 @@ var UIController = (function() {
             position.insertAdjacentHTML(location, newhtml);
         },
 
-        deleteListItem: function(elementID) {
-            var item = document.getElementById(elementID);
+        deleteListItem: elementID => {
+            const item = document.getElementById(elementID);
 
             item.parentNode.removeChild(item);
         },
 
-        deleteAllItems: function() {
-            var container = document.querySelector(DOMstrings.container);
+        deleteAllItems: () => {
+            const container = document.querySelector(DOMstrings.container);
 
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
             }
         },
 
-        clearFields: function() {
-            var fields, fieldsArray;
-
+        clearFields: () => {
             // Select elements to clear
-            fields = document.querySelectorAll(DOMstrings.inputDescription + ',' + DOMstrings.inputValue);
-            fieldsArray = Array.prototype.slice.call(fields);
+            const fields = Array.from(document.querySelectorAll(`${DOMstrings.inputDescription}, ${DOMstrings.inputValue}`));
+
+            // ES5
+            // fieldsArray = Array.prototype.slice.call(fields);
 
             // Loop over an array and focus on item description
-            fieldsArray.forEach(function(cur, index, array) {
-                cur.value = '';
-            })
-
-            fieldsArray[0].focus();
+            fields.forEach(cur => cur.value = '');
+            fields[0].focus();
         },
 
-        displayBudget: function(object) {
-            var type;
+        displayBudget: object => {
+            let type;
+            const {totalInc, totalExp, budget, percentage} = object;
 
-            (object.budget > 0) ? type = 'inc' : type = 'exp';
+            (budget > 0) ? type = 'inc' : type = 'exp';
 
-            document.querySelector(DOMstrings.income).textContent = formatNumber(object.totalInc, 'inc');
-            document.querySelector(DOMstrings.expenses).textContent = formatNumber(object.totalExp, 'exp');
-            document.querySelector(DOMstrings.budget).textContent = formatNumber(object.budget, type);
+            document.querySelector(DOMstrings.income).textContent = formatNumber(totalInc, 'inc');
+            document.querySelector(DOMstrings.expenses).textContent = formatNumber(totalExp, 'exp');
+            document.querySelector(DOMstrings.budget).textContent = formatNumber(budget, type);
 
-            if (object.percentage > 0) {
-                document.querySelector(DOMstrings.percentage).textContent = object.percentage + '%';
+            if (percentage > 0) {
+                document.querySelector(DOMstrings.percentage).textContent = `${percentage}%`;
             } else {
                 document.querySelector(DOMstrings.percentage).textContent = '---';
             }
         },
 
-        displayPercentages: function(percentages) {
-            var fields;
-
+        displayPercentages: percentages => {
             // Select all percentages fields
-            fields = document.querySelectorAll(DOMstrings.expensesPercentage);
+            const fields = Array.from(document.querySelectorAll(DOMstrings.expensesPercentage));
 
-            // Loop through all fields and add percentage value
-            nodeListForEach(fields, function(cur, index) {
+            // Loop through all fields and add percentage value ES6
+            fields.forEach((cur, index) => {
                 if (percentages[index] > 0) {
                     cur.textContent = percentages[index] + '%';
                 } else {
                     cur.textContent = '---'
                 }
             })
+
+            // Loop through all fields and add percentage value ES5
+            // nodeListForEach(fields, function(cur, index) {
+            //     if (percentages[index] > 0) {
+            //         cur.textContent = percentages[index] + '%';
+            //     } else {
+            //         cur.textContent = '---'
+            //     }
+            // })
         },
 
-        changeType: function() {
-            var inputs;
+        changeType: () => {
 
-            inputs = document.querySelectorAll(DOMstrings.inputDescription + ',' + DOMstrings.inputValue);
+            const inputs = Array.from(document.querySelectorAll(`${DOMstrings.inputDescription}, ${DOMstrings.inputValue}`));
 
-            nodeListForEach(inputs, function(current) {
-                current.classList.toggle('red-focus');
-            });
+            inputs.forEach(cur => cur.classList.toggle('red-focus'));
+
+            //ES5
+            // nodeListForEach(inputs, function(current) {
+            //     current.classList.toggle('red-focus');
+            // });
 
             document.querySelector(DOMstrings.addButton).classList.toggle('red')
         },
 
-        displayMonthYear: function() {
-            var months, now, month, year;
+        displayMonthYear: () => {
 
-            months = [
+            const months = [
                 'January',
                 'February',
                 'March',
@@ -334,23 +321,21 @@ var UIController = (function() {
                 'December'
             ]
 
-            now = new Date();
-            month = now.getMonth();
-            year = now.getFullYear();
+            const now = new Date();
+            const month = now.getMonth();
+            const year = now.getFullYear();
 
-            document.querySelector(DOMstrings.date).textContent = months[month] + ' ' + year;
+            document.querySelector(DOMstrings.date).textContent = `${months[month]} ${year}`;
         },
 
-        displayClearButton: function() {
-            var listContainer = document.querySelector(DOMstrings.container);
-            var clearButton = document.querySelector(DOMstrings.clear);
+        displayClearButton: () => {
+            const listContainer = document.querySelector(DOMstrings.container);
+            const clearButton = document.querySelector(DOMstrings.clear);
 
             clearButton.style.display = (listContainer.children.length > 0) ? 'block' : 'none';
         },
 
-        getDOMstrings: function() {
-            return DOMstrings;
-        }
+        getDOMstrings: () => DOMstrings
     };
 })();
 
@@ -358,10 +343,10 @@ var UIController = (function() {
 ////////////////////////////////////
 //////// APP CONTROLLER
 ////////////////////////////////////
-var appController = (function(budgetCtrl, UICtrl) {
+const appController = (function(budgetCtrl, UICtrl) {
 
-    var setupEventListeners = function() {
-        var DOM = UICtrl.getDOMstrings();
+    const setupEventListeners = () => {
+        const DOM = UICtrl.getDOMstrings();
 
         document.querySelector(DOM.addButton).addEventListener('click', addItem);
 
@@ -375,69 +360,53 @@ var appController = (function(budgetCtrl, UICtrl) {
         document.querySelector(DOM.clear).addEventListener('click', deleteAll);
         document.querySelector(DOM.checkbox).addEventListener('change', UICtrl.changeType);
     };
-	
-    var updateBudget = function() {
-        var budget;
 
+    const updateBudget = () => {
         // Calculate the budget
         budgetCtrl.calculateBudget();
 
         // Return the budget
-        budget = budgetCtrl.getBudget();
+        const budget = budgetCtrl.getBudget();
 
         // Display the budget on the UI
         UIController.displayBudget(budget);
     };
 
-    var updatePercentages = function() {
-        var percentages;
-
+    const updatePercentages = () => {
         // Calculate percentages
         budgetCtrl.calculatePercentages();
 
         // Read percentages
-        percentages = budgetCtrl.getPercentages();
+        const percentages = budgetCtrl.getPercentages();
 
         // Update percentages in the UI
         UICtrl.displayPercentages(percentages);
     };
 
-    var updateLocalStorage = function() {
+    // Save data structure to local storage
+    const updateLocalStorage = () => budgetCtrl.saveDataStructureToLS();
 
-        // Save data structure to local storage
-        budgetCtrl.saveDataStructureToLS();
-    };
-
-    var updateLocalData = function() {
-        var budget, obj;
-
+    const updateLocalData = () => {
         // Update data structure from ls
         budgetCtrl.loadDataStructure();
 
         // Display budget
-        budget = budgetCtrl.getBudget();
+        const budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
-        obj = budgetCtrl.getIncExpCopies();
 
-        // Create new Function constructor objects based on objects from local storage
+        const{inc, exp} = budgetCtrl.getIncExpCopies();
+
+        // Create new class objects based on objects from local storage
         budgetCtrl.resetIncExpArrays();
 
-        obj.inc.forEach(function(cur) {
-            budgetCtrl.addItem('inc', cur.description, cur.value);
-        });
+        inc.forEach(cur => budgetCtrl.addItem('inc', cur.description, cur.value));
 
-        obj.exp.forEach(function(cur) {
-            budgetCtrl.addItem('exp', cur.description, cur.value);
-        });
+        exp.forEach(cur => budgetCtrl.addItem('exp', cur.description, cur.value));
 
         // Display list items
-        obj.inc.forEach(function(cur) {
-            UICtrl.addListItem(cur, 'inc');
-        });
+        inc.forEach(cur => UICtrl.addListItem(cur, 'inc'));
 
-        obj.exp.forEach(function(cur) {
-            UICtrl.addListItem(cur, 'exp');
-        });
+        exp.forEach(cur => UICtrl.addListItem(cur, 'exp'));
 
         // Display percentages
         updatePercentages();
@@ -446,18 +415,16 @@ var appController = (function(budgetCtrl, UICtrl) {
         UICtrl.displayClearButton();
     };
 
-    var addItem = function() {
-        var input, newItem;
-
+    const addItem = () => {
         // Get the filled input data.
-        input = UICtrl.getInput();
+        const {description, value, type} = UICtrl.getInput();
 
-        if (input.description && !isNaN(input.value) && input.value > 0) {
+        if (description && !isNaN(value) && value > 0) {
             // Add item to the budget controller
-            newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+            const newItem = budgetCtrl.addItem(type, description, value);
 
             // Add the item to the UI
-            UICtrl.addListItem(newItem, input.type);
+            UICtrl.addListItem(newItem, type);
 
             // Clear fields and focus
             UICtrl.clearFields();
@@ -476,15 +443,14 @@ var appController = (function(budgetCtrl, UICtrl) {
         }
     };
 
-    var deleteItem = function(event) {
-        var id, splitID, type, ID;
+    const deleteItem = event => {
 
-        id = event.target.parentNode.parentNode.parentNode.id;
+        const id = event.target.parentNode.parentNode.parentNode.id;
 
         if (id) {
-            splitID = id.split('-');
-            type = splitID[0];
-            ID = parseInt(splitID[1]);
+            const splitID = id.split('-');
+            const type = splitID[0];
+            const ID = parseInt(splitID[1]);
 
             // Delete the item from the budget
             budgetCtrl.deleteItem(type, ID);
@@ -506,7 +472,7 @@ var appController = (function(budgetCtrl, UICtrl) {
         }
     };
 
-    var deleteAll = function() {
+    const deleteAll = () => {
         // Delete items from data structure
         budgetCtrl.resetIncExpArrays();
 
@@ -522,12 +488,12 @@ var appController = (function(budgetCtrl, UICtrl) {
         // Display clear all button
         UICtrl.displayClearButton();
     };
-	
+
     return {
-        init: function() {
+        init: () => {
             console.log('App has started');
             UICtrl.displayMonthYear();
-			
+
             if (localStorage.getItem('data')) {
                 updateLocalData();
             } else {
