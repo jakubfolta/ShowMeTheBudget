@@ -183,10 +183,10 @@ const UIController = (function() {
         intNum = numSplit[0];
 
         if (intNum.length > 3) {
-            intNum = intNum.substr(0, intNum.length - 3) + ',' + intNum.substr(intNum.length - 3, 3);
+            intNum = `${intNum.substr(0, intNum.length - 3)},${intNum.substr(intNum.length - 3, 3)}`;
         }
 
-        return (type === 'inc' ? '+' : '-') + ' ' + intNum + '.' + decimalNum;
+        return `${(type === 'inc' ? '+' : '-')} ${intNum}.${decimalNum}`;
     };
 
     return {
@@ -250,7 +250,7 @@ const UIController = (function() {
             fields[0].focus();
         },
 
-        displayBudget: function(object) {
+        displayBudget: object => {
             let type;
             const {totalInc, totalExp, budget, percentage} = object;
 
@@ -261,7 +261,7 @@ const UIController = (function() {
             document.querySelector(DOMstrings.budget).textContent = formatNumber(budget, type);
 
             if (percentage > 0) {
-                document.querySelector(DOMstrings.percentage).textContent = percentage + '%';
+                document.querySelector(DOMstrings.percentage).textContent = `${percentage}%`;
             } else {
                 document.querySelector(DOMstrings.percentage).textContent = '---';
             }
@@ -304,10 +304,9 @@ const UIController = (function() {
             document.querySelector(DOMstrings.addButton).classList.toggle('red')
         },
 
-        displayMonthYear: function() {
-            var months, now, month, year;
+        displayMonthYear: () => {
 
-            months = [
+            const months = [
                 'January',
                 'February',
                 'March',
@@ -322,11 +321,11 @@ const UIController = (function() {
                 'December'
             ]
 
-            now = new Date();
-            month = now.getMonth();
-            year = now.getFullYear();
+            const now = new Date();
+            const month = now.getMonth();
+            const year = now.getFullYear();
 
-            document.querySelector(DOMstrings.date).textContent = months[month] + ' ' + year;
+            document.querySelector(DOMstrings.date).textContent = `${months[month]} ${year}`;
         },
 
         displayClearButton: function() {
