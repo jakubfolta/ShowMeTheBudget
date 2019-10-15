@@ -79,13 +79,11 @@ const budgetController = (function() {
             return newItem;
         },
 
-        deleteItem: function(type, id) {
-            var ids, index;
+        deleteItem: (type, id) => {
+            let ids, index;
 
             // Create new array with all ids of items
-            ids = data.allItems[type].map(function(current) {
-                return current.id;
-            });
+            ids = data.allItems[type].map(current => current.id);
 
             // Get index of item with searched id
             index = ids.indexOf(id);
