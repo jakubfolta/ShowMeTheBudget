@@ -328,16 +328,14 @@ const UIController = (function() {
             document.querySelector(DOMstrings.date).textContent = `${months[month]} ${year}`;
         },
 
-        displayClearButton: function() {
-            var listContainer = document.querySelector(DOMstrings.container);
-            var clearButton = document.querySelector(DOMstrings.clear);
+        displayClearButton: () => {
+            const listContainer = document.querySelector(DOMstrings.container);
+            const clearButton = document.querySelector(DOMstrings.clear);
 
             clearButton.style.display = (listContainer.children.length > 0) ? 'block' : 'none';
         },
 
-        getDOMstrings: function() {
-            return DOMstrings;
-        }
+        getDOMstrings: () => DOMstrings
     };
 })();
 
@@ -345,10 +343,10 @@ const UIController = (function() {
 ////////////////////////////////////
 //////// APP CONTROLLER
 ////////////////////////////////////
-var appController = (function(budgetCtrl, UICtrl) {
+const appController = (function(budgetCtrl, UICtrl) {
 
-    var setupEventListeners = function() {
-        var DOM = UICtrl.getDOMstrings();
+    const setupEventListeners = () => {
+        const DOM = UICtrl.getDOMstrings();
 
         document.querySelector(DOM.addButton).addEventListener('click', addItem);
 
@@ -363,55 +361,45 @@ var appController = (function(budgetCtrl, UICtrl) {
         document.querySelector(DOM.checkbox).addEventListener('change', UICtrl.changeType);
     };
 
-    var updateBudget = function() {
-        var budget;
-
+    const updateBudget = () => {
         // Calculate the budget
         budgetCtrl.calculateBudget();
 
         // Return the budget
-        budget = budgetCtrl.getBudget();
+        const budget = budgetCtrl.getBudget();
 
         // Display the budget on the UI
         UIController.displayBudget(budget);
     };
 
-    var updatePercentages = function() {
-        var percentages;
-
+    const updatePercentages = () => {
         // Calculate percentages
         budgetCtrl.calculatePercentages();
 
         // Read percentages
-        percentages = budgetCtrl.getPercentages();
+        const percentages = budgetCtrl.getPercentages();
 
         // Update percentages in the UI
         UICtrl.displayPercentages(percentages);
     };
 
-    var updateLocalStorage = function() {
+    // Save data structure to local storage
+    const updateLocalStorage = () => budgetCtrl.saveDataStructureToLS();
 
-        // Save data structure to local storage
-        budgetCtrl.saveDataStructureToLS();
-    };
-
-    var updateLocalData = function() {
-        var budget, obj;
-
+    const updateLocalData = () => {
         // Update data structure from ls
         budgetCtrl.loadDataStructure();
 
         // Display budget
-        budget = budgetCtrl.getBudget();
+        const budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
+
         const{inc, exp} = budgetCtrl.getIncExpCopies();
 
-        // Create new Function constructor objects based on objects from local storage
+        // Create new class objects based on objects from local storage
         budgetCtrl.resetIncExpArrays();
 
-        inc.forEach(function(cur) {
-            budgetCtrl.addItem('inc', cur.description, cur.value);
-        });
+        inc.forEach(cur => budgetCtrl.addItem('inc', cur.description, cur.value));
 
         exp.forEach(function(cur) {
             budgetCtrl.addItem('exp', cur.description, cur.value);
