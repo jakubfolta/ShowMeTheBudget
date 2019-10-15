@@ -54,19 +54,9 @@ const budgetController = (function() {
         data.totals[type] = sum;
     };
 
-
-
-
-
-
-
-
-
-
-
     return {
-        addItem: function(type, des, val) {
-            var newItem, id;
+        addItem: (type, des, val) => {
+            let newItem, id;
 
             // Create new id
             if (data.allItems[type].length > 0) {
