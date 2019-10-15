@@ -116,31 +116,21 @@ const budgetController = (function() {
             }
         },
 
-        getPercentages: function() {
-            var percentages = data.allItems.exp.map(function(cur) {
-                return cur.percentage;
-            });
-            return percentages;
-        },
+        getPercentages: () => data.allItems.exp.map(cur => cur.percentage),
 
         // Local Storage
-        saveDataStructureToLS: function() {
-            localStorage.setItem('data', JSON.stringify(data));
+        saveDataStructureToLS: () => localStorage.setItem('data', JSON.stringify(data)),
+
+        loadDataStructure: () => data = JSON.parse(localStorage.getItem('data')),
+
+        getIncExpCopies: () => {
+                return {
+                    inc: data.allItems.inc,
+                    exp: data.allItems.exp
+                }
         },
 
-        loadDataStructure: function() {
-            data = JSON.parse(localStorage.getItem('data'));
-        },
-
-        getIncExpCopies: function() {
-            return {
-                inc: data.allItems.inc,
-
-				exp: data.allItems.exp
-            }
-        },
-
-        resetIncExpArrays: function() {
+        resetIncExpArrays: () => {
             data.allItems.inc = [];
             data.allItems.exp = [];
         },
@@ -411,25 +401,25 @@ var appController = (function(budgetCtrl, UICtrl) {
         // Display budget
         budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
-        obj = budgetCtrl.getIncExpCopies();
+        const{inc, exp} = budgetCtrl.getIncExpCopies();
 
         // Create new Function constructor objects based on objects from local storage
         budgetCtrl.resetIncExpArrays();
 
-        obj.inc.forEach(function(cur) {
+        inc.forEach(function(cur) {
             budgetCtrl.addItem('inc', cur.description, cur.value);
         });
 
-        obj.exp.forEach(function(cur) {
+        exp.forEach(function(cur) {
             budgetCtrl.addItem('exp', cur.description, cur.value);
         });
 
         // Display list items
-        obj.inc.forEach(function(cur) {
+        inc.forEach(function(cur) {
             UICtrl.addListItem(cur, 'inc');
         });
 
-        obj.exp.forEach(function(cur) {
+        exp.forEach(function(cur) {
             UICtrl.addListItem(cur, 'exp');
         });
 
