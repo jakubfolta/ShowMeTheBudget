@@ -401,18 +401,12 @@ const appController = (function(budgetCtrl, UICtrl) {
 
         inc.forEach(cur => budgetCtrl.addItem('inc', cur.description, cur.value));
 
-        exp.forEach(function(cur) {
-            budgetCtrl.addItem('exp', cur.description, cur.value);
-        });
+        exp.forEach(cur => budgetCtrl.addItem('exp', cur.description, cur.value));
 
         // Display list items
-        inc.forEach(function(cur) {
-            UICtrl.addListItem(cur, 'inc');
-        });
+        inc.forEach(cur => UICtrl.addListItem(cur, 'inc'));
 
-        exp.forEach(function(cur) {
-            UICtrl.addListItem(cur, 'exp');
-        });
+        exp.forEach(cur => UICtrl.addListItem(cur, 'exp'));
 
         // Display percentages
         updatePercentages();
@@ -421,15 +415,13 @@ const appController = (function(budgetCtrl, UICtrl) {
         UICtrl.displayClearButton();
     };
 
-    var addItem = function() {
-        var input, newItem;
-
+    const addItem = () => {
         // Get the filled input data.
         const {description, value, type} = UICtrl.getInput();
 
         if (description && !isNaN(value) && value > 0) {
             // Add item to the budget controller
-            newItem = budgetCtrl.addItem(type, description, value);
+            const newItem = budgetCtrl.addItem(type, description, value);
 
             // Add the item to the UI
             UICtrl.addListItem(newItem, type);
@@ -451,15 +443,14 @@ const appController = (function(budgetCtrl, UICtrl) {
         }
     };
 
-    var deleteItem = function(event) {
-        var id, splitID, type, ID;
+    const deleteItem = event => {
 
-        id = event.target.parentNode.parentNode.parentNode.id;
+        const id = event.target.parentNode.parentNode.parentNode.id;
 
         if (id) {
-            splitID = id.split('-');
-            type = splitID[0];
-            ID = parseInt(splitID[1]);
+            const splitID = id.split('-');
+            const type = splitID[0];
+            const ID = parseInt(splitID[1]);
 
             // Delete the item from the budget
             budgetCtrl.deleteItem(type, ID);
@@ -481,7 +472,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         }
     };
 
-    var deleteAll = function() {
+    const deleteAll = () => {
         // Delete items from data structure
         budgetCtrl.resetIncExpArrays();
 
@@ -499,7 +490,7 @@ const appController = (function(budgetCtrl, UICtrl) {
     };
 
     return {
-        init: function() {
+        init: () => {
             console.log('App has started');
             UICtrl.displayMonthYear();
 
