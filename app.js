@@ -198,8 +198,8 @@ const UIController = (function() {
             };
         },
 
-        addListItem: function(obj, type) {
-            var html, position, newhtml, location;
+        addListItem: (obj, type) => {
+            let html, newhtml, location;
 
             // Create html string with placeholder text
             if (type === 'inc') {
@@ -213,7 +213,7 @@ const UIController = (function() {
                 location = 'beforeend';
             }
 
-            position = document.querySelector(DOMstrings.position);
+            const position = document.querySelector(DOMstrings.position);
 
             // Replace placeholder text with data
             newhtml = html.replace('%description%', obj.description);
@@ -224,33 +224,30 @@ const UIController = (function() {
             position.insertAdjacentHTML(location, newhtml);
         },
 
-        deleteListItem: function(elementID) {
-            var item = document.getElementById(elementID);
+        deleteListItem: elementID => {
+            const item = document.getElementById(elementID);
 
             item.parentNode.removeChild(item);
         },
 
-        deleteAllItems: function() {
-            var container = document.querySelector(DOMstrings.container);
+        deleteAllItems: () => {
+            const container = document.querySelector(DOMstrings.container);
 
             while (container.firstChild) {
                 container.removeChild(container.firstChild);
             }
         },
 
-        clearFields: function() {
-            var fields, fieldsArray;
-
+        clearFields: () => {
             // Select elements to clear
-            fields = document.querySelectorAll(DOMstrings.inputDescription + ',' + DOMstrings.inputValue);
-            fieldsArray = Array.prototype.slice.call(fields);
+            const fields = Array.from(document.querySelectorAll(`${DOMstrings.inputDescription}, ${DOMstrings.inputValue}`));
+
+            // ES5
+            // fieldsArray = Array.prototype.slice.call(fields);
 
             // Loop over an array and focus on item description
-            fieldsArray.forEach(function(cur, index, array) {
-                cur.value = '';
-            })
-
-            fieldsArray[0].focus();
+            fields.forEach(cur => cur.value = '');
+            fields[0].focus();
         },
 
         displayBudget: function(object) {
@@ -294,13 +291,15 @@ const UIController = (function() {
         },
 
         changeType: () => {
-            var inputs;
 
-            inputs = document.querySelectorAll(DOMstrings.inputDescription + ',' + DOMstrings.inputValue);
+            const inputs = Array.from(document.querySelectorAll(`${DOMstrings.inputDescription}, ${DOMstrings.inputValue}`));
 
-            nodeListForEach(inputs, function(current) {
-                current.classList.toggle('red-focus');
-            });
+            inputs.forEach(cur => cur.classList.toggle('red-focus'));
+
+            //ES5
+            // nodeListForEach(inputs, function(current) {
+            //     current.classList.toggle('red-focus');
+            // });
 
             document.querySelector(DOMstrings.addButton).classList.toggle('red')
         },
