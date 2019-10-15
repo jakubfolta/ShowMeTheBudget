@@ -80,13 +80,8 @@ const budgetController = (function() {
         },
 
         deleteItem: (type, id) => {
-            let ids, index;
-
-            // Create new array with all ids of items
-            ids = data.allItems[type].map(current => current.id);
-
             // Get index of item with searched id
-            index = ids.indexOf(id);
+            let index = data.allItems[type].findIndex(current => current.id === id);
 
             // Check if id is in the array and delete the item
             if (index !== -1) {
