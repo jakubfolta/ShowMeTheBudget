@@ -89,7 +89,7 @@ const budgetController = (function() {
             }
         },
 
-        calculateBudget: function() {
+        calculateBudget: () => {
             // Calculate totals
             calcTotals('inc');
             calcTotals('exp');
@@ -105,14 +105,9 @@ const budgetController = (function() {
             }
         },
 
-        calculatePercentages: function() {
-            data.allItems['exp'].forEach(function(cur) {
-                cur.calcPercentage(data.totals.inc);
-            })
+        calculatePercentages: () => data.allItems['exp'].forEach(cur => cur.calcPercentage(data.totals.inc)),
 
-        },
-
-        getBudget: function() {
+        getBudget: () => {
             return {
                 totalInc: data.totals.inc,
                 totalExp: data.totals.exp,
@@ -271,16 +266,17 @@ var UIController = (function() {
         },
 
         displayBudget: function(object) {
-            var type;
+            let type;
+            const {totalInc, totalExp, budget, percentage} = object;
 
-            (object.budget > 0) ? type = 'inc' : type = 'exp';
+            (budget > 0) ? type = 'inc' : type = 'exp';
 
-            document.querySelector(DOMstrings.income).textContent = formatNumber(object.totalInc, 'inc');
-            document.querySelector(DOMstrings.expenses).textContent = formatNumber(object.totalExp, 'exp');
-            document.querySelector(DOMstrings.budget).textContent = formatNumber(object.budget, type);
+            document.querySelector(DOMstrings.income).textContent = formatNumber(totalInc, 'inc');
+            document.querySelector(DOMstrings.expenses).textContent = formatNumber(totalExp, 'exp');
+            document.querySelector(DOMstrings.budget).textContent = formatNumber(budget, type);
 
-            if (object.percentage > 0) {
-                document.querySelector(DOMstrings.percentage).textContent = object.percentage + '%';
+            if (percentage > 0) {
+                document.querySelector(DOMstrings.percentage).textContent = percentage + '%';
             } else {
                 document.querySelector(DOMstrings.percentage).textContent = '---';
             }
