@@ -4,7 +4,9 @@
   "description": "Budget app",
   "main": "app.js",
   "scripts": {
+    "watch": "browser-sync start --server --files ./*.html ./css/*.css ./src/*.js"
     "start": "webpack-dev-server"
+
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,10 @@
   },
   "homepage": "https://github.com/jakubfolta/ShowMeTheBudget#readme",
   "devDependencies": {
+    "css-loader": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2"
