@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet" type="text/css">
+        <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        
+        <title>Show Me The Budget</title>
+    </head>
+    <body>
+        <div class="main">
+
+            <div class="top">
+                <div class="budget">
+                    <div class="budget__income__expenses__quote">
+                        <div class="budget__date">%Date%</div>
+                        <div class="budget__value">+ 2,950.00</div>
+                        <div class="budget__name">Your budget</div>
+
+                        <div class="budget__income__expenses">
+
+                            <div class="budget__income">
+                                <div class="budget__income--text">Income</div>
+                                <div class="budget__income--value">+ 4,300.00</div>
+                            </div>
+
+                            <div class="budget__quote">
+                                <blockquote class="quote" cite="https://www.developgoodhabits.com/money-quotes">
+                                    “If you're saving, you're succeeding.”
+                                </blockquote>
+                            </div>
+
+                            <div class="budget__expenses">
+                                <div class="budget__expenses--text">Expenses</div>
+                                <div class="budget__expenses--value">- 1,350.60</div>
+                                <div class="budget__expenses--percentage">30%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom">
+
+                <div class="slider">
+                    <label class="switch">
+                        <input class="checkbox" type="checkbox" autocomplete="off">
+                        <span class="slider__round"></span>
+                    </label>
+                </div>
+
+                <div class="add">
+
+                    <div class="add__container">
+                        <div class="add__container--text">
+                            <label for="description" class="input__label"></label>
+                            <input type="text" id="description" class="add__description" placeholder="Add description">
+                        </div>
+                        <div class="add__container--value">
+                            <label for="value" class="input__label"></label>
+                            <input type="number" id="value" class="add__value" placeholder="Value">
+                        </div>
+                        <div class="add__container--add__btn">
+                            <button class="add__btn"><i class="ion-android-checkmark-circle"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="add__container--clear__btn">
+                    <button class="clear__btn"><i class="ion-ios-trash-outline"></i> All <i class="ion-ios-trash-outline"></i></button>
+                </div>
+
+                <div class="container">
+                </div>
+
+            </div>
+        </div>
+
+    <script type="text/javascript" src="main.js"></script></body>
+</html>
