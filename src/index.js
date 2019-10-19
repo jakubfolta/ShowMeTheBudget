@@ -1,4 +1,4 @@
-import "./sass/main.scss";
+import axios from 'axios';
 ////////////////////////////////////
 //////// BUDGET CONTROLLER
 ////////////////////////////////////
@@ -30,7 +30,7 @@ const budgetController = (function() {
         	this.value = value;
         	this.id = id;
 		}
-    }
+  }
 
     let data = {
         allItems: {
@@ -510,6 +510,6 @@ const appController = (function(budgetCtrl, UICtrl) {
     }
 }(budgetController, UIController));
 
-appController.init()
+appController.init();
 
 
