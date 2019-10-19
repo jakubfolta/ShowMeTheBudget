@@ -13,7 +13,7 @@ module.exports = {
   plugins: [
       new HtmlWebapckPlugin({
           filename: 'index.html',
-          template: './src/index.html'
+          template: './index.html'
       })
   ],
   module: {
