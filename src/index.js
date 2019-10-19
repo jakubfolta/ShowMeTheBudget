@@ -511,4 +511,47 @@ const appController = (function(budgetCtrl, UICtrl) {
 
 appController.init();
 
+const getQuote = async query => {
+    const proxy = 'https://cors-anywhere.herokuapp.com/';
+    const url = '';
+    try {
+        const result = await axios();
+    } catch(err) {
+        console.log(`Something went wrong => ${err}`)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
