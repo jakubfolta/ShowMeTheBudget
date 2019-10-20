@@ -512,20 +512,16 @@ const appController = (function(budgetCtrl, UICtrl) {
 appController.init();
 
 const getQuote = async () => {
-    const proxy = 'https://cors-anywhere.herokuapp.com/';
-    const url = 'https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=famous&count=10';
-
+    const url = 'https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=famous';
     try {
-        const result = await axios("", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-host": "andruxnet-random-famous-quotes.p.rapidapi.com",
-		"x-rapidapi-key": "c39604baadmshcabd6e32bb7d9c0p1e3b1fjsnb9154a318acd"
-	}
-})
-
+        const result = await axios(`${url}`, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "andruxnet-random-famous-quotes.p.rapidapi.com",
+                "x-rapidapi-key": "c39604baadmshcabd6e32bb7d9c0p1e3b1fjsnb9154a318acd"
+            }
+        })
         console.log(result);
-
     } catch(err) {
         console.log(`Something went wrong => ${err}`)
     }
