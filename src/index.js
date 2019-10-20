@@ -512,15 +512,18 @@ const appController = (function(budgetCtrl, UICtrl) {
 appController.init();
 
 const getQuote = async () => {
-    const url = 'https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=famous';
+    const url = 'https://quotable-quotes.p.rapidapi.com/randomQuotes?$tags=finance';
+
     try {
         const result = await axios(`${url}`, {
             "method": "GET",
             "headers": {
-                "x-rapidapi-host": "andruxnet-random-famous-quotes.p.rapidapi.com",
+                "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
                 "x-rapidapi-key": "c39604baadmshcabd6e32bb7d9c0p1e3b1fjsnb9154a318acd"
             }
         })
+
+        const quote = result;
         console.log(result);
     } catch(err) {
         console.log(`Something went wrong => ${err}`)
