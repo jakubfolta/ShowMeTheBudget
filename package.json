@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --config webpack.config.js --mode development",
     "build": "webpack --mode production",
-    "watch": "browser-sync start --server --files ./*.html ./css/*.css ./src/*.js",
+    "watch": "browser-sync start --server --files ./*.html css/*.css ./src/*.js",
     "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
