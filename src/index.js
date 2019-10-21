@@ -145,12 +145,13 @@ const budgetController = (function() {
         getPercentages: () => data.allItems.exp.map(cur => cur.percentage),
 
         saveQuote: async () => {
-            const [quote, length] = await getQuote();
+            let results = await getQuote();
 
-            data.quote = quote;
-            data.length = length;
+            data.quote = results[0];
+            data.length = results[1];
 
             console.log(data);
+            // return []
         },
 
         // Local Storage
@@ -364,6 +365,10 @@ const UIController = (function() {
             document.querySelector(DOMstrings.date).textContent = `${months[month]} ${year}`;
         },
 
+        displayQuote: quote => {
+
+        },
+
         displayClearButton: () => {
             const listContainer = document.querySelector(DOMstrings.container);
             const clearButton = document.querySelector(DOMstrings.clear);
@@ -447,16 +452,22 @@ const appController = (function(budgetCtrl, UICtrl) {
         // Display percentages
         updatePercentages();
 
+        // Display quote
+        UICtrl.displayQuote();
+
         // Display clear all button
         UICtrl.displayClearButton();
     };
 
     const updateQuote = () => {
-        // Get new quote from API
-        budgetCtrl.getQuote();
+        // Get new quote from API and save it to data structure
+        budgetCtrl.saveQuote();
 
-        // Display new quote
+        // Display quote
+        UICtrl.displayQuote();
 
+        // Update local storage
+        updateLocalStorage();
     };
 
     const addItem = () => {
