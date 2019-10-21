@@ -120,6 +120,29 @@ const budgetController = (function() {
 
         getPercentages: () => data.allItems.exp.map(cur => cur.percentage),
 
+        // Get quote from API
+        getQuote: async () => {
+            const url = 'https://quotable-quotes.p.rapidapi.com/randomQuotes';
+
+            try {
+                const result = await axios(`${url}`, {
+                    "method": "GET",
+                    "headers": {
+                        "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
+                        "x-rapidapi-key": "c39604baadmshcabd6e32bb7d9c0p1e3b1fjsnb9154a318acd"
+                    }
+                })
+
+                const quote = result.data.quote;
+                const length = result.data.length;
+                console.log(quote, length);
+            } catch(err) {
+                console.log(`Something went wrong => ${err}`);
+            }
+
+            return [quote, length];
+        },
+
         // Local Storage
         saveDataStructureToLS: () => localStorage.setItem('data', JSON.stringify(data)),
 
@@ -420,7 +443,7 @@ const appController = (function(budgetCtrl, UICtrl) {
 
     const updateQuote = () => {
         // Get new quote from API
-
+        budgetCtrl.getQuote();
 
         // Display new quote
 
@@ -538,12 +561,12 @@ const getQuote = async () => {
         const quote = result.data.quote;
         const length = result.data.length;
         console.log(quote, length);
+        return [quote, length];
     } catch(err) {
         console.log(`Something went wrong => ${err}`)
     }
 }
 
-getQuote();
 
 
 
