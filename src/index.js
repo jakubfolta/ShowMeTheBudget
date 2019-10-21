@@ -41,7 +41,8 @@ const budgetController = (function() {
             exp: 0
         },
         budget: 0,
-        percentage: -1
+        percentage: -1,
+        date: new Date().getDay()
     };
 
     const calcTotals = type => {
@@ -492,6 +493,7 @@ const appController = (function(budgetCtrl, UICtrl) {
     return {
         init: () => {
             console.log('App has started');
+            console.log(budgetCtrl.testing());
             UICtrl.displayMonthYear();
 
             if (localStorage.getItem('data')) {
@@ -512,7 +514,7 @@ const appController = (function(budgetCtrl, UICtrl) {
 appController.init();
 
 const getQuote = async () => {
-    const url = 'https://quotable-quotes.p.rapidapi.com/randomQuotes?$tags=finance';
+    const url = 'https://quotable-quotes.p.rapidapi.com/randomQuotes';
 
     try {
         const result = await axios(`${url}`, {
@@ -523,8 +525,9 @@ const getQuote = async () => {
             }
         })
 
-        const quote = result;
-        console.log(result);
+        const quote = result.data.quote;
+        const length = result.data.length;
+        console.log(quote, length);
     } catch(err) {
         console.log(`Something went wrong => ${err}`)
     }
