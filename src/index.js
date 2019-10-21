@@ -69,9 +69,8 @@ const budgetController = (function() {
             })
 
             const resultQuote = result.data.quote;
-            console.log(resultQuote);
-            return resultQuote;
 
+            return resultQuote;
         } catch(err) {
             console.log(`Something went wrong => ${err}`);
         }
@@ -360,9 +359,7 @@ const UIController = (function() {
             document.querySelector(DOMstrings.date).textContent = `${months[month]} ${year}`;
         },
 
-        displayQuote: quote => {
-
-        },
+        displayQuote: quote => document.querySelector(DOMstrings.quote).textContent = quote ,
 
         displayClearButton: () => {
             const listContainer = document.querySelector(DOMstrings.container);
@@ -448,7 +445,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         updatePercentages();
 
         // Display quote
-        UICtrl.displayQuote();
+        UICtrl.displayQuote(); 
 
         // Display clear all button
         UICtrl.displayClearButton();
