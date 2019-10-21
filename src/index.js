@@ -43,8 +43,7 @@ const budgetController = (function() {
         budget: 0,
         percentage: -1,
         date: new Date().getDay(),
-        quote: '---',
-        length: -1
+        quote: '---'
     };
 
     const calcTotals = type => {
@@ -70,10 +69,8 @@ const budgetController = (function() {
             })
 
             const resultQuote = result.data.quote;
-            const resultLength = result.data.length;
-
-            console.log(resultQuote, resultLength);
-            return [resultQuote, resultLength];
+            console.log(resultQuote);
+            return resultQuote;
 
         } catch(err) {
             console.log(`Something went wrong => ${err}`);
@@ -145,13 +142,11 @@ const budgetController = (function() {
         getPercentages: () => data.allItems.exp.map(cur => cur.percentage),
 
         saveQuote: async () => {
-            let results = await getQuote();
+            const result = await getQuote();
 
-            data.quote = results[0];
-            data.length = results[1];
-
+            data.quote = result;
             console.log(data);
-            // return []
+            return result;
         },
 
         // Local Storage
@@ -461,10 +456,10 @@ const appController = (function(budgetCtrl, UICtrl) {
 
     const updateQuote = () => {
         // Get new quote from API and save it to data structure
-        budgetCtrl.saveQuote();
+        const quote = budgetCtrl.saveQuote();
 
         // Display quote
-        UICtrl.displayQuote();
+        UICtrl.displayQuote(quote);
 
         // Update local storage
         updateLocalStorage();
