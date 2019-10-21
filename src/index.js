@@ -21,7 +21,7 @@ const budgetController = (function() {
 				this.percentage = -1;
 			}
     	}
-	}
+	};
 
 	const Income = class {
 		constructor (description, value, id) {
@@ -29,7 +29,7 @@ const budgetController = (function() {
         	this.value = value;
         	this.id = id;
 		}
-    }
+    };
 
     let data = {
         allItems: {
@@ -42,7 +42,8 @@ const budgetController = (function() {
         },
         budget: 0,
         percentage: -1,
-        date: new Date().getDay()
+        date: new Date().getDay(),
+        quote: '---'
     };
 
     const calcTotals = type => {
@@ -158,7 +159,8 @@ const UIController = (function() {
         container: '.container',
         expensesPercentage: '.item__percentage',
         date: '.budget__date',
-        clear: '.clear__btn'
+        clear: '.clear__btn',
+        quote: '.quote'
     };
 
     // Function to loop over a node list ES5
@@ -414,6 +416,14 @@ const appController = (function(budgetCtrl, UICtrl) {
 
         // Display clear all button
         UICtrl.displayClearButton();
+    };
+
+    const updateQuote = () => {
+        // Get new quote from API
+
+
+        // Display new quote
+
     };
 
     const addItem = () => {
