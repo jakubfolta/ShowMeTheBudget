@@ -373,7 +373,7 @@ const UIController = (function() {
 
         displayQuote: (quote, author) => {
             document.querySelector(DOMstrings.quote).textContent = quote;
-            document.querySelector(DOMstrings.quote).textContent = quote;
+            document.querySelector(DOMstrings.author).textContent = author;
 
         },
 
