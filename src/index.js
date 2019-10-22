@@ -141,12 +141,16 @@ const budgetController = (function() {
         getPercentages: () => data.allItems.exp.map(cur => cur.percentage),
 
         saveQuote: async () => {
-            const result = await getQuote();
+            try {
+                const result = await getQuote();
 
-            data.date = new Date().getMinutes();
-            data.quote = result;
-            console.log(data);
-            return result;
+                data.date = new Date().getMinutes();
+                data.quote = result;
+                console.log(data, result, typeof result);
+                return result;
+            } catch(err) {
+                console.log(err);
+            }
         },
 
         // Local Storage
@@ -429,7 +433,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         // Display budget
         const budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
-
+        console.log(budgetCtrl.getIncExpDateQuoteCopies());
         const {inc, exp, date, quote} = budgetCtrl.getIncExpDateQuoteCopies();
 
         // Create new class objects based on objects from local storage
@@ -448,7 +452,10 @@ const appController = (function(budgetCtrl, UICtrl) {
         updatePercentages();
 
         // Display quote
+        console.log(new Date().getMinutes());
+        console.log(date);
         if (date !== new Date().getMinutes()) {
+            console.log('Not same.');
             updateQuote();
         } else {
             UICtrl.displayQuote(quote);
@@ -458,9 +465,11 @@ const appController = (function(budgetCtrl, UICtrl) {
         UICtrl.displayClearButton();
     };
 
-    const updateQuote = () => {
+    const updateQuote = async () => {
         // Get new quote from API and save it to data structure
-        const quote = budgetCtrl.saveQuote();
+        document.querySelector('.quote').textContent = 'QUOTE UPDATE';
+        const quote = await budgetCtrl.saveQuote();
+        console.log(quote);
 
         // Display quote
         UICtrl.displayQuote(quote);
@@ -563,9 +572,31 @@ const appController = (function(budgetCtrl, UICtrl) {
     }
 }(budgetController, UIController));
 
-appController.init();
+// appController.init();
+
+const getQuote = async () => {
+    const url = 'https://quotable-quotes.p.rapidapi.com/randomQuotes';
+
+    try {
+        const result = await axios(`${url}`, {
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
+                "x-rapidapi-key": "c39604baadmshcabd6e32bb7d9c0p1e3b1fjsnb9154a318acd"
+            }
+        })
+        console.log(result);
+
+        const resultQuote = result.data.quote;
 
 
+        return resultQuote;
+    } catch(err) {
+        console.log(`Something went wrong => ${err}`);
+    }
+};
+
+getQuote();
 
 
 
