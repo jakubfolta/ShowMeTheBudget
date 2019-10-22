@@ -476,6 +476,7 @@ const appController = (function(budgetCtrl, UICtrl) {
     const updateQuote = async () => {
         // Get new quote from API and save it to data structure
         document.querySelector('.quote').textContent = 'QUOTE UPDATE';
+        document.querySelector('.author').textContent = 'AUTHOR UPDATE';
         const quote = await budgetCtrl.saveQuote();
         console.log(quote);
 
