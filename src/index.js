@@ -42,7 +42,7 @@ const budgetController = (function() {
         },
         budget: 0,
         percentage: -1,
-        date: new Date().getDay(),
+        date: -1,
         quote: '---'
     };
 
@@ -143,6 +143,7 @@ const budgetController = (function() {
         saveQuote: async () => {
             const result = await getQuote();
 
+            data.date = new Date().getMinutes();
             data.quote = result;
             console.log(data);
             return result;
@@ -153,10 +154,12 @@ const budgetController = (function() {
 
         loadDataStructure: () => data = JSON.parse(localStorage.getItem('data')),
 
-        getIncExpCopies: () => {
+        getIncExpDateQuoteCopies: () => {
             return {
                 inc: data.allItems.inc,
-                exp: data.allItems.exp
+                exp: data.allItems.exp,
+                date: data.date,
+                quote: data.quote
             }
         },
 
@@ -427,7 +430,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         const budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
 
-        const{inc, exp} = budgetCtrl.getIncExpCopies();
+        const {inc, exp, date, quote} = budgetCtrl.getIncExpDateQuoteCopies();
 
         // Create new class objects based on objects from local storage
         budgetCtrl.resetIncExpArrays();
@@ -445,7 +448,11 @@ const appController = (function(budgetCtrl, UICtrl) {
         updatePercentages();
 
         // Display quote
-        UICtrl.displayQuote(); 
+        if (date !== new Date().getMinutes()) {
+            updateQuote();
+        } else {
+            UICtrl.displayQuote(quote);
+        }
 
         // Display clear all button
         UICtrl.displayClearButton();
@@ -539,12 +546,6 @@ const appController = (function(budgetCtrl, UICtrl) {
     return {
         init: () => {
             console.log('App has started');
-            // console.log(budgetCtrl.testing());
-            budgetCtrl.saveQuote();
-
-
-            // console.log(budgetCtrl.testing());
-
             UICtrl.displayMonthYear();
 
             if (localStorage.getItem('data')) {
