@@ -441,7 +441,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         // Display budget
         const budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
-        
+
         const {inc, exp, date, quote, author} = budgetCtrl.getIncExpDateQuoteAuthorCopies();
 
         // Create new class objects based on objects from local storage
