@@ -43,7 +43,8 @@ const budgetController = (function() {
         budget: 0,
         percentage: -1,
         date: -1,
-        quote: '---'
+        quote: '---',
+        author:'---'
     };
 
     const calcTotals = type => {
@@ -69,8 +70,9 @@ const budgetController = (function() {
             })
 
             const resultQuote = result.data.quote;
+            const resultAuthor = result.data.author;
 
-            return resultQuote;
+            return [resultQuote, resultAuthor];
         } catch(err) {
             console.log(`Something went wrong => ${err}`);
         }
@@ -145,8 +147,9 @@ const budgetController = (function() {
                 const result = await getQuote();
 
                 data.date = new Date().getMinutes();
-                data.quote = result;
-                console.log(data, result, typeof result);
+                data.quote = result[0];
+                data.author = result[1];
+
                 return result;
             } catch(err) {
                 console.log(err);
@@ -158,12 +161,13 @@ const budgetController = (function() {
 
         loadDataStructure: () => data = JSON.parse(localStorage.getItem('data')),
 
-        getIncExpDateQuoteCopies: () => {
+        getIncExpDateQuoteAuthorCopies: () => {
             return {
                 inc: data.allItems.inc,
                 exp: data.allItems.exp,
                 date: data.date,
-                quote: data.quote
+                quote: data.quote,
+                author: data.author
             }
         },
 
@@ -195,7 +199,8 @@ const UIController = (function() {
         expensesPercentage: '.item__percentage',
         date: '.budget__date',
         clear: '.clear__btn',
-        quote: '.quote'
+        quote: '.quote',
+        author: '.author'
     };
 
     // Function to loop over a node list ES5
@@ -366,7 +371,11 @@ const UIController = (function() {
             document.querySelector(DOMstrings.date).textContent = `${months[month]} ${year}`;
         },
 
-        displayQuote: quote => document.querySelector(DOMstrings.quote).textContent = quote ,
+        displayQuote: (quote, author) => {
+            document.querySelector(DOMstrings.quote).textContent = quote;
+            document.querySelector(DOMstrings.quote).textContent = quote;
+
+        },
 
         displayClearButton: () => {
             const listContainer = document.querySelector(DOMstrings.container);
