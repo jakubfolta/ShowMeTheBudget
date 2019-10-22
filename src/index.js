@@ -374,7 +374,6 @@ const UIController = (function() {
         displayQuote: (quote, author) => {
             document.querySelector(DOMstrings.quote).textContent = quote;
             document.querySelector(DOMstrings.author).textContent = author;
-
         },
 
         displayClearButton: () => {
@@ -443,7 +442,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         const budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
         console.log(budgetCtrl.getIncExpDateQuoteCopies());
-        const {inc, exp, date, quote} = budgetCtrl.getIncExpDateQuoteCopies();
+        const {inc, exp, date, quote, author} = budgetCtrl.getIncExpDateQuoteAuthorCopies();
 
         // Create new class objects based on objects from local storage
         budgetCtrl.resetIncExpArrays();
@@ -467,7 +466,7 @@ const appController = (function(budgetCtrl, UICtrl) {
             console.log('Not same.');
             updateQuote();
         } else {
-            UICtrl.displayQuote(quote);
+            UICtrl.displayQuote(quote, author);
         }
 
         // Display clear all button
