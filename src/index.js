@@ -481,7 +481,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         console.log(quote, author);
 
         // Display quote
-        UICtrl.displayQuote(quote);
+        UICtrl.displayQuote(quote, author);
 
         // Update local storage
         updateLocalStorage();
