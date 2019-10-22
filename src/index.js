@@ -441,7 +441,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         // Display budget
         const budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
-        console.log(budgetCtrl.getIncExpDateQuoteCopies());
+        
         const {inc, exp, date, quote, author} = budgetCtrl.getIncExpDateQuoteAuthorCopies();
 
         // Create new class objects based on objects from local storage
@@ -581,31 +581,31 @@ const appController = (function(budgetCtrl, UICtrl) {
     }
 }(budgetController, UIController));
 
-// appController.init();
-
-const getQuote = async () => {
-    const url = 'https://quotable-quotes.p.rapidapi.com/randomQuotes';
-
-    try {
-        const result = await axios(`${url}`, {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
-                "x-rapidapi-key": "c39604baadmshcabd6e32bb7d9c0p1e3b1fjsnb9154a318acd"
-            }
-        })
-        console.log(result);
-
-        const resultQuote = result.data.quote;
-
-
-        return resultQuote;
-    } catch(err) {
-        console.log(`Something went wrong => ${err}`);
-    }
-};
-
-getQuote();
+appController.init();
+//
+// const getQuote = async () => {
+//     const url = 'https://quotable-quotes.p.rapidapi.com/randomQuotes';
+//
+//     try {
+//         const result = await axios(`${url}`, {
+//             "method": "GET",
+//             "headers": {
+//                 "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
+//                 "x-rapidapi-key": "c39604baadmshcabd6e32bb7d9c0p1e3b1fjsnb9154a318acd"
+//             }
+//         })
+//         console.log(result);
+//
+//         const resultQuote = result.data.quote;
+//
+//
+//         return resultQuote;
+//     } catch(err) {
+//         console.log(`Something went wrong => ${err}`);
+//     }
+// };
+//
+// getQuote();
 
 
 
