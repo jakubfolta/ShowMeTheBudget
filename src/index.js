@@ -146,7 +146,7 @@ const budgetController = (function() {
             try {
                 const result = await getQuote();
 
-                data.date = new Date().getMinutes();
+                data.date = new Date().getDate();
                 data.quote = result[0];
                 data.author = result[1];
 
@@ -438,7 +438,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         // Update data structure from ls
         budgetCtrl.loadDataStructure();
 
-        // Display budget
+        // Get available data
         const budget = budgetCtrl.getBudget();
         UICtrl.displayBudget(budget);
 
@@ -460,9 +460,9 @@ const appController = (function(budgetCtrl, UICtrl) {
         updatePercentages();
 
         // Display quote
-        console.log(new Date().getMinutes());
+        console.log(new Date().getDate());
         console.log(date);
-        if (date !== new Date().getMinutes()) {
+        if (date !== new Date().getDate()) {
             console.log('Not same.');
             updateQuote();
         } else {
@@ -476,7 +476,7 @@ const appController = (function(budgetCtrl, UICtrl) {
     const updateQuote = async () => {
         // Get new quote from API and save it to data structure
         document.querySelector('.quote').textContent = 'QUOTE UPDATE';
-        // document.querySelector('.author').textContent = 'AUTHOR UPDATE';
+        document.querySelector('.author').textContent = 'AUTHOR UPDATE';
         const [quote, author] = await budgetCtrl.saveQuote();
         console.log(quote, typeof author);
 
