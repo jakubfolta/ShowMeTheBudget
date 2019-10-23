@@ -58,6 +58,7 @@
 
     .budget__quote {
         display: flex;
+        flex-direction: column;
         justify-content: center;
         flex: 0 0 50%;
         align-self: center;
@@ -68,8 +69,13 @@
             text-transform: none;
             font-style: oblique;
             padding: 10px 0;
-            margin-bottom: 4rem;
+            margin-bottom: 1rem;
             letter-spacing: 0.1em;
+        }
+
+        .author {
+            text-align: right;
+            font-size: 1rem;
         }
     }
 }

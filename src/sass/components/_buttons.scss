@@ -1,0 +1,56 @@
+.add__btn,
+.clear__btn {
+    font-size: 3.8rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.add__btn {
+    color: $color-income;
+    display: inline-block;
+}
+
+.add__container--clear__btn {
+    display: flex;
+    justify-content: center;
+}
+
+.clear__btn {
+    width: 11rem;
+    font-size: 2.0rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 1.0rem;
+    color: $color-expense;
+    border: 0.2rem solid $color-expense;
+    border-radius: 2.5rem;
+    display: none;
+}
+
+.add__btn:focus,
+.clear__btn:focus {
+    outline: none;
+}
+
+.add__btn:active,
+.clear__btn:active {
+    transform: translateY(0.2rem);
+}
+
+.item__delete--btn {
+    @include breakpoint(small) {
+        display: flex !important;
+    }
+    font-size: 1.8rem;
+    color: $color-expense;
+    border: none;
+    background: none;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.item:hover .item__delete--btn { display: block; }
+.item__delete--btn:active { transform: translateY(0.2rem); }
+.item__delete--btn:focus { outline: none; }
