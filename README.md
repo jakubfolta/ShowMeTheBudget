@@ -1,12 +1,11 @@
 # Show Me The Budget
 Simple app where you can add your incomes, expenses for given month and your available budget will be displayed on the screen. You can also delete items from the list.
 
-- Local storage implemented
-- Delete All button implemented 
+## Features implemented:
+- Local storage
+- Delete All button
 - Code changed to ES6
-
-## Next features IN PROGRESS...
-Connection with outer API to change the quote in center of the screen every day...
+- Quote change - every day (API)
 
 ## Check Here ==> https://jakubfolta.github.io/ShowMeTheBudget/
 
@@ -14,7 +13,7 @@ Connection with outer API to change the quote in center of the screen every day.
 ![Show me the Budget App](./images/showmethebudget.png)
 
 ## Technologies
-* HTML5, CSS3, Sass, JavaScript, NPM
+* HTML5, CSS3, Sass, JavaScript ES6, NPM, Webpack/Babel
 
 ## Contact
 Created by Jakub Folta [@betterlifewisdom](https://www.betterlifewisdom.com/) - feel free to contact me!<br/>
