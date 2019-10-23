@@ -460,10 +460,7 @@ const appController = (function(budgetCtrl, UICtrl) {
         updatePercentages();
 
         // Display quote
-        console.log(new Date().getDate());
-        console.log(date);
         if (date !== new Date().getDate()) {
-            console.log('Not same.');
             updateQuote();
         } else {
             UICtrl.displayQuote(quote, author);
@@ -478,7 +475,6 @@ const appController = (function(budgetCtrl, UICtrl) {
         document.querySelector('.quote').textContent = 'QUOTE UPDATE';
         document.querySelector('.author').textContent = 'AUTHOR UPDATE';
         const [quote, author] = await budgetCtrl.saveQuote();
-        console.log(quote, typeof author);
 
         // Display quote
         UICtrl.displayQuote(quote, author);
@@ -582,53 +578,4 @@ const appController = (function(budgetCtrl, UICtrl) {
 }(budgetController, UIController));
 
 appController.init();
-//
-// const getQuote = async () => {
-//     const url = 'https://quotable-quotes.p.rapidapi.com/randomQuotes';
-//
-//     try {
-//         const result = await axios(`${url}`, {
-//             "method": "GET",
-//             "headers": {
-//                 "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
-//                 "x-rapidapi-key": "c39604baadmshcabd6e32bb7d9c0p1e3b1fjsnb9154a318acd"
-//             }
-//         })
-//         console.log(result);
-//
-//         const resultQuote = result.data.quote;
-//
-//
-//         return resultQuote;
-//     } catch(err) {
-//         console.log(`Something went wrong => ${err}`);
-//     }
-// };
-//
-// getQuote();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
