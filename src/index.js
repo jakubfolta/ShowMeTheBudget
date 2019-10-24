@@ -65,7 +65,7 @@ const budgetController = (function() {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
-                    "x-rapidapi-key": "c39604baadmshcabd6e32bb7d9c0p1e3b1fjsnb9154a318acd"
+                    "x-rapidapi-key": "c39604baadmshcabd6e32b0p1e3b1fjsnb918acd"
                 }
             })
 
