@@ -1,6 +1,5 @@
 import axios from 'axios';
 import './sass/main.scss';
-import {apiKey} from './config'
 ////////////////////////////////////
 //////// BUDGET CONTROLLER
 ////////////////////////////////////
@@ -66,7 +65,7 @@ const budgetController = (function() {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
-                    "x-rapidapi-key": apiKey
+                    "x-rapidapi-key": apiKey // deleted so don't exposed to public
                 }
             })
 
@@ -461,11 +460,11 @@ const appController = (function(budgetCtrl, UICtrl) {
         updatePercentages();
 
         // Display quote
-        if (date !== new Date().getDate()) {
-            updateQuote();
-        } else {
-            UICtrl.displayQuote(quote, author);
-        }
+        // if (date !== new Date().getDate()) {
+        //     updateQuote();
+        // } else {
+        //     UICtrl.displayQuote(quote, author);
+        // }
 
         // Display clear all button
         UICtrl.displayClearButton();
