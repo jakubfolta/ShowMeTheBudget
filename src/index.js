@@ -1,5 +1,6 @@
 import axios from 'axios';
 import './sass/main.scss';
+import {apiKey} from './config'
 ////////////////////////////////////
 //////// BUDGET CONTROLLER
 ////////////////////////////////////
@@ -7,9 +8,9 @@ import './sass/main.scss';
 const budgetController = (function() {
 
     const Expense = class {
-		constructor (description, value, id) {
-        	this.description = description;
-        	this.value = value;
+        constructor (description, value, id) {
+            this.description = description;
+            this.value = value;
         	this.id = id;
         	this.percentage = -1;
 		}
@@ -65,7 +66,7 @@ const budgetController = (function() {
                 "method": "GET",
                 "headers": {
                     "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
-                    "x-rapidapi-key": "c39604baadmshcabd6e32b0p1e3b1fjsnb918acd"
+                    "x-rapidapi-key": apiKey
                 }
             })
 
