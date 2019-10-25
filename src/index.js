@@ -58,18 +58,12 @@ const budgetController = (function() {
     };
 
     const getQuote = async () => {
-        const url = 'https://quotable-quotes.p.rapidapi.com/randomQuotes';
+        const url = 'https://api.quotable.io/random';
 
         try {
-            const result = await axios(`${url}`, {
-                "method": "GET",
-                "headers": {
-                    "x-rapidapi-host": "quotable-quotes.p.rapidapi.com",
-                    "x-rapidapi-key": apiKey // deleted so don't exposed to public
-                }
-            })
+            const result = await axios(`${url}`);
 
-            const resultQuote = result.data.quote;
+            const resultQuote = result.data.content;
             const resultAuthor = result.data.author;
 
             return [resultQuote, resultAuthor];
@@ -460,11 +454,11 @@ const appController = (function(budgetCtrl, UICtrl) {
         updatePercentages();
 
         // Display quote
-        // if (date !== new Date().getDate()) {
-        //     updateQuote();
-        // } else {
-        //     UICtrl.displayQuote(quote, author);
-        // }
+        if (date !== new Date().getDate()) {
+            updateQuote();
+        } else {
+            UICtrl.displayQuote(quote, author);
+        }
 
         // Display clear all button
         UICtrl.displayClearButton();
@@ -578,4 +572,3 @@ const appController = (function(budgetCtrl, UICtrl) {
 }(budgetController, UIController));
 
 appController.init();
-
