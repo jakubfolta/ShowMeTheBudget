@@ -16,5 +16,4 @@ Simple app where you can add your incomes, expenses for given month and your ava
 * HTML5, CSS3, Sass, JavaScript ES6, NPM, Webpack/Babel
 
 ## Contact
-Created by Jakub Folta [@betterlifewisdom](https://www.betterlifewisdom.com/) - feel free to contact me!<br/>
-[Facebook](https://www.facebook.com/jakub.folta.58) - or check my fb account and send me a message!
+Created by Jakub Folta [@folta.me](https://www.folta.me/) - feel free to contact me!<br/>
